@@ -1,0 +1,31 @@
+1.Failed to execute goal org.springframework.boot:spring-boot-maven-plugin ：failed: Unable to find main class
+
+只在web-pom中增加 spring-boot-maven-plugin 外层删除，install 成功
+
+如果是多个类同时加了SpringBootApplication，并且都 SpringApplication.run(BootstoneWebApplication.class, args);
+报错很明显
+com.lsh.demo.bootstone.web.BootstoneWebApplication, com.lsh.demo.bootstone.web.controller.SSS]
+
+2.Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.1:test
+
+解决1：删掉@RunWith(SpringRunner.class)  @SpringBootTest
+解决2：加上
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4.2</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+3. Error assembling WAR: webxml attribute is required (or pre-existing WEB-INF/web.xml if executing in update mode)
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
