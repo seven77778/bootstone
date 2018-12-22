@@ -15,14 +15,11 @@
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
 
 </project>
