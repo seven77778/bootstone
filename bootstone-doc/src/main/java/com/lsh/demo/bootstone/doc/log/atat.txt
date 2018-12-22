@@ -1,0 +1,2 @@
+1.found character '@' that cannot start any token. (Do not use @ for indentation)
+clean -install then ok

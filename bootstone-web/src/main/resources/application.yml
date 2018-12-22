@@ -1,5 +1,5 @@
-#env:
-#  type: @env.type@
+env:
+  type: @env.type@
 
 server:
   port: 8082
@@ -15,6 +15,6 @@ spring:
     encoding: UTF-8 #模板编码
 
 logging:
-  path: D:\bootStoneAppender
+  path: @stone.loggingPath@
   level:
-    root: debug
+    root: @stone.loggingLevel@
