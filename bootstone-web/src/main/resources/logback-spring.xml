@@ -74,10 +74,18 @@
         第一种把<root level="info">改成<root level="DEBUG">这样就会打印sql，不过这样日志那边会出现很多其他消息
         第二种就是单独给dao下目录配置debug模式，代码如下，这样配置sql语句会打印，其他还是正常info级别：
      -->
+    <!--logback的配置，需要配置输出源appender，打日志的loger（子节点）和root（根节点），实际上，它输出日志是从子节点开始，子节点如果有输出源直接输入
+    如果无，判断配置的addtivity，是否像上级传递，即是否向root传递，传递则采用root的输出源，否则不输出日志。-->
     <root level="DEBUG">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="bootStoneAppender" />
         <appender-ref ref="studyAppender" />
+    </root>
+
+    <!--完美效果-->
+    <root level="INFO">
+        <!--<appender-ref ref="rootAppender" />-->
+        <!--<appender-ref ref="jjjjjAppender" />-->
     </root>
 
     <!--输出sql语句-->

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author lsh
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.lsh.demo.bootstone.study","com.lsh.demo.bootstone.web.controller"})
+@ComponentScan(basePackages = {"com.lsh.demo.bootstone.study","com.lsh.demo.bootstone.web.controller","com.lsh.demo.spring","com.lsh.demo.bootstone.workorder"})
 public class BootStoneWebApplication {
 
     public static void main(String[] args) {

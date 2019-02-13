@@ -18,3 +18,18 @@ logging:
   path: @stone.loggingPath@
   level:
     root: @stone.loggingLevel@
+
+valuetest:
+  test1: @valuetest.test1@
+
+
+dubbo:
+  application:
+    name: bootstone
+  protocol:
+    name: dubbo
+    port: @dubbo.port@
+  registry:
+    address: @dubbo.address@
+  provider:
+    timeout: 10000

@@ -11,7 +11,7 @@
 
     <groupId>com.lsh.demo</groupId>
     <artifactId>bootstone</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>bootstone</name>
     <description>My Spring Boot</description>
@@ -22,6 +22,10 @@
         <module>bootstone-service</module>
         <module>bootstone-web</module>
         <module>bootstone-study</module>
+        <module>bootstone-domain</module>
+        <module>bootstone-dubbo-consumer</module>
+        <module>bootstone-doc</module>
+        <module>bootstone-spring</module>
     </modules>
 
     <properties>
