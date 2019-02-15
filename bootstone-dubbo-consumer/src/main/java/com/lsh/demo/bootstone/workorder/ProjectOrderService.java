@@ -10,13 +10,11 @@ import com.fliggy.jvopf.domain.object.WorkorderRemarkDO;
 import com.fliggy.jvopf.domain.query.MultiConQueryImpWorkOrderDO;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
  * Created by lsh on 2019/2/13.
  * test
- *
  */
 @Service
 public class ProjectOrderService {
@@ -24,8 +22,8 @@ public class ProjectOrderService {
     @Reference
     WorkOrderService service;
 
-    public ResultDO getorders(Long id){
-        ResultDO result = service.queryWorkOrderById(id);
+    public ResultDO getorders(Long id) {
+        ResultDO result = service.getWorkOrderById(id);
         System.out.println();
         return result;
     }
@@ -35,36 +33,37 @@ public class ProjectOrderService {
         return service.getWorkOrderList(list);
     }
 
-    public ResultDO queryEquProducer() {
-        return service.queryEquProducer();
+    public ResultDO getMultiConList(MultiConQueryImpWorkOrderDO multiConQueryImpWorkOrderDO) {
+        return service.getMultiConList(multiConQueryImpWorkOrderDO);
+    }
+
+    public ResultDO getWorkOrderById(Long orderId) {
+        return service.getWorkOrderById(orderId);
+    }
+
+    public ResultDO getEquProducer() {
+        return service.getEquProducer();
     }
 
     public ResultDO addReamrk(WorkorderRemarkDO remarkDO) {
         return service.addReamrk(remarkDO);
     }
 
-    public ResultDO uniteQuery(MultiConQueryImpWorkOrderDO multiConQueryImpWorkOrderDO) {
-       return service.uniteQuery(multiConQueryImpWorkOrderDO);
-    }
 
     public ResultDO updateStatus(WorkOrderUpdateDO updateDO) {
         return service.updateStatus(updateDO);
     }
 
-    public ResultDO uniteUpdateOrder(WorkOrderUpdateDO updateDO) {
-        return service.uniteUpdateOrder(updateDO);
-    }
-
-    public ResultDO queryWorkOrderById(Long orderId) {
-        return service.queryWorkOrderById(orderId);
+    public ResultDO saveWorkOrder(WorkOrderUpdateDO updateDO) {
+        return service.saveWorkOrder(updateDO);
     }
 
     public ResultDO addContact(WorkOrderContactDO contact) {
         return service.addContact(contact);
     }
 
-    public ResultDO downloadPhoto(Long orderId, String fileName, String fileType, HttpServletResponse httpResponse) {
-        return service.downloadPhoto( orderId,  fileName,  fileType,  httpResponse);
+    public ResultDO downloadPhoto(WorkOrderFileDO file) {
+        return service.downloadPhoto(file);
     }
 
     public ResultDO uploadPhoto(WorkOrderFileDO fileDO) {
@@ -75,8 +74,8 @@ public class ProjectOrderService {
         return service.uploadFile(file);
     }
 
-    public ResultDO downloadFile(Long orderId, String filePath, String fileName, HttpServletResponse response) {
-        return service.downloadFile( orderId,  filePath,  fileName,  response);
+    public ResultDO downloadFile(WorkOrderFileDO file) {
+        return service.downloadPhoto(file);
     }
 
     public ResultDO deleteFile(WorkOrderFileDO file) {

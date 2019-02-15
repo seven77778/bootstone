@@ -18,28 +18,33 @@
 
     <dependencies>
         <!--引入dubbo依赖-->
+        <!--<dependency>-->
+            <!--<groupId>com.fliggy.jvopf</groupId>-->
+            <!--<artifactId>jvopf-domain</artifactId>-->
+            <!--<version>1.0.0-SNAPSHOT</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.fliggy.jvopf</groupId>-->
+            <!--<artifactId>jvopf-client</artifactId>-->
+            <!--<version>1.0.0-SNAPSHOT</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>com.fliggy.jvopf</groupId>
-            <artifactId>jvopf-domain</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>com.alibaba.jv.framework</groupId>
+            <artifactId>jv-domain</artifactId>
+            <version>1.1-SNAPSHOT</version>
         </dependency>
-
-
         <dependency>
             <groupId>antlr</groupId>
             <artifactId>antlr</artifactId>
             <version>2.7.7</version>
         </dependency>
-        <dependency>
-            <groupId>com.fliggy.jvopf</groupId>
-            <artifactId>jvopf-client</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
+
         <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>0.2.0</version>
         </dependency>
+
     </dependencies>
 
 </project>
