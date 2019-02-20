@@ -18,20 +18,26 @@
 
     <dependencies>
         <!--引入dubbo依赖-->
-        <!--<dependency>-->
-            <!--<groupId>com.fliggy.jvopf</groupId>-->
-            <!--<artifactId>jvopf-domain</artifactId>-->
-            <!--<version>1.0.0-SNAPSHOT</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>com.fliggy.jvopf</groupId>-->
-            <!--<artifactId>jvopf-client</artifactId>-->
-            <!--<version>1.0.0-SNAPSHOT</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.fliggy.jvopf</groupId>
+            <artifactId>jvopf-domain</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fliggy.jvopf</groupId>
+            <artifactId>jvopf-client</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>com.alibaba.jv.framework</groupId>
             <artifactId>jv-domain</artifactId>
             <version>1.1-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>hsf.app.spring</artifactId>
+                    <groupId>com.taobao.hsf</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>antlr</groupId>
@@ -43,6 +49,12 @@
             <groupId>com.alibaba.boot</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>0.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>4.0.38</version>
         </dependency>
 
     </dependencies>

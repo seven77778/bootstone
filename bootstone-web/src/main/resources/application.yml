@@ -31,5 +31,3 @@ dubbo:
     port: @dubbo.port@
   registry:
     address: @dubbo.address@
-  provider:
-    timeout: 10000
