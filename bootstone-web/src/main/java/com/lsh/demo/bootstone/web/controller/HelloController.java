@@ -1,5 +1,6 @@
 package com.lsh.demo.bootstone.web.controller;
 
+import jdk.nashorn.internal.ir.annotations.Reference;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -32,6 +33,8 @@ public class HelloController {
         System.out.println(test1);
         return test1;
     }
+
+    @Reference
 
     /**
      * 入参的name为空，name.get()-java.util.NoSuchElementException: No value present
