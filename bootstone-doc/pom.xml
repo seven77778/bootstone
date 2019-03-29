@@ -15,14 +15,6 @@
     <name>bootstone-doc</name>
 
     <dependencies>
-
     </dependencies>
-
-    <build>
-        <plugins>
-
-        </plugins>
-    </build>
-
 
 </project>

@@ -8,7 +8,7 @@
         <version>1.1.1-SNAPSHOT</version>
     </parent>
     <artifactId>bootstone-dubbo-consumer</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>bootstone-dubbo-consumer</name>
     <description>Demo project for Spring Boot</description>
 
@@ -17,28 +17,7 @@
     </properties>
 
     <dependencies>
-        <!--引入dubbo依赖-->
-        <dependency>
-            <groupId>com.fliggy.jvopf</groupId>
-            <artifactId>jvopf-domain</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fliggy.jvopf</groupId>
-            <artifactId>jvopf-client</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.jv.framework</groupId>
-            <artifactId>jv-domain</artifactId>
-            <version>1.1-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>hsf.app.spring</artifactId>
-                    <groupId>com.taobao.hsf</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!--注释antlr，则报错jvopf-->
         <dependency>
             <groupId>antlr</groupId>
             <artifactId>antlr</artifactId>
@@ -50,13 +29,7 @@
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>0.2.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.caucho</groupId>
-            <artifactId>hessian</artifactId>
-            <version>4.0.38</version>
-        </dependency>
-
     </dependencies>
+
 
 </project>
