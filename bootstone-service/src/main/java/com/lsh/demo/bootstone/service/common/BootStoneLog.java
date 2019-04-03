@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by lsh on 2018/12/22.
  */
-public class LogFactory {
+public class BootStoneLog {
 
     public static Logger bootStone = LoggerFactory.getLogger("bootStone");
     public static Logger study = LoggerFactory.getLogger("study");

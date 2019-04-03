@@ -11,5 +11,12 @@
 
     <artifactId>serial</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.hynnet</groupId>
+            <artifactId>jacob</artifactId>
+            <version>1.18</version>
+        </dependency>
+    </dependencies>
 
 </project>

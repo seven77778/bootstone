@@ -8,7 +8,7 @@ import com.fliggy.jvopf.domain.object.WorkOrderFileDO;
 import com.fliggy.jvopf.domain.object.WorkOrderUpdateDO;
 import com.fliggy.jvopf.domain.object.WorkorderRemarkDO;
 import com.fliggy.jvopf.domain.query.MultiConQueryImpWorkOrderDO;
-import com.lsh.demo.bootstone.service.common.LogFactory;
+import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import com.lsh.demo.bootstone.web.common.ViewResult;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
@@ -143,7 +143,7 @@ public class ProjectOrderController {
             fileDO.setData(file.getBytes());
             fileDO.setOriginalFilename(file.getOriginalFilename());
         }catch (Exception e){
-            LogFactory.bootStone.error("uploadFile",e);
+            BootStoneLog.bootStone.error("uploadFile",e);
             return null;
         }
         return ViewResult.copyResult(service.uploadFile(fileDO));

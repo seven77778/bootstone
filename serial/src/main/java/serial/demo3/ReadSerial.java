@@ -1,4 +1,4 @@
-//package demo3;
+//package serial.demo3;
 //
 //import gnu.io.SerialPortEvent;
 //

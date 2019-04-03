@@ -1,4 +1,4 @@
-package demo1;
+package serial.demo1;
 
 import java.nio.ByteBuffer;
 import java.util.Locale;

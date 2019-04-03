@@ -1,4 +1,4 @@
-package demo1;
+package serial.demo1;
 
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;

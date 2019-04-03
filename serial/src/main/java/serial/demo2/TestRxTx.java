@@ -1,4 +1,4 @@
-package demo2;
+package serial.demo2;
 
 /**
  * Created by lsh on 2019/3/9.

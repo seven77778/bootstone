@@ -1,6 +1,6 @@
 package com.lsh.demo.bootstone.web.controller;
 
-import com.lsh.demo.bootstone.service.common.LogFactory;
+import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import com.lsh.demo.bootstone.study.strategy.PayService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +25,9 @@ public class RegisterController {
     @RequestMapping("/hello")
     public String hello(@RequestParam(name = "name",required = false) String name){
 //        payService.payDiscount("",100);
-        LogFactory.bootStone.info("hello~~");
-        LogFactory.study.error("good good study");
-        LogFactory.CONSOLE.error("i am console");
+        BootStoneLog.bootStone.info("hello~~");
+        BootStoneLog.study.error("good good study");
+        BootStoneLog.CONSOLE.error("i am console");
         return "hello " + name + " , " + LocalDateTime.now();
     }
 

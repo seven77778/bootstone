@@ -1,4 +1,4 @@
-package demo1;
+package serial.demo1;
 
 import javax.swing.JOptionPane;
 
