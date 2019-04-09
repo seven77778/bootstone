@@ -3,13 +3,20 @@
 --- DateTime: 2019/4/9 16:24
 ---
 
-local times = redis.call('incr',KEYS[1])
+-- 限制同一IP访问次数 每分钟访问10次
+local key = "rate.limit:" .. KEYS[1] -- 要限制的唯一name，比如ip
+local limit = tonumber(ARGV[1]) -- 次数
+local expire_time = ARGV[2] -- 多久时间
 
-if times == 1 then
-    redis.call('expire',KEYS[1], ARGV[1])
-end
 
-if times > tonumber(ARGV[2]) then
-    return 0
+
+local is_exists = redis.call("EXISTS", key) -- 单位毫秒
+if is_exists == 1 then
+    if redis.call("INCR", key) > limit then
+        return "NO"
+    else
+        return "OK2" --区别第一次set成功的结果
+    end
+else
+    return redis.call("SET", key, "1","NX","PX",expire_time) -- 第一次返回OK
 end
-return 1
