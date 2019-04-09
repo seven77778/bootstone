@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Created by wb-lsh301927 on 2018/1/17.
  *
- * @author wb-lsh301927
  * @date 2018/01/17
  */
 public class RedisTest {
@@ -46,6 +44,8 @@ public class RedisTest {
             //if (i % 2 == 0) {
                 new Thread(new Runnable() {
                     String key = "lock";
+
+                    @Override
                     public void run() {
                         boolean lock = redis.lock(key, 100000);
                         if (lock) {

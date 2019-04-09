@@ -8,9 +8,8 @@
 //import redis.clients.jedis.Jedis;
 //
 ///**
-// * Created by wb-lsh301927 on 2018/1/15.
+// * Created by  on 2018/1/15.
 // *
-// * @author wb-lsh301927
 // * @date 2018/01/15
 // */
 //public class LuaTest2 {

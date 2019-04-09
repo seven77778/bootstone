@@ -17,6 +17,13 @@
             <artifactId>jacob</artifactId>
             <version>1.18</version>
         </dependency>
+
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+
     </dependencies>
 
 </project>

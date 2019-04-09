@@ -1,15 +1,14 @@
 package com.lsh.demo.lua.luatest;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.Random;
-import java.util.concurrent.CountDownLatch;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.util.StopWatch;
 import redis.clients.jedis.Jedis;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.concurrent.CountDownLatch;
+
 /**
- * Created by wb-lsh301927 on 2018/1/17.
  *
  * @author wb-lsh301927
  * @date 2018/01/17

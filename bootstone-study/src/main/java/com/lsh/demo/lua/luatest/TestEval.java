@@ -9,9 +9,7 @@ import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * Created by wb-lsh301927 on 2018/1/12.
  *
- * @author wb-lsh301927
  * @date 2018/01/12
  */
 public class TestEval {

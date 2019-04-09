@@ -1,15 +1,12 @@
 package com.lsh.demo.lua.luatest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * Created by wb-lsh301927 on 2018/1/16.
  *
- * @author wb-lsh301927
  * @date 2018/01/16
  */
 @Component
