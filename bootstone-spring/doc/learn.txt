@@ -14,4 +14,3 @@ messageSource	MessageSource	用于实现国际化的一个接口	AbstractApplica
 applicationEventMulticaster	ApplicationEventMulticaster	Spring提供的事件管理机制中的事件多播器接口	AbstractApplicationContext
 applicationListeners	Set<ApplicationListener>	Spring提供的事件管理机制中的应用监听器	AbstractApplicationContext
 
-test github

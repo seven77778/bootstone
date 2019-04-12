@@ -1,0 +1,2 @@
+D:\MySpringBoot\bootstone>git config user.email "522097606@qq.com"
+D:\MySpringBoot\bootstone>git config user.name "lsh"
