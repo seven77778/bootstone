@@ -13,3 +13,5 @@ lifecycleProcessor	LifecycleProcessor	用于管理Bean生命周期的生命周�
 messageSource	MessageSource	用于实现国际化的一个接口	AbstractApplicationContext
 applicationEventMulticaster	ApplicationEventMulticaster	Spring提供的事件管理机制中的事件多播器接口	AbstractApplicationContext
 applicationListeners	Set<ApplicationListener>	Spring提供的事件管理机制中的应用监听器	AbstractApplicationContext
+
+test github
