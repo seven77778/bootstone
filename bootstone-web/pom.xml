@@ -49,6 +49,12 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>com.lsh.demo</groupId>
+            <artifactId>bootstone-spring</artifactId>
+            <version>1.1.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba.jv.framework</groupId>
             <artifactId>jv-taskfilter</artifactId>
             <version>1.1-SNAPSHOT</version>

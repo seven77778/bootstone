@@ -1,0 +1,13 @@
+1.configResources = null, From ClassPathXmlApplicationContext,配置文件资源对象数组，使用ClassPathXmlApplicationContext
+多参数构造方法才会赋值
+2.validating = true, From AbstractXmlApplicationContext,Set whether to use XML validation 设置是否使用xml验证，默认为true
+3.configLocations = {0="bean.xml"},From AbstractRefreshableConfigApplicationContext,配置文件String数组，
+存储配置文件路径，使用ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("bean.xml");
+被赋值
+4.setIdCalled = false,unknown
+5.allowBeanDefinitionOverriding = null,设置是否应该允许它通过注册一个具有相同名称的不同定义来覆盖bean定义，并自动替换前者,
+默认为true
+6.allowCircularReferences = null，设置是否允许bean之间的循环引用——并自动尝试解析它们,默认true
+7.beanFactory = org.springframework.beans.factory.support.DefaultListableBeanFactory@18e8a9d: defining beans [stoneService,xmlstoneService,xmlstoneService2]; root of factory hierarchy
+
+

@@ -31,3 +31,7 @@ dubbo:
     port: @dubbo.port@
   registry:
     address: @dubbo.address@
+    check: false
+  consumer:
+    check: false
+

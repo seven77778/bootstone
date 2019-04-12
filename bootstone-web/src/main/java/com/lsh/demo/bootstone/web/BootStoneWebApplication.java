@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @EnableDubbo(scanBasePackages = {"com.lsh.demo.bootstone.workorder"})
-@ComponentScan(basePackages = {"com.lsh.demo.bootstone.study","com.lsh.demo.bootstone.web.controller","com.lsh.demo.spring","com.lsh.demo.bootstone.workorder"})
+@ComponentScan(basePackages = {"com.lsh.demo.bootstone.study","com.lsh.demo.bootstone.web.controller","com.lsh.demo.spring","xml"})
 public class BootStoneWebApplication {
     public static void main(String[] args) {
         SpringApplication.run(BootStoneWebApplication.class, args);
