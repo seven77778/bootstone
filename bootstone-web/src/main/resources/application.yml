@@ -35,3 +35,19 @@ dubbo:
   consumer:
     check: false
 
+
+  port: 8081
+
+---
+spring:
+  profiles: dev
+
+server:
+  port: 8082
+
+---
+spring:
+  profiles: prod
+
+server:
+  port: 8083
