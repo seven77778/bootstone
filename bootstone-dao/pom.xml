@@ -15,16 +15,7 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>com.fliggy.jvopf</groupId>
-            <artifactId>jvopf-domain</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fliggy.jvopf</groupId>
-            <artifactId>jvopf-client</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
     </dependencies>
 
     <build>

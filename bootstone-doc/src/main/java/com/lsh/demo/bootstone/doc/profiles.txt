@@ -1,0 +1,25 @@
+第一种方式
+
+***********************
+server:
+  port: 8081
+
+---
+spring:
+  profiles: dev
+
+server:
+  port: 8082
+
+---
+spring:
+  profiles: prod
+
+server:
+  port: 8083
+
+****************
+
+通过  java -jar .\bootstone-web-1.0.0-SNAPSHOT.jar --spring.profiles.active=dev 指定环境
+
+*********************

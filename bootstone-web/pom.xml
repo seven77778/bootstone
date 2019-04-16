@@ -15,16 +15,23 @@
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.fliggy.jvopf</groupId>-->
+            <!--<artifactId>jvopf-domain</artifactId>-->
+            <!--<version>0.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.fliggy.jvopf</groupId>-->
+            <!--<artifactId>jvopf-client</artifactId>-->
+            <!--<version>0.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
+
         <dependency>
-            <groupId>com.fliggy.jvopf</groupId>
-            <artifactId>jvopf-domain</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.8</version>
         </dependency>
-        <dependency>
-            <groupId>com.fliggy.jvopf</groupId>
-            <artifactId>jvopf-client</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
         <dependency>
             <groupId>com.lsh.demo</groupId>
             <artifactId>bootstone-study</artifactId>
@@ -53,11 +60,6 @@
             <artifactId>bootstone-spring</artifactId>
             <version>1.1.1-SNAPSHOT</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.jv.framework</groupId>
-            <artifactId>jv-taskfilter</artifactId>
-            <version>1.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
