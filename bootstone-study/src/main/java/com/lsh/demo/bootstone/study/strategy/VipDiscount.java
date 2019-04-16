@@ -18,6 +18,6 @@ public class VipDiscount implements IDiscount {
     @Override
     public Double discount(  double cost) {
         System.out.println("use VipDiscount");
-        return cost * 0.8;
+        return cost * 0.95;
     }
 }

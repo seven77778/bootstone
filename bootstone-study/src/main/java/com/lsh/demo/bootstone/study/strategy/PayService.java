@@ -27,8 +27,6 @@ List<IDiscount> discounts = new ArrayList<>();  -- 初始化顺序？
  */
 @Component
 public class PayService {
-
-
     static Map<String, IDiscount> map =new HashMap<>();
 
     @Autowired
@@ -38,19 +36,14 @@ public class PayService {
      * 1.有参构造方法是可以
      * 2.@auto注解也可以，在执行完构造方法以后
      */
-    //list如何初始化的 todo
     public PayService(List<IDiscount> list) {
         for(IDiscount iDiscount:list){
             map.put(iDiscount.getType(),iDiscount);
         }
-        System.out.println("youcan");
     }
-
 
     public  double payDiscount(String type, double cost){
         System.out.println(map.size());
         return map.get(type).discount(cost);
     }
-
-
 }

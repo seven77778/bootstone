@@ -24,11 +24,17 @@ public class RegisterController {
 
     @RequestMapping("/hello")
     public String hello(@RequestParam(name = "name",required = false) String name){
-//        payService.payDiscount("",100);
+        payService.payDiscount("vip",100);
         BootStoneLog.bootStone.info("hello~~");
         BootStoneLog.study.error("good good study");
         BootStoneLog.CONSOLE.error("i am console");
         return "hello " + name + " , " + LocalDateTime.now();
+    }
+
+    @RequestMapping("discount")
+    public String discount(@RequestParam(name = "type",required = false) String type){
+       double result =  payService.payDiscount(type,100) ;
+       return "您是" +type + "会员，享受的价格为 " + result;
     }
 
 }

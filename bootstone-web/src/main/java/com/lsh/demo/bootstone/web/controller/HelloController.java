@@ -1,6 +1,6 @@
 package com.lsh.demo.bootstone.web.controller;
 
-import jdk.nashorn.internal.ir.annotations.Reference;
+import com.alibaba.dubbo.config.annotation.Reference;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -8,6 +8,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.helixcs.springboot.samples.dubboclient.SayHelloInterface;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * Created by lsh on 2019/2/12.
@@ -35,6 +38,12 @@ public class HelloController {
     }
 
     @Reference
+    private SayHelloInterface sayHelloInterface;
+
+    @GetMapping("dubbo")
+    public String testt(){
+        return sayHelloInterface.sayHello("hehehe1");
+    }
 
     /**
      * 入参的name为空，name.get()-java.util.NoSuchElementException: No value present
@@ -71,5 +80,28 @@ public class HelloController {
         result = EntityUtils.toString(entity);
 
         return null;
+    }
+
+    public static void main(String[] args) {
+        int [] ab = new int[] {0,0,0,1};
+
+        long time1 = System.currentTimeMillis();
+        for(int x : ab){
+            if(0!=x){
+                System.out.println("false");
+            }
+        }
+        System.out.println(System.currentTimeMillis() - time1 );
+
+        long time2 = System.currentTimeMillis();
+        boolean result = Stream.of(ab).allMatch(x -> Arrays.equals(x, new int[0]));
+        System.out.println(System.currentTimeMillis() - time2);
+
+        long ss = Arrays.stream(ab).filter(x -> x != 0).count();
+        System.out.println(ss);
+
+
+
+
     }
 }

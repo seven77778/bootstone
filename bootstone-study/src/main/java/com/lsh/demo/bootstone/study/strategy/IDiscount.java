@@ -12,11 +12,18 @@ package com.lsh.demo.bootstone.study.strategy;
  *
  * 优点：易于扩展，自由切换，新增策略对其他无影响
  * 缺点：1、当策略较多的时候，维护困难
- * 2、需要对 外暴露所以的策略
+ * 2、需要对 外暴露所有的策略
  *
  */
 public interface IDiscount {
 
+    /**
+     * 获取策略类型
+     */
     String getType();
+
+    /**
+     * 计算金额
+     */
     Double discount(double cost);
 }
