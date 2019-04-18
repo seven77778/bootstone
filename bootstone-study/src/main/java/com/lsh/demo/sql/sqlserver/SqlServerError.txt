@@ -1,0 +1,12 @@
+java.lang.ClassNotFoundException: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+        <dependency>
+            <groupId>com.microsoft</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+
+java.sql.SQLException: No suitable driver found for jdbc:microsoft:sqlserver://10.63.17.41:1433;DatabaseName=mylock1
+
+jdbc:sqlserver://10.63.17.41:1433;DatabaseName=mylock1 更换之后ok
