@@ -1,4 +1,4 @@
-java.lang.ClassNotFoundException: com.microsoft.sqlserver.jdbc.SQLServerDriver
+1.java.lang.ClassNotFoundException: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
         <dependency>
             <groupId>com.microsoft</groupId>
@@ -7,6 +7,23 @@ java.lang.ClassNotFoundException: com.microsoft.sqlserver.jdbc.SQLServerDriver
         </dependency>
 
 
-java.sql.SQLException: No suitable driver found for jdbc:microsoft:sqlserver://10.63.17.41:1433;DatabaseName=mylock1
+2.java.sql.SQLException: No suitable driver found for jdbc:microsoft:sqlserver://10.63.17.41:1433;DatabaseName=mylock1
 
 jdbc:sqlserver://10.63.17.41:1433;DatabaseName=mylock1 更换之后ok
+
+3. 查询历史操作记录 适合于2008版本以上 2000用不了
+
+SELECT o.name as table_name,
+       s.last_user_seek,
+       s.last_user_scan,
+       s.last_user_lookup,
+       s.last_user_update
+from sys.indexes i
+left join sys.dm_db_index_usage_stats s
+on s.object_id = i.object_id and
+   s.index_id = i.index_id
+inner join sys.objects o
+on i.object_id = o.object_id
+where i.index_id <= 1
+and o.is_ms_shipped = 0
+order by o.name;

@@ -4,6 +4,7 @@ import com.lsh.demo.designmode.decorator.demo1.Circle;
 import com.lsh.demo.designmode.decorator.demo1.Rectangle;
 import com.lsh.demo.designmode.decorator.demo1.RedShapeDecorator;
 import com.lsh.demo.designmode.decorator.demo1.Shape;
+import org.junit.Test;
 
 /**
  * Created by lsh on 2019/4/17.
@@ -41,11 +42,21 @@ import com.lsh.demo.designmode.decorator.demo1.Shape;
 public class DecoratorDemo {
 
     public static void main(String[] args) {
-
         Shape shape = new Circle();
         shape.draw();
-
         Shape shape1 = new RedShapeDecorator(new Rectangle());
+        shape1.draw();
+    }
+
+    /**
+     * 装饰器模式demo1
+     */
+    @Test
+    public void testForShape(){
+        Shape shape = new Circle();
+        shape.draw();
+        //增加新功能
+        Shape shape1 = new RedShapeDecorator(new Circle());
         shape1.draw();
     }
 }

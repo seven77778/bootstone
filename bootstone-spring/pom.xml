@@ -38,4 +38,8 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>bootstone-spring-${version}</finalName>
+    </build>
+
 </project>

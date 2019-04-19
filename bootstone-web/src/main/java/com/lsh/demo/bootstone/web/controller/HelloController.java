@@ -1,6 +1,6 @@
 package com.lsh.demo.bootstone.web.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
+import com.bootstone.spring.ioc.iocdemo1.MoAttack;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -8,8 +8,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.helixcs.springboot.samples.dubboclient.SayHelloInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,24 +27,25 @@ import java.util.stream.Stream;
 @RestController
 @Component
 @RequestMapping("/hello")
+@ComponentScan(basePackages = "com.bootstone.spring.ioc.iocdemo1.MoAttack")
 public class HelloController {
 
     @Value("${valuetest.test1}")
     private String test1;
 
+    @Autowired
+    private MoAttack moAttack;
+
     @GetMapping("/test1212")
     public String test2(){
+        this.moAttack.selectGeli();
+        System.out.println("********");
         System.out.println(test1);
         return test1;
     }
 
-    @Reference
-    private SayHelloInterface sayHelloInterface;
 
-    @GetMapping("dubbo")
-    public String testt(){
-        return sayHelloInterface.sayHello("hehehe1");
-    }
+
 
     /**
      * 入参的name为空，name.get()-java.util.NoSuchElementException: No value present
