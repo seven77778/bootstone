@@ -27,6 +27,7 @@
         <module>bootstone-doc</module>
         <module>bootstone-spring</module>
         <module>serial</module>
+        <module>redis</module>
     </modules>
 
     <properties>

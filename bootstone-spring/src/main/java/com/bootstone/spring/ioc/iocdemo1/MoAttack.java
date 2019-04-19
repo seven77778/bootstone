@@ -40,6 +40,9 @@ public class MoAttack {
     }
 
 
+    /**
+     * 通过name注入
+     */
     @Resource(name = "xiao")
     private GeLi geLi;
 
