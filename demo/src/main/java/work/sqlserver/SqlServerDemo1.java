@@ -22,6 +22,8 @@ import java.sql.Statement;
  * note : sqlserver2000
  * jdbc:microsoft:sqlserver://xxx:1433;DatabaseName=MYLOCK
  *
+ * 1.update tableA set name=x,age=x where id =1; 修改多个值用，隔开
+ * 2.SELECT top 100 * from tableB order by tableB.date desc;
  *
  *
  */
