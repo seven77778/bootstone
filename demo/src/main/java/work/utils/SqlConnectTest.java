@@ -25,7 +25,7 @@ public class SqlConnectTest {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection("jdbc:sqlserver://xxx:1433;DatabaseName=mylock1232", "sa", "mbt2005");
-            String sql = "select roomName from HX_RoomInfor where SimpleName = 'A2F4CF95CF63'";
+            String sql = "select roomName from HX_RoomInfor where SimpleName = 'sss'";
             conn.setAutoCommit(false);
             Statement stmt = conn.createStatement();
             ResultSet res = stmt.executeQuery(sql);
