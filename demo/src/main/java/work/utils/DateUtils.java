@@ -1,4 +1,4 @@
-package com.lsh.demo.utils;
+package work.utils;
 
 import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import org.apache.commons.lang3.StringUtils;
@@ -8,10 +8,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Created by lsh on 2019/4/3.
+ * Created by lsh on 2019-04-23.
+ *
+ * 往数据库写time，加'' string
  */
-public class TimeUtils {
-
+public class DateUtils {
 
     /**
      *

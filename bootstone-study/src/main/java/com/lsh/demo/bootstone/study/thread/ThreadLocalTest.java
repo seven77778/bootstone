@@ -1,4 +1,4 @@
-package com.lsh.demo.bootstone.study.juc.thread;
+package com.lsh.demo.bootstone.study.thread;
 
 import org.junit.Test;
 
