@@ -16,7 +16,18 @@ package com.lsh.demo.bootstone.study.thread;
  * maxIdleTime
  * (int) The number of milliseconds before an idle thread shutsdown, unless the number of active threads are less or equal to minSpareThreads.
  * Default value is 60000(1 minute)
+ *
+ *
  */
 public class TomcatTest {
 
+
+    /* 疑问
+    1. springboot 通过main启动，是什么方式
+
+    2.java -jar 是 tomcat启动吗
+
+
+
+     */
 }
