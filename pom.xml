@@ -28,6 +28,8 @@
         <module>bootstone-spring</module>
         <module>serial</module>
         <module>redis</module>
+        <module>demo</module>
+        <module>nginx</module>
     </modules>
 
     <properties>

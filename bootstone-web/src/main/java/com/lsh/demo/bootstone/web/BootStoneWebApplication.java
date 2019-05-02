@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.util.ArrayList;
+
 /**
  * @author lsh
  */
@@ -14,7 +16,6 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = {"com.lsh.demo.bootstone.study","com.lsh.demo.bootstone.web.controller","com.lsh.demo.spring","xml",
         "com.bootstone.spring.ioc.iocdemo1"})
 public class BootStoneWebApplication {
-    MoAttack moAttack =new MoAttack();
     public static void main(String[] args) {
         SpringApplication.run(BootStoneWebApplication.class, args);
     }
