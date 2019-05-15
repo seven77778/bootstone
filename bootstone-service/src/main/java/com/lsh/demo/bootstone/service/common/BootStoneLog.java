@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 public class BootStoneLog {
 
     public static Logger bootStone = LoggerFactory.getLogger("bootStone");
-    public static Logger study = LoggerFactory.getLogger("study");
+    public static Logger study = LoggerFactory.getLogger("basic");
     public static Logger CONSOLE = LoggerFactory.getLogger("CONSOLE");
 
 }

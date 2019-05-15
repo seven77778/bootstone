@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 @SpringBootApplication
 @EnableDubbo(scanBasePackages = {"com.lsh.demo.bootstone.workorder"})
-@ComponentScan(basePackages = {"com.lsh.demo.bootstone.study","com.lsh.demo.bootstone.web.controller","com.lsh.demo.spring","xml",
+@ComponentScan(basePackages = {"com.lsh.demo.bootstone.basic","com.lsh.demo.bootstone.web.controller","com.lsh.demo.spring","xml",
         "com.bootstone.spring.ioc.iocdemo1"})
 public class BootStoneWebApplication {
     public static void main(String[] args) {

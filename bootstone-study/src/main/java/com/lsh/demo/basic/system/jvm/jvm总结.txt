@@ -1,0 +1,62 @@
+1. java1.8之前，堆内存是 新生代+老年代+永久代，1.8移除了永久代，叫做元空间，使用物理内存
+
+2. 复制算法，带来了年轻代的思路，所以有了Survivor1 和 Survivor2，新生代只有90%的空间可以用，8:1:1的比例下。
+
+3. 对象优先分配在eden，大对象直接进入老年代，长期存活的对象进入老年代。
+
+
+默认设置是经历了16次minor gc还在新生代中存活的对象才会被送到老年代。
+
+
+
+触发Full GC的条件 ：
+
+①显式调用System.gc方法(建议JVM触发)，通过 -XX:+ DisableExplicitGC 禁止
+②方法区空间不足(JDK8及之后不会有这种情况了，详见下文)
+③老年代空间不足，引起Full GC。这种情况比较复杂，有以下几种：
+3.1 大对象直接进入老年代引起，由-XX:PretenureSizeThreshold参数定义
+
+3.2 Minor GC时，经历过多次Minor GC仍存在的对象进入老年代。上面提过，由-XX:MaxTenuringThreashold参数定义
+
+3.3 Minor GC时，动态对象年龄判定机制会将对象提前转移老年代。年龄从小到大进行累加，当加入某个年龄段后，
+累加和超过survivor区域 * -XX:TargetSurvivorRatio的时候，从这个年龄段往上的年龄的对象进入老年代
+
+3.4 Minor GC时，Eden和From Space区向To Space区复制时，大于To Space区可用内存，会直接把对象转移到老年代
+
+3.5 老年代空间只有在新生代对象转入及创建为大对象、大数组时才会出现不足的现象，
+当执行Full GC后空间仍然不足，则抛出如下错误【java.lang.OutOfMemoryError: Java heap space】
+
+④ CMS GC时出现promotion failed和concurrent mode failure
+4.1 promotion failed是在进行Minor GC时，survivor space放不下、对象只能放入老年代，而此时老年代也放不下造成的；
+4.2 concurrent mode failure是在执行CMS GC的同时有对象要放入老年代，
+而此时老年代空间不足造成的（有时候“空间不足”是CMS GC时当前的浮动垃圾过多导致暂时性的空间不足触发Full GC）
+
+
+⑤ 统计得到的Minor GC晋升到旧生代的平均大小大于老年代的剩余空间
+例如程序第一次触发Minor GC后，有6MB的对象晋升到旧生代，那么当下一次Minor GC发生时，
+首先检查旧生代的剩余空间是否大于6MB，如果小于6MB，则执行Full GC
+
+⑥ 堆中分配很大的对象
+老年代中没有足够的连续空间存放大对象，两个jvm参数，full gc后是否压缩，full gc多少次以后压缩一次
+
+4. 关于 Minor GC、Major GC和Full GC
+Minor GC
+从年轻代空间（包括 Eden 和 Survivor 区域）回收内存被称为 Minor GC；
+
+Major GC 是清理老年代。
+Full GC 是清理整个堆空间—包括年轻代和老年代。
+
+Old GC：只收集old gen的GC。只有CMS的concurrent collection是这个模式
+
+5.主流的垃圾收集器有哪些
+
+其中Serial、ParNew和 Parallel Scavenge 收集器作用于新生代，CMS、Parallel Old 和 Serial Old作用于老年代，
+G1在新生代和老年代都可以使用。不同的收集器之间如果有连线，则说明他们可以相互搭配使用
+
+
+6.
+一个对象被回收, 必须满足两个条件: 1)没有任何引用指向它 2)GC被运行
+
+
+参考：
+https://segmentfault.com/a/1190000010648021

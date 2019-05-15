@@ -13,7 +13,7 @@
 //import org.redisson.api.RLock;
 //import org.redisson.api.RedissonClient;
 //import org.redisson.client.RedisException;
-//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factorymode.annotation.Autowired;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
 //import redis.clients.jedis.Jedis;
 //

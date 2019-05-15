@@ -1,6 +1,6 @@
 //package resouces;
 //import org.junit.Test;
-//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factorymode.annotation.Autowired;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
 //
 ///**

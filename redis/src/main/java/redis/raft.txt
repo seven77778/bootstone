@@ -1,0 +1,10 @@
+与Paxos不同Raft强调的是易懂（Understandability），Raft和Paxos一样只要保证n/2+1节点正常就能够提供服务；
+众所周知但问题较为复杂时可以把问题分解为几个小问题来处理，Raft也使用了分而治之的思想把算法流程分为三个子问题：
+选举（Leader election）、日志复制（Log replication）、安全性（Safety）三个子问题；这里先简单介绍下Raft的流程;
+
+1、角色
+　　Raft把集群中的节点分为三种状态：Leader、 Follower 、Candidate，理所当然每种状态负责的任务也是不一样的，Raft运行时提供服务的时候只存在Leader与Follower两种状态；
+
+　　Leader（领导者）：负责日志的同步管理，处理来自客户端的请求，与Follower保持这heartBeat的联系；
+　　Follower（追随者）：刚启动时所有节点为Follower状态，响应Leader的日志同步请求，响应Candidate的请求，把请求到Follower的事务转发给Leader；
+　　Candidate（候选者）：负责选举投票，Raft刚启动时由一个节点从Follower转为Candidate发起选举，选举出Leader后从Candidate转为Leader状态；

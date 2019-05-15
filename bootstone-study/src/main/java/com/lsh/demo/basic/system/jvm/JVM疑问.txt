@@ -1,0 +1,35 @@
+1.问 如果老年代FullGC频繁，怎么处理
+
+
+
+1. full GC 之后，老年代没降低 todo
+[Full GC (Allocation Failure) [Tenured: 7950K->7934K(10240K), 0.0018713 secs] 13070K->13054K(19456K), [Metaspace: 2053K->2053K(4480K)], 0.0018973 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+
+2. 为什么有2个Survivor
+减少碎片
+
+3. 什么是空间担保分配机制
+
+指在发生Minor GC之前，虚拟机会检查老年代最大可用的连续空间是否大于新生代所有对象的总空间。
+如果大于，则此次Minor GC是安全的。
+
+如果小于，则虚拟机会查看HandlePromotionFailure设置值是否允许担保失败。
+如果HandlePromotionFailure=true，那么会继续检查老年代最大可用连续空间是否大于历次晋升到老年代的对象的平均大小，
+如果大于，则尝试进行一次Minor GC，但这次Minor GC依然是有风险的，失败后会重新发起一次Full gc；
+
+如果小于或者HandlePromotionFailure=false，则改为直接进行一次Full GC。
+
+所有才会说一次Full GC很有可能是由一次Minor GC触发的。
+
+
+4. 新生代过小的坏处
+
+普遍认为 young应该比old小，最坏的情况就是新生代全部晋升到老年代
+
+① 导致老年代增长也快，因为新生代小，from和to也小，很多对象进不去Survivor区，直接晋升老年代
+② 肯定导致young GC  频繁
+
+
+5. 因为young GC只收集young gen，但full GC会收集整个GC堆，1.8，young + old 构成了整个GC堆
+
+6.java  -verbose:gc 输出虚拟机详细gc情况，-XX:+PrintGC 与 -verbose:gc 是一样的，

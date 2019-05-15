@@ -38,7 +38,7 @@
 //        final CountDownLatch latch = new CountDownLatch(threadCount);
 //        for(int i = 0; i < threadCount; ++i) {
 //            final int temp = i;
-//            Thread thread = new Thread() {
+//            Thread threadlocal = new Thread() {
 //                public void run() {
 //                    Jedis jedis = new Jedis(host);
 //                    int per = honBaoCount/threadCount;
@@ -51,7 +51,7 @@
 //                    latch.countDown();
 //                }
 //            };
-//            thread.start();
+//            threadlocal.start();
 //        }
 //        latch.await();
 //    }
@@ -62,7 +62,7 @@
 //        watch.start();
 //        for(int i = 0; i < threadCount; ++i) {
 //            final int temp = i;
-//            Thread thread = new Thread() {
+//            Thread threadlocal = new Thread() {
 //                public void run() {
 //                    Jedis jedis = new Jedis(host);
 //                    int j = honBaoCount/threadCount * temp;
@@ -80,7 +80,7 @@
 //                    latch.countDown();
 //                }
 //            };
-//            thread.start();
+//            threadlocal.start();
 //        }
 //
 //        latch.await();

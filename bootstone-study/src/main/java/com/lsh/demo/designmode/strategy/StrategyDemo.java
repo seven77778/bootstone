@@ -1,6 +1,6 @@
 package com.lsh.demo.designmode.strategy;
 
-import com.lsh.demo.bootstone.study.strategy.IDiscount;
+import com.lsh.demo.basic.strategy.IDiscount;
 
 /**
  * Created by lsh on 2019/4/17.
