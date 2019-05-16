@@ -1,11 +1,8 @@
 package com.lsh.demo.basic.strategy;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,23 +22,25 @@ List<IDiscount> discounts = new ArrayList<>();  -- 初始化顺序？
  * 构造方法先于 @service执行，通过构造器实例化的bean，才能注入啊
  *
  */
+
+
 @Component
 public class PayService {
     static Map<String, IDiscount> map =new HashMap<>();
 
-    @Autowired
-    List<IDiscount> discounts = new ArrayList<>();
-
-    /**
-     * 1.有参构造方法是可以
-     * 2.@auto注解也可以，在执行完构造方法以后
-     */
-    public PayService(List<IDiscount> list) {
-        for(IDiscount iDiscount:list){
-            map.put(iDiscount.getType(),iDiscount);
-        }
-    }
-
+//    @Autowired
+//    List<IDiscount> discounts = new ArrayList<>();
+//
+//    /**
+//     * 1.有参构造方法是可以
+//     * 2.@auto注解也可以，在执行完构造方法以后
+//     */
+//    public PayService(List<IDiscount> list) {
+//        for(IDiscount iDiscount:list){
+//            map.put(iDiscount.getType(),iDiscount);
+//        }
+//    }
+//
     public  double payDiscount(String type, double cost){
         System.out.println(map.size());
         return map.get(type).discount(cost);
