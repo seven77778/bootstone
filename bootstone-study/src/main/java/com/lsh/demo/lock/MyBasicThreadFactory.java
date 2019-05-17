@@ -32,4 +32,9 @@ public class MyBasicThreadFactory {
             new LinkedBlockingDeque<Runnable>(1024),threadFactory,new AbortPolicy());
         return service;
     }
+
+    public static ExecutorService getTestExecutorService(){
+        return new ThreadPoolExecutor(1000,99999,5000, TimeUnit.MILLISECONDS,
+                new LinkedBlockingDeque<Runnable>(1024));
+    }
 }

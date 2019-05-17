@@ -51,13 +51,17 @@ public class ThreadPoolLearn {
         ThreadPoolExecutor threadPoolExecutor =
                 new ThreadPoolExecutor(10, 20, 1000,TimeUnit.SECONDS,
                         new LinkedBlockingDeque<>(),
-                        new ThreadFactoryBuilder().setNameFormat("demo-pool-%d").build());
+                        new ThreadFactoryBuilder().setNameFormat("lsh-demo-pool-%d").build());
 
         ThreadPoolExecutor threadPoolExecutor1 =
                 new ThreadPoolExecutor(1, 2, 100, TimeUnit.SECONDS,
                         new ArrayBlockingQueue<>(1024),
-                        new ThreadFactoryBuilder().setNameFormat("demo2-pool-%d").build());
+                        new ThreadFactoryBuilder().setNameFormat("hahah2a-demo2-pool-%d").build());
 
+        //创建一个无名子的来测试
+        ThreadPoolExecutor threadPoolExecutor3 =
+                new ThreadPoolExecutor(1000, 99999, 1000,TimeUnit.SECONDS,
+                        new LinkedBlockingDeque<>());
         /*
              LinkedBlockingQueue 和 ArrayBlockingQueue
 
@@ -97,11 +101,11 @@ public class ThreadPoolLearn {
          throw RejectedExecutionException
          执行了40个
          */
-        for(int i=0;i<100;i++){
-            threadPoolExecutor.submit(() ->{
+        for(int i=0;i<10000;i++){
+            threadPoolExecutor3.submit(() ->{
                 System.out.println(Thread.currentThread().getName());
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

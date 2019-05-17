@@ -21,15 +21,19 @@ import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
  *LinkedBlockingQueue：使用链表实现的先进先出队列，默认大小为Integer.MAX_VALUE
  *
  */
-public class BasicThreadFactory {
+public class MyBasicThreadFactory {
     private static final int CORE_POOL_SIZE = 10;
     private static final int MAXIMUM_POOL_SIZE = 10000;
     private static final long KEEPALIVE_TIME = 200L;
 
     public static ExecutorService getExecutorService(){
         ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("pool-%d").build();
-        ExecutorService service = new ThreadPoolExecutor(CORE_POOL_SIZE,MAXIMUM_POOL_SIZE,KEEPALIVE_TIME, TimeUnit.MILLISECONDS,
+        return new ThreadPoolExecutor(CORE_POOL_SIZE,MAXIMUM_POOL_SIZE,KEEPALIVE_TIME, TimeUnit.MILLISECONDS,
             new LinkedBlockingDeque<Runnable>(1024),threadFactory,new AbortPolicy());
-        return service;
+    }
+
+    public static ExecutorService getTestExecutorService(){
+        return new ThreadPoolExecutor(1000,99999,5000, TimeUnit.MILLISECONDS,
+                new LinkedBlockingDeque<Runnable>(1024));
     }
 }
