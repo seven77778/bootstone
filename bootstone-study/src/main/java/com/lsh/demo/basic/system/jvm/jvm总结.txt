@@ -60,3 +60,22 @@ G1在新生代和老年代都可以使用。不同的收集器之间如果有连
 
 参考：
 https://segmentfault.com/a/1190000010648021
+
+7. Allocation Failure 和 promotion failed 区别
+
+promotion failed：
+
+其实是一种特殊情况，只有在出现promotion failed的情况下才会发生这样的情况，
+因为在这个情况下存在to里新增对象，而from和eden不会变化的情况
+
+该问题是在进行Minor GC时，Survivor Space放不下，对象只能放入老年代，而此时老年代也放不下造成的。（promotion failed时老年代CMS还没有机会进行回收，又放不下转移到老年代的对象，
+因此会出现下一个问题concurrent mode failure，需要stop-the-wold 降级为GC-Serail Old）。
+但是由于CMS采用标记清除算法，默认并不使用标记整理算法，可能会产生很多碎片，因此，这些碎片无法完成大对象向老年带转移，因此需要进行CMS在老年带的Full GC来合并碎片
+
+解决办法：-XX:UseCMSCompactAtFullCollection -XX:CMSFullGCBeforeCompaction=5 CMS 5次以后整理碎片
+或者调大新生代或者Survivor空间
+
+
+Allocation Failure：
+
+表明本次引起GC的原因是因为在年轻代中没有足够的空间能够存储新的数据了

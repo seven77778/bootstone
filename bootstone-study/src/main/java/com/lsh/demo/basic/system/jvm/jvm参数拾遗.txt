@@ -1,0 +1,7 @@
+-XX:+UseParallelGC开启，或者-XX:-UseParallelGC关闭
+Use the Parallel Scavenge garbage collector
+
+-XX:+UseParallelGC：选择垃圾收集器为并行收集器。此配置仅对年轻代有效。可以同时并行多个垃圾收集线程，但此时用户线程必须停止。
+
+-XX:+UseParNewGC:设置年轻代为多线程收集。可与CMS收集同时使用。在serial基础上实现的多线程收集器。
+
