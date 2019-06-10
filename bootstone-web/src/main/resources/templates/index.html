@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:用户名="http://www.w3.org/1999/xhtml"
+      xmlns:https="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,11 +12,54 @@
 
 <span th:text="hello123"></span>
 
-<form action="form_action.asp" method="get">
-    First name: <input type="text" name="fname" />
-    Last name: <input type="text" name="lname" />
-    <input type="submit" value="Submit" />
+<form action="/login/loginPage" method="get">
+   <font color=red ><b>用户名:</b></font>  <input type="text" name="name" />
+    <font color=green ><b>密码:</b></font> <input type="text" name="pw" />
+    <input type="submit" value="登录" />
 </form>
+
+<a href="https://lol.qq.com/" target="_blank">点我</a>
+
+
+<!--<div><img src="../img/ccc.jpg"/></div>-->
+
+<!--
+<h2 style="background-color:red;">这是一个标题</h2>
+<p style="background-color:green;">这是一个段落。</p>
+<h1 style="text-align:center;">居中对齐的标题</h1>
+
+-->
+
+<p id="demo">点击按钮获取您当前坐标（可能需要比较长的时间获取）：</p>
+<button onclick="getLocation()">点我</button>
+<script>
+    var x=document.getElementById("demo");
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        else
+        {
+            x.innerHTML="该浏览器不支持获取地理位置。";
+        }
+    }
+
+    function showPosition(position)
+    {
+        x.innerHTML="纬度: " + position.coords.latitude +
+            "<br>经度: " + position.coords.longitude;
+    }
+</script>
+
+<div>music</div>
+
+<audio controls height="100" width="100">
+    <source src="../img/123.mp3" type="audio/mpeg">
+    <embed height="50" width="100" src="../static/img/123.mp3">
+</audio>
+
 
 </body>
 </html>
