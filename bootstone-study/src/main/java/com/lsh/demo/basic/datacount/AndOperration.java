@@ -44,8 +44,6 @@ public class AndOperration {
 
         //取模运算
         System.out.println(Math.floorMod(9,7));
-
-
     }
 
 }

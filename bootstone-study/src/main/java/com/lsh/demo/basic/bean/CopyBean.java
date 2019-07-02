@@ -25,7 +25,6 @@ public class CopyBean {
 
         why sum is 0.0
          */
-
     }
 
 
