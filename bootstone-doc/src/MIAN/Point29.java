@@ -1,4 +1,3 @@
-package com.lsh.demo.bootstone;
 
 import org.junit.Test;
 

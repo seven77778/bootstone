@@ -14,4 +14,12 @@ import java.lang.ref.WeakReference;
  */
 public class ThreadLocalLearn {
 
+    private ThreadLocal<String> stringThreadLocal;
+
+
+    public static void main(String[] args) {
+
+    }
+
+
 }
