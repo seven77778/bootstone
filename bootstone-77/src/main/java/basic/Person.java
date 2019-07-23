@@ -5,6 +5,12 @@ package basic;
  *
  * 一个类，代表人类
  *
+ *  public class xxx（类的名字） 后面跟一个中括号{}
+ *  这是所有java的类型的统一格式
+ *
+ *  类是java最小的单位，所有的代码都在类中，什么是类，类是对一类事物的描述，是抽象的。
+ *  比如定义一个 Person 类
+ *
  */
 public class Person {
 
@@ -62,7 +68,7 @@ public class Person {
     public void shit(int x,Food food){
 
         food.beEaten();//食物的方法，被吃掉了
-        System.out.println("我是个人，我吃了 " + x +" 个馒头，吃饱了，去拉屎了");
+        System.out.println("我叫" +name + " 我今年"+age+"岁，"+"我吃了 " + x +" 个馒头，吃饱了，去拉屎了");
     }
 
 
@@ -82,7 +88,8 @@ public class Person {
         Food f = new Food();
         //人吃5个馒头
         p.shit(5,f);
-        System.out.println("完事，睡觉去");
+
+        System.out.println("完事了，睡觉去");
 
     }
 
