@@ -1,8 +1,9 @@
+
 env:
   type: @env.type@
 
 server:
-  port: 8082
+  port: 8083
 
 spring:
   thymeleaf:
@@ -23,20 +24,20 @@ valuetest:
   test1: @valuetest.test1@
 
 
-dubbo:
-  application:
-    name: bootstone
-  protocol:
-    name: dubbo
-    port: @dubbo.port@
-  registry:
-    address: @dubbo.address@
-    check: false
-  consumer:
-    check: false
+#dubbo:
+#  application:
+#    name: bootstone
+#  protocol:
+#    name: dubbo
+#    port: @dubbo.port@
+#  registry:
+#    address: @dubbo.address@
+#    check: false
+#  consumer:
+#    check: false
 
 
-  port: 8081
+  port: 8082
 
 ---
 spring:

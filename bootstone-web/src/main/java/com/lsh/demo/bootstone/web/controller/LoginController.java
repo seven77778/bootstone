@@ -39,6 +39,18 @@ public class LoginController {
         }
     }
 
+    @RequestMapping(value = "/marry", method = {RequestMethod.POST, RequestMethod.GET})
+    public String marry(HttpServletRequest request, HttpSession session) {
+        String age = request.getParameter("age");
+        System.out.println("你输入的年龄为：" + age);
+        session.setAttribute("tname", "");
+        if(commonservice.marry(age)){
+            return "验证通过，可以结婚";
+        } else {
+            return "验证失败，无法结婚";
+        }
+    }
+
     @RequestMapping(value = "/index", method = {RequestMethod.POST, RequestMethod.GET})
     public String loginindex() {
         return "/login/test";

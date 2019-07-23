@@ -1,6 +1,7 @@
 package com.lsh.demo.bootstone.service.login;
 
 import org.springframework.stereotype.Service;
+import sun.management.Agent;
 
 /**
  * Created by lsh on 2019-06-10.
@@ -16,5 +17,17 @@ public class CommonService {
             return false;
         }
     }
+
+    public boolean marry(String age){
+
+        int ageInt = Integer.valueOf(age);
+        if(ageInt>20 && ageInt <60){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
 
 }

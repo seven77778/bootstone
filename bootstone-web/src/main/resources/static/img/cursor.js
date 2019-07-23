@@ -7,8 +7,8 @@ function setParticuleDirection(e) {
         , a = anime.random(50, 180)
         , n = [-1, 1][anime.random(0, 1)] * a;
     return {
-        x: e.x + n * Math.cos(t) * 10,
-        y: e.y + n * Math.sin(t) * 10
+        x: e.x + n * Math.cos(t) * 0.1,
+        y: e.y + n * Math.sin(t) * 0.1
     }
 }
 function createParticule(e, t) {
