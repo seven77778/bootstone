@@ -9,6 +9,8 @@ package basic;
  * 类是java最小的单位，所有的代码都在类中，什么是类，类是对一类事物的描述，是抽象的。
  * 比如定义一个 Person 类
  *
+ * @see Person
+ *
  */
 public class First {
 
