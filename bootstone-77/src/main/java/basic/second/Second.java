@@ -3,6 +3,8 @@ package basic.second;
 /**
  * Created by lsh on 2019-07-24.
  *
+ * java基本类型
+ *
  * 基本类型，一共8种，常用的也就是int，double，boolean
  * String不属于基本数据类型，它是一个类
  * 但String却是平时最常用的表示字符串的方法
@@ -32,6 +34,11 @@ public class Second {
         //char类型，表示单独的一个字符，不常用
         char h = 'A';
         char p = 'b';
+
+        //一些其他操作
+
+        //可以这样写，三个变量一起定义，都是int
+        int d1 = 3, e1 = 4, f1 = 5;
 
         /***********************************************/
 
