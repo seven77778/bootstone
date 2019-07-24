@@ -26,7 +26,7 @@ public class Person {
     int age = 18;
     String address = "范县";
     String email = "xxx@163.com";
-    boolean shifouxihuanchishi = false;
+    boolean shifouxihuanchishi = true;
 
     /**
      * 这是一个不带参数的方法
@@ -65,10 +65,18 @@ public class Person {
      *
      * @param food 是食物，x 是要吃几个馒头
      */
-    public void shit(int x,Food food){
+    public int shit(int x,Food food){
 
         food.beEaten();//食物的方法，被吃掉了
         System.out.println("我叫" +name + " 我今年"+age+"岁，"+"我吃了 " + x +" 个馒头，吃饱了，去拉屎了");
+
+        int a =1;
+        return a;
+    }
+
+    public int add(int a,int b){
+
+        return  a+b;
     }
 
 
