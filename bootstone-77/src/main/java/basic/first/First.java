@@ -1,7 +1,9 @@
-package basic;
+package basic.first;
 
 /**
  * Created by lsh on 2019-07-23.
+ *
+ * 万事开头难，加油 little seven seven
  *
  * public class xxx（类的名字） 后面跟一个中括号{}
  * 这是所有java的类型的统一格式

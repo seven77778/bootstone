@@ -1,4 +1,4 @@
-package basic;
+package basic.first;
 
 /**
  * Created by lsh on 2019-07-23.
