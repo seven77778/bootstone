@@ -7,7 +7,7 @@ public class PayTax {
 
     public static void main(String[] args) {
 
-        //小李月入6000，4999，看看要不要缴税
+        //小李月入6000，小刘月入4999，看看要不要缴税
         double xiaoli = 6000;
         double xiaoliu = 4999;
         // 调用buyTicket方法，传入小李和小刘的收入
