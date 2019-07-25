@@ -10,12 +10,14 @@ public class PayTax {
         //小李月入6000，小刘月入4999，看看要不要缴税
         double xiaoli = 6000;
         double xiaoliu = 4999;
-        // 调用buyTicket方法，传入小李和小刘的收入
+        // 调用 payTax 方法，传入小李和小刘的收入
         System.out.println("小李要不要缴税 ： " + payTax(xiaoli));
         System.out.println("小刘要不要缴税 ： " + payTax(xiaoliu));
     }
 
     /**
+     * 一个有入参，也有返回值的方法
+     *
      * 思路 ： 该方法接收参数为 收入，double类型，返回值是boolean，
      * true 代表 收入大于 5000 ，即需要纳税
      * @return 布尔值
