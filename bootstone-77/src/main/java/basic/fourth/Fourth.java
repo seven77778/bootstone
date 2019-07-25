@@ -2,7 +2,7 @@ package basic.fourth;
 
 /**
  * Created by lsh on 2019-07-25.
- * java运算符(算术运算符 + 逻辑运算符)
+ * java运算符(算术运算符 + 关系运算符 + 逻辑运算符)
  *
  */
 public class Fourth {
@@ -16,7 +16,17 @@ public class Fourth {
      * -- 自减 自己本身减 1
      *
      *
-     * ② 逻辑运算符
+     * ② 关系运算符
+     * == 判断左右两边的数字是否相等
+     * != 不等于
+     * > >= < <= 见字知意
+     *
+     *
+     * ③ 逻辑运算符
+     * && 和，and，如果&& 两边都是true，结果为true
+     * || 或，or，如果两边有一个是true，结果就是true，两边都是false
+     * ! 取反，true 是真，!true 就是假
+     *
      *
      *
      *
@@ -35,6 +45,18 @@ public class Fourth {
         System.out.println(++b);//结果是6，加号在前面，先进行 b=b+1，此时b=6
         System.out.println(b);//结果是6，原因见上
 
+        //下面是逻辑运算符
+        System.out.println("**********下面是逻辑运算符 ***************");
+        System.out.println(!true);
+        System.out.println(true && true);
+        System.out.println(false && false);
+        System.out.println(false && true);
+        System.out.println(( 1>0) && (3>2));//怎么写都ojbk，hahaha
+
+        //还有一些常用的
+        int c = 5;
+
+        System.out.println();
 
     }
 
