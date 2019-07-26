@@ -74,5 +74,39 @@ public class Fifth {
             System.out.println("它不是人！");
         }
 
+
+        /**
+         * 但是switch 可以代替 多个if else的写法，其功能是一样的，用到的也不多，了解一下就行
+         * 固定格式为：
+         * switch(expression){
+         *     case value1 :
+         *        //需要执行的语句，比如 system.out 什么的
+         *        break; //可选
+         *     case value2 :
+         *        //语句
+         *        break; //可选
+         *     //你可以有任意数量的case语句
+         *     default : //可选，如果上面都无法匹配，就取default的值
+         *        //语句
+         *  }
+         *
+         */
+        int s = 5;// 用这个s的值，去匹配下面 每个case 后面的值，如果匹配的上，就执行这个case下面的语句
+        switch( s ){ // 执行完这个case后面的语句以后，看到break了吧，就是代表 结束这一大段代码了，如果 s 的值没有匹配到任何的case，就执行 default
+            case 0:
+                System.out.println("0");
+                break;
+            case 1:
+                System.out.println("1");
+                break;
+            case 2:
+                System.out.println("2");
+                break;
+            default:
+                System.out.println("上面都没有匹配到的值，最终结果是default");
+        }
+
+
+
     }
 }
