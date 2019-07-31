@@ -56,7 +56,7 @@ public class Ninth {
         System.out.println("先看下添加了3个数据的map： " + map);
 
         System.out.println("map取单个值示例1: "+ map.get("我是String类型的key1"));//取值的时候，key是什么，就一模一样的写
-        System.out.println("map取单个值示例2：" + map.get(1));//不是序号哦，而且key是1，value是123的那组数据，map是没有顺序的
+        System.out.println("map取单个值示例2: " + map.get(1));//不是序号哦，而且key是1，value是123的那组数据，map是没有顺序的
         //同样，map也可以删除某个键值对，删掉的是一组数据，key 和 value都删了
         map.remove("key2");
         System.out.println("删除了一组数据后的map ： " + map);
