@@ -50,7 +50,7 @@ public class FourTeen2 {
                         System.out.println("用户名已经存在，请重新注册");
                         break;
                     }
-                    map.put(username, password);
+                    map.put(username, password);//这一步就是注册，把用户名+密码放到数据库（map）中，就是注册了
                     System.out.println("您已注册成功 ，用户名是 " + username + ",密码是 " + password);
                     break;
                 case 2:
@@ -99,7 +99,7 @@ public class FourTeen2 {
                     System.out.println("是否确认删除，如果是请输入 Y，否请输入 N");
                     String deleteStr = (new Scanner(System.in)).nextLine();
                     if ("Y".equals(deleteStr)) {
-                        map.remove(username3);
+                        map.remove(username3);//这一步就是删除，自己理解下，看看能不能想得通
                         System.out.println("你已经成功删除用户名  为 " + username3);
                     }
 
