@@ -3,7 +3,7 @@ package basic.eighth;
 import java.util.Scanner;
 
 /**
- * Created by lsh on 2019-07-30.
+ * Created by lsh on 2019-07-3022.
  */
 public class Game1 {
 
