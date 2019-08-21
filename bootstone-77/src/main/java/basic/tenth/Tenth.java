@@ -1,5 +1,6 @@
 package basic.tenth;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -49,6 +50,26 @@ public class Tenth {
         /**
          * 思考，试试LocalDateTime 还有其他的什么方法，自己写几个时间看看
          */
+
+        String date2 = LocalDateTime.of(1995,8,17,7,25,0).toString();
+        System.out.println("小七七的生日" + date2.replaceAll("T"," "));
+
+        LocalDateTime.now();
+
+        test();
+
+        String strr = "ssfsssdf";
+        String newStr = strr.replace("ss","7");
+        System.out.println(strr.replace("ss","7"));
+        System.out.println(strr.replaceAll("ss","7"));
+        System.out.println(strr.charAt(0));
+        System.out.println(strr.contains("s"));
+        System.out.println(strr.equals("121"));
+
+    }
+
+    public static void test(){
+        System.out.println(123);
     }
 
 }

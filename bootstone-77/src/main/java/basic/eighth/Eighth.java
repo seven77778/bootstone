@@ -9,6 +9,7 @@ import java.util.Arrays;
  */
 public class Eighth {
 
+    static int oggo;
 
     public static void main(String[] args) {
         /**
@@ -23,7 +24,12 @@ public class Eighth {
          */
 
         int []arr = {1,2,3,4,5};
-        int []arr2 = new int[]{1,2,3,4,5};//和上面效果一样
+        int brr[] = new int[5];
+
+        System.out.println(oggo);
+
+        int []arr2 = new int[5];//和上面效果一样
+        arr2 = new int[]{1,2,2,2,2};
         double []arr3 = {1d,2.2d,5.6d};
         char []arr4 = {'A','C','z'};
         String []arr5 = {"love 77","77 is xinqiu","lalalala","77sb","77小仙女"};
@@ -63,7 +69,7 @@ public class Eighth {
          *
          */
 
-        int []brr = {5,78,9,4,99,1};
+        int []brr22 = {5,78,9,4,99,1};
         //第一种，java本身提供了一个工具，Arrays.sort()固定用法
         Arrays.sort(brr);
         for(int x : brr){

@@ -25,10 +25,11 @@ public class Game2 {
     public static void main(String[] args) {
 
         int cellNumbers = 1;//第一代细菌
-        for (int i =0;i<9;i++){ //上面是第一代，在循环9次，就是第十代了吧
+        for (int i =0;i<10;i++){ //上面是第一代，在循环9次，就是第十代了吧
             cellNumbers = cellNumbers*2;//每一代都是上一代的2倍
         }
         System.out.println("第十代细菌 是 " + cellNumbers);
     }
+
 
 }

@@ -1,5 +1,7 @@
 package basic.fifth;
 
+import java.util.Scanner;
+
 /**
  * Created by lsh on 2019-07-26.
  *
@@ -96,17 +98,40 @@ public class Fifth {
             case 0:
                 System.out.println("0");
                 break;
-            case 1:
+            case 676776:
                 System.out.println("1");
                 break;
-            case 2:
+            case 5:
                 System.out.println("2");
                 break;
             default:
                 System.out.println("上面都没有匹配到的值，最终结果是default");
         }
 
+        Scanner scanner = new Scanner(System.in);
+        int season  = scanner.nextInt();
+        switch (season){
+            case 1:
+            case 2:
+            case 3:
+                System.out.println("spring");
+                break;
+            case 4:
+            case 5:
+            case 6:
+                System.out.println("summer");
+                break;
+            case 7:
+            case 8:
+            case 9:
+                System.out.println("autumn");
+                break;
+            case 10:
+            case 11:
+            case 12:
+                System.out.println("winter");
+                break;
 
-
+        }
     }
 }

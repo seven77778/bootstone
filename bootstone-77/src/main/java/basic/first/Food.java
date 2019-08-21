@@ -9,7 +9,7 @@ package basic.first;
 public class Food {
 
     String name = "馒头";
-    int calorie = 999;
+    int calorie = 99988;
 
     public void beEaten(){
         System.out.println("哈哈哈，我被吃掉了，我是馒头");

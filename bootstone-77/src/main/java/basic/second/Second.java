@@ -47,6 +47,13 @@ public class Second {
         String name = "77";
         String sss = "77 is a lovely girl 就哈哈";
 
+        /**
+         * 数组
+         */
+        int [] arr = new int[]{5,2,8};
+        System.out.println(arr[0]);
+        System.out.println(arr[1]);
+        System.out.println(arr[2]);
 
     }
 

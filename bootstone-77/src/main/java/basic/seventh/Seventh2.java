@@ -10,7 +10,7 @@ public class Seventh2 {
     public static void main(String[] args) {
         /**
          * key：while用法2
-         *importance：low
+         * importance：low
          * while 循环的变异用法，看到认识即可，不需要掌握
          *
          * 用途：1.可能是某个菜鸟程序员 不小心写出来的bug（emmmm），一般很少主动去写while循环，因为很容易成为“死循环”（一直执行，不会停）
@@ -26,7 +26,7 @@ public class Seventh2 {
          */
         int a= 5;
         do{
-            System.out.println("不管下面 while括号后面的条件是真还是假，我都会执行一次！此时a =" + a+",下面的条件为" +(a>10));
+            System.out.println("不管下面 while括号后面的条件是真还是假，我都会执行一次！此时a =" + a + ",下面的条件为" +(a>10));
         }while (a > 10);
 
 
@@ -45,7 +45,7 @@ public class Seventh2 {
          *
          * Tips : 把第二段的 i 改成 10
          */
-        for(int i =0; i < 5; i++){ //
+        for(int i =2; i < 5; i++){ //
             System.out.println("我执行了 " + i +"次，i = " + i);
         }
 
@@ -61,7 +61,7 @@ public class Seventh2 {
         int [] array = {1,4,7,8,9};
         for( int x : array){
 
-            System.out.println("数组的元素 的值分别有 = " + x);
+            System.out.println("数组的元素 的值分别有 " + x);
         }
 
         /**

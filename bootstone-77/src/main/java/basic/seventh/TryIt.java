@@ -2,6 +2,9 @@ package basic.seventh;
 
 /**
  * Created by lsh on 2019-07-29.
+ *
+ * 数组
+ *
  */
 public class TryIt {
 

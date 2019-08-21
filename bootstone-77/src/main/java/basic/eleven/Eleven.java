@@ -24,12 +24,15 @@ public class Eleven {
         sb.append("123");
         sb.append("456");
         sb.append("我是sb");
+        sb.append("李苏恒");
         System.out.println("sb是 ： " + sb);
 
         /**
          * 区别来了
          * 1. String的加号和sb的 append，都是拼接字符串，append的效率要高于+号
          * 2. String是一个类，StringBuilder也是一个类，都是代表字符串的类，而且 StringBuilder通过toString方法可以转换成String类
+         * 3.StringBuffer和StringBuilder有区别，但是现在搞不明白
+         * 4.在运行速度方面，StringBuilder > StringBuffer
          */
         String newStr = sb.toString();//这样sb就成了String
 
@@ -39,6 +42,18 @@ public class Eleven {
         sb2.append("567");
         System.out.println("大家好，我是StringBuffer " + sb2);
         System.out.println("我也可以变成String " + sb2.toString());
+
+        StringBuffer sb3 = new StringBuffer();
+        sb3.append("好喜欢你啊");
+        sb3.append("小哼哼");
+        System.out.println(sb3);
+        System.out.println(sb3.toString());
+
+        StringBuilder sb4 = new StringBuilder();
+        sb4.append("小哼哼，");
+        sb4.append("你是猪吗？");
+        System.out.println(sb4);
+        System.out.println(sb4.toString());
 
     }
 

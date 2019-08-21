@@ -56,7 +56,10 @@ public class Fourth {
         //还有一些常用的
         int c = 5;
 
-        System.out.println();
+        System.out.println(c);
+
+        boolean e = 12 > 5 ? true : false;
+        System.out.println(e);
 
     }
 

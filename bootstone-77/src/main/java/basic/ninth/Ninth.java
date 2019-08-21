@@ -61,6 +61,10 @@ public class Ninth {
         map.remove("key2");
         System.out.println("删除了一组数据后的map ： " + map);
 
+        map.put("key1","value1");
+        map.put("key1","value2");
+        System.out.println(map.get("key1"));
+
 
         /**
          * 思考题，map.put("key1","value1");

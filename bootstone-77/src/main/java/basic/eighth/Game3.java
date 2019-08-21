@@ -24,11 +24,11 @@ public class Game3 {
     public static void main(String[] args) {
 
         int cellNumbers = 1;//第一代细菌
-        int count = 1;//纯粹的技术器，每次循环给它加1，加到10就停止
-        while (count <= 10){
+        int c = 1;//纯粹的计数器，每次循环给它加1，加到10就停止
+        while (c <= 10){
             cellNumbers = cellNumbers * 2;
-            System.out.println("这是第" + count + "次执行，现在细胞数量为 " + cellNumbers);
-            count++;
+            System.out.println("这是第" + c + "次执行，现在细胞数量为 " + cellNumbers);
+            c++;
         }
         System.out.println("第十代细菌 是 " + cellNumbers);
     }
