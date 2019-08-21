@@ -39,11 +39,16 @@ public class FifTeen2 {
      */
     @Test
     public void testBaidu(){
+        //创建一个客户端
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet("http://www.baidu.com");
+        //创建一个httpGet 请求
+        HttpGet httpGet = new HttpGet("http://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=62095104_19_oem_dg&wd=范县天气");
         try {
+            //使用这个客户端去调用 httpGet 请求，httpResponse就是服务端返回的结果
             CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
+            //输出一下 返回结果的状态码，200代表服务正常，不是200就都是有问题的
             System.out.println("http状态码 是 " + httpResponse.getStatusLine().getStatusCode());
+            // 打印一下 返回结果的内容，EntityUtils.toString(httpResponse.getEntity()) 也是固定的写法
             String content = EntityUtils.toString(httpResponse.getEntity());
             System.out.println("http应答 是 " + content);
         } catch (Exception e) {
