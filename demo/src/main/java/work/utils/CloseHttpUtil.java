@@ -94,7 +94,6 @@ public class CloseHttpUtil {
 
     @Test
     public void test() {
-        httpPost();
         System.out.println("*********************");
         httpGet();
     }
