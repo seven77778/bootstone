@@ -10,6 +10,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 多线程
  *
  * 模拟12306卖票系统，多个线程代表多个卖票窗口，但是票总数是固定的
+ *
+ * @see
  */
 public class Tickets implements Runnable {
 
