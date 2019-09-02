@@ -1,4 +1,4 @@
-package com.lsh.demo.basic.datastructure.reaandblack;
+package com.lsh.demo.basic.datastructrue.reaandblack;
 
 /**
  * Created by lsh on 2019-07-24.

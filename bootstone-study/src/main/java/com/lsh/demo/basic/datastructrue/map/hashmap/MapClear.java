@@ -16,7 +16,6 @@ public class MapClear {
 
 
     public static void main(String[] args) {
-
         map.clear();
     }
 

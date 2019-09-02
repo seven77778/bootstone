@@ -15,7 +15,7 @@ import java.util.Map;
  * 拿到key的hashcode （高位与）
  * 定义volatile 的node数组 -- table，初始为null
  * int binCount --
- * 怼一个for无限循环
+ * 对一个for无限循环
  * 第一次，table为null，初始化 -- tab = initTable()
  *
  *
