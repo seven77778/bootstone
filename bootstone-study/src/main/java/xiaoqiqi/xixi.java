@@ -1,8 +1,5 @@
 package xiaoqiqi;
 
-import org.python.antlr.ast.Import;
-import org.springframework.core.annotation.SynthesizedAnnotation;
-
 public class xixi {
     public static void main(String[] args) {
         double height = 1.72;

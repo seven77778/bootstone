@@ -110,9 +110,9 @@ public class Twelve {
          * try catch 来了，它就是异常克星！
          */
 
-        try{
+        try {
             System.out.println(100 / 0);
-        }catch (ArithmeticException e){// 还记得 test3 中抛出了什么异常吧，我们这里就来捕获它
+        } catch (ArithmeticException e) {// 还记得 test3 中抛出了什么异常吧，我们这里就来捕获它
             System.out.println("我捕获了一个异常 ，它是 " + e.toString());//这个e，就异常，把它打印出来看看
         }
 
@@ -126,9 +126,9 @@ public class Twelve {
          *与test4 唯一的区别在 catch 的括号中，上次是 ArithmeticException，这是是？
          */
 
-        try{
+        try {
             System.out.println(100 / 0);
-        }catch (Exception e){// 但是我通常这样写，Exception 是所有异常的父类，是它们的爸爸，擒贼先擒王~you know~
+        } catch (Exception e) {// 但是我通常这样写，Exception 是所有异常的父类，是它们的爸爸，擒贼先擒王~you know~
             System.out.println("①我捕获了一个异常 ，它是 " + e.toString());//这个e，就异常，把它打印出来看看
         }
 
@@ -141,11 +141,11 @@ public class Twelve {
          *与test4 唯一的区别在 catch 的括号中
          */
 
-        try{
+        try {
             System.out.println(100 / 0);
-        }catch (Exception e){// 但是我通常这样写，Exception 是所以异常的父类，是它们的爸爸，擒贼先擒王，逮到巴巴就行
+        } catch (Exception e) {// 但是我通常这样写，Exception 是所以异常的父类，是它们的爸爸，擒贼先擒王，逮到巴巴就行
             System.out.println("①我捕获了一个异常 ，它是 " + e.toString());//这个e，就异常，把它打印出来看看
-        }finally {
+        } finally {
             System.out.println("②七七你好，我叫 finally代码块，我的作用就是，不管你们上面怎么折腾，我是一定会运行的");
         }
 
@@ -284,6 +284,69 @@ public class Twelve {
 
 
         }
+    }
+
+    @Test
+    public void test77() {
+        String wordsString = "刘会婷我爱你！";
+        char[] wordsArray = wordsString.toCharArray();//将要表白的语句转为字符数组
+        int tempWord;//用于临时存放每个字符的ASCII码
+        int tempWordLength = 0;
+        String tempWords = "";//用于临时存放每个字符的二进制表示形式
+        String codeWords = "";//编码之后的表白语句
+        for (int i = 0; i < wordsArray.length; i++) {
+            tempWord = wordsArray[i];//获取当前字符的ASCII码
+            tempWords = Integer.toBinaryString(tempWord);
+            tempWordLength = tempWords.length();
+            if (tempWordLength < 8) {
+                //为美观起见，每个字符的二进制表示形式均限制为8位
+                for (int j = 0; j < 8 - tempWordLength; j++) {
+                    tempWords = "0" + tempWords;
+                }
+            }
+            codeWords = codeWords + tempWords + " ";
+            tempWords = "";//将当前二进制字符归空
+        }
+        System.out.println(codeWords);
+    }
+
+    @Test
+    public void test777(){
+        System.out.println(BinstrToStr("111001000110001 111010100011111 110110100111011 111001000110001 00110111 00110111"));
+    }
+
+    private String BinstrToStr(String binStr) {
+        String[] tempStr = StrToStrArray(binStr);
+        char[] tempChar = new char[tempStr.length];
+        for (int i = 0; i < tempStr.length; i++) {
+            tempChar[i] = BinstrToChar(tempStr[i]);
+        }
+        return String.valueOf(tempChar);
+    }
+
+    // 将初始二进制字符串转换成字符串数组，以空格相隔
+    private String[] StrToStrArray(String str) {
+        return str.split(" ");
+    }
+
+    // 将二进制字符串转换为char
+    private char BinstrToChar(String binStr) {
+        int[] temp = BinstrToIntArray(binStr);
+        int sum = 0;
+        for (int i = 0; i < temp.length; i++) {
+            sum += temp[temp.length - 1 - i] << i;
+        }
+        return (char) sum;
+    }
+
+    // 将二进制字符串转换成int数组
+    private int[] BinstrToIntArray(String binStr) {
+        char[] temp = binStr.toCharArray();
+        int[] result = new int[temp.length];
+        for (int i = 0; i < temp.length; i++) {
+            result[i] = temp[i] - 48;
+        }
+        return result;
     }
 
 }
