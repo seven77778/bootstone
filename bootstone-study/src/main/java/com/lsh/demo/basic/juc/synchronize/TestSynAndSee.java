@@ -18,16 +18,19 @@ public class TestSynAndSee {
         TestSynAndSee threadSafeCache = new TestSynAndSee();
 
         for (int i = 0; i < 8; i++) {
+            final int y =i;
             System.out.println("第" + i + "次");
             new Thread(() -> {
                 int x = 0;
                 while (threadSafeCache.getResult() < 100) {
                     x++;
+                    System.out.println(x);
                 }
-                System.out.println(x);
+                System.out.println(y + "  "+x);
             }).start();
         }
 
+        System.out.println("res " +threadSafeCache.getResult());
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {

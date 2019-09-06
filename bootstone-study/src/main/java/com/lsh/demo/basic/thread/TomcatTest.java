@@ -3,7 +3,8 @@ package com.lsh.demo.basic.thread;
 /**
  * Created by lsh on 2019-04-24.
  *
- * maxThreads
+ * maxThreads 【请求处理线程的最大数量】 200
+ * 【Tomcat通过使用比CPU核心数量多得多的线程数，可以使CPU忙碌起来，大大提高CPU的利用率】
  * (int) The max number of active threads in this pool, default is 200
  *
  * minSpareThreads

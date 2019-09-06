@@ -1,0 +1,9 @@
+for(10){
+
+       StringEntity stringEntityRead = new StringEntity(getStatusOfReadKey, "utf-8");
+
+       httpPostRead.setEntity(stringEntityRead);
+       httpResponse = httpClient.execute(httpPostRead);
+}
+
+思考1：有必要每次都去new StringEntity 吗

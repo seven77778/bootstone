@@ -1,0 +1,2 @@
+py写的各个酒店磁盘监控，使用socket client 和 server通信
+1.固定ip，socket需要固定ip，http也就可以了。。
