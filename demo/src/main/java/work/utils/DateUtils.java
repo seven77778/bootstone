@@ -3,8 +3,11 @@ package work.utils;
 import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import org.apache.commons.lang3.StringUtils;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -89,15 +92,40 @@ public class DateUtils {
     }
 
     public static void main(String[] args) {
-        String date = "2109-04-26 15:00";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println("计算两个时间的差：");
+        LocalDateTime end = LocalDateTime.of(2019,9,18,19,55,55);
+        Duration duration = Duration.between(now,end);
+        long days = duration.toDays(); //相差的天数
+        long hours = duration.toHours();//相差的小时数
+        long minutes = duration.toMinutes();//相差的分钟数
+        long millis = duration.toMillis();//相差毫秒数
+        long nanos = duration.toNanos();//相差的纳秒数
+        System.out.println(now);
+        System.out.println(end);
+        System.out.println(hours);
 
-        LocalDateTime localDateTime = LocalDateTime.parse(date,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        System.out.println(localDateTime);
-        String res = formatter.format(localDateTime);
-
-        System.out.println(res);
     }
+
+    /**
+     * date转换localdatetime
+     * 计算12小时时间差
+     * @param begin
+     * @param end
+     * @return
+     */
+    public static boolean in12Hours(Date begin,Date end){
+
+        LocalDateTime localDateTimeBegin = LocalDateTime.ofInstant(begin.toInstant(), ZoneId.systemDefault());
+        LocalDateTime localDateTimeEnd = LocalDateTime.ofInstant(end.toInstant(), ZoneId.systemDefault());
+        Duration duration = Duration.between(localDateTimeBegin,localDateTimeEnd);
+        if(duration.toHours()<12){
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 }

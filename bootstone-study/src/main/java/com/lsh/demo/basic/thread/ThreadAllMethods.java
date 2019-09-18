@@ -1,5 +1,10 @@
 package com.lsh.demo.basic.thread;
 
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by lsh on 2019-09-06.
  *
@@ -11,6 +16,19 @@ package com.lsh.demo.basic.thread;
  */
 public class ThreadAllMethods {
 
+    @Test
+    public void test(){
+        List arr = new ArrayList();
+        arr.add(1);
+        arr.add(2);
+        arr.add(3);
+        arr.add(4);
+        arr.add(5);
+        arr.add(6);
+
+        List brr = arr.subList(0,2);
+        System.out.println(brr);
+    }
 
 
 }

@@ -22,8 +22,6 @@ public class socketAndHttp {
 
     @Test
     public void test(){
-        for (int i = 0; i < ; i++) {
-            
-        }
+
     }
 }
