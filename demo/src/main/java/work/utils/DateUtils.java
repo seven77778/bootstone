@@ -91,7 +91,27 @@ public class DateUtils {
         }
     }
 
-    public static void main(String[] args) {
+    /**
+     * 加一天
+     * @return yyyy-MM-dd HH:mm:ss 格式
+     */
+    public static String addDay(String date){
+        try {
+            DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime localDateTime = LocalDateTime.parse(date.trim(), df);
+            LocalDateTime res = localDateTime.plusDays(1);
+            return df.format(res);
+        }catch (Exception e){
+            BootStoneLog.bootStone.error("minHours error",e);
+            return date;
+        }
+    }
+
+
+    /**
+     * 计算时间差
+     */
+    public void getResult(){
         LocalDateTime now = LocalDateTime.now();
         System.out.println("计算两个时间的差：");
         LocalDateTime end = LocalDateTime.of(2019,9,18,19,55,55);
@@ -104,6 +124,11 @@ public class DateUtils {
         System.out.println(now);
         System.out.println(end);
         System.out.println(hours);
+    }
+
+    public static void main(String[] args) {
+       String date = "2019-09-08 12:00:00";
+        System.out.println(addDay(date));
 
     }
 
