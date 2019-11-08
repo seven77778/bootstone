@@ -59,6 +59,13 @@
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+        <!--不允许循环引用！！-->
+        <!--<dependency>-->
+            <!--<groupId>com.lsh.demo</groupId>-->
+            <!--<artifactId>bootstone-web</artifactId>-->
+            <!--<version>1.1.1-SNAPSHOT</version>-->
+            <!--<scope>compile</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.lsh.demo</groupId>
             <artifactId>bootstone-service</artifactId>
@@ -104,6 +111,11 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>1.21</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.0</version>
         </dependency>
     </dependencies>
 
