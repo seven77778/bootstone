@@ -26,7 +26,7 @@ public class PointcutTest {
         System.out.println("after" + baseResponse);
     }
 
-    @Before( "com.lsh.demo.bootstone.web.controller.HelloController.test2()")
+    @Before( "execution(* com.lsh.demo.bootstone.web.controller.HelloController.test2(..))")
     public  void before(JoinPoint joinPoint){
         String methodName = joinPoint.getSignature().getName();
         List<Object> args = Arrays.asList(joinPoint.getArgs());
@@ -37,7 +37,14 @@ public class PointcutTest {
     public void afterMethod(JoinPoint point){
         String methodName = point.getSignature().getName();
         List<Object> args = Arrays.asList(point.getArgs());
-        System.out.println("调用后连接点方法为：" + methodName + ",参数为：" + args);
+        System.out.println("After：" + methodName + ",参数为：" + args);
+    }
+
+    @Around(("execution(* com.lsh.demo.bootstone.web.controller.HelloController.test2(..))"))
+    public void around(JoinPoint point){
+        String methodName = point.getSignature().getName();
+        List<Object> args = Arrays.asList(point.getArgs());
+        System.out.println("around：" + methodName + ",参数为：" + args);
     }
 
 }

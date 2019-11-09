@@ -18,10 +18,18 @@ public class MyDispatcherServlet extends HttpServlet implements Runnable {
            }
            System.out.println(i);
        }
+
+
+       String str = "";
+       if("Y".equals(str)){
+
+       }
     }
 
     @Override
     public void run() {
         System.out.println("123");
     }
+
+
 }
