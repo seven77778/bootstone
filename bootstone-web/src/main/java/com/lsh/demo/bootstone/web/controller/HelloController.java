@@ -42,7 +42,7 @@ public class HelloController {
         this.moAttack.selectGeli();
         System.out.println("********");
         System.out.println(test1);
-        return test1;
+        return "111122";
     }
 
     /**
