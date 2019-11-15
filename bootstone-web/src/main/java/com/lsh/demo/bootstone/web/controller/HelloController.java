@@ -1,6 +1,7 @@
 package com.lsh.demo.bootstone.web.controller;
 
 import com.bootstone.spring.ioc.iocdemo1.MoAttack;
+import com.lsh.demo.bootstone.web.point.MyWithinPoint;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -37,12 +38,20 @@ public class HelloController {
     @Autowired
     private MoAttack moAttack;
 
-    @GetMapping("/test1212")
+    @GetMapping("/test2")
     public String test2(){
         this.moAttack.selectGeli();
-        System.out.println("********");
+        System.out.println("test2");
         System.out.println(test1);
-        return "111122";
+        return "test2";
+    }
+
+
+    @GetMapping("/test1")
+    @MyWithinPoint
+    public String test22(){
+        System.out.println("test1 @MyWithinPoint ");
+        return "test1";
     }
 
     /**
