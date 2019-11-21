@@ -1,13 +1,12 @@
 package com.lsh.demo.bootstone.service.login;
 
 import org.springframework.stereotype.Service;
-import sun.management.Agent;
 
 /**
  * Created by lsh on 2019-06-10.
  */
 @Service
-public class CommonService {
+public class LoginService {
 
     public boolean login(String name,String pw){
 

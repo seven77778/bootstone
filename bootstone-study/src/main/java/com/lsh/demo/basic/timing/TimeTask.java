@@ -70,7 +70,7 @@ public class TimeTask {
      * "0 15 10 ? * 6#3" 每月的第三个星期五上午10:15触发
      */
     //3.添加定时任务
-    @Scheduled(cron = "0 0/1 * * * ?")
+    @Scheduled(cron = "0 0/7 * * * ?")
     //或直接指定时间间隔，例如：5秒
     //@Scheduled(fixedRate=5000)
     public void configureTasks2() {

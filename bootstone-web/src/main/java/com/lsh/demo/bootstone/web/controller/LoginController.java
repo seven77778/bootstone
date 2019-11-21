@@ -1,6 +1,6 @@
 package com.lsh.demo.bootstone.web.controller;
 
-import com.lsh.demo.bootstone.service.login.CommonService;
+import com.lsh.demo.bootstone.service.login.LoginService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +18,7 @@ public class LoginController {
 
 
     @Resource
-    public CommonService commonservice;
+    public LoginService commonservice;
 
     @RequestMapping(value = "/", method = {RequestMethod.POST, RequestMethod.GET})
     public String login() {
