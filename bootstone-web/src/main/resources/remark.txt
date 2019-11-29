@@ -1,0 +1,15 @@
+目前启动不受mysql连接失败影响，加了下面两条也没有用
+
+#验证连接的有效性
+spring.datasource.test-while-idle: true
+#获取连接时候验证，会影响性能
+spring.datasource.test-on-borrow: true
+
+
+超时不管用：
+  connectTimeout: 350000
+    connection-timeout: 350000
+    type: com.zaxxer.hikari.HikariDataSource
+    # 配置了还是3秒超时
+    hikari:
+      connection-timeout: 300000

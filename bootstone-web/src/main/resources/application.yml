@@ -1,4 +1,3 @@
-
 env:
   type: @env.type@
 
@@ -15,6 +14,24 @@ spring:
       content-type: text/html
     encoding: UTF-8 #模板编码
 
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    username: root
+    url: jdbc:mysql://localhost:3306/mydata
+    connectTimeout: 350000
+    connection-timeout: 350000
+    type: com.zaxxer.hikari.HikariDataSource
+    # 配置了还是3秒超时
+    hikari:
+      connection-timeout: 300000
+
+#验证连接的有效性
+spring.datasource.test-while-idle: true
+#获取连接时候验证，会影响性能
+spring.datasource.test-on-borrow: true
+
+
 logging:
   path: @stone.loggingPath@
   level:
@@ -22,6 +39,11 @@ logging:
 
 valuetest:
   test1: @valuetest.test1@
+
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.lsh.demo.bootstone.dao.mysql
 
 
 #dubbo:
@@ -37,7 +59,7 @@ valuetest:
 #    check: false
 
 
-  port: 8082
+#  port: 8082
 
 ---
 spring:
