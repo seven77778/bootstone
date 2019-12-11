@@ -75,6 +75,17 @@ public class InvokePythonTest {
 
     }
 
+    @Test
+    public void testEs2006(){
+        PythonInterpreter pythonInterpreter = new PythonInterpreter();
+        pythonInterpreter.execfile("D:\\MySpringBoot\\python\\pythondemo\\dll\\invokeEs200604.py");
+        PyFunction func = (PyFunction) pythonInterpreter.get("version",PyFunction.class);
+        // nullPoint
+        //定义在类下面的方法，nullPoint，直接在脚本中定义的方法 OK
+        PyObject pyObject = func.__call__();
+        System.out.println(pyObject.toString());
+
+    }
 
     /**
      * Runtime调用方式
@@ -100,6 +111,25 @@ public class InvokePythonTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testReadFromLocalForEs2006() {
+        Process proc;
+        try {
+            proc = Runtime.getRuntime().exec("python D:\\MySpringBoot\\python\\pythondemo\\dll\\invokeEs200604.py");
+            //用输    入输出流来截取结果
+            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            String line ;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+            in.close();
+            proc.waitFor();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * 打开记事本

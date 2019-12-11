@@ -53,6 +53,26 @@ public class DateUtils {
         return null;
     }
 
+    /**
+     *
+     * need    yyyy-MM-dd HH:mm:ss
+     * @return yyMMddHHmm 年月时分
+     * yyyy MM dd HH mm ss 注意大小写
+     */
+    public static String formatDate2(String date){
+        if(StringUtils.isBlank(date)){
+            return null;
+        }
+        String result = "";
+        try {
+            LocalDateTime time = LocalDateTime.parse(date.trim(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            return time.format(DateTimeFormatter.ofPattern("yyMMddHHmm"));
+
+        }catch (Exception e){
+            BootStoneLog.bootStone.error("datetime error" +date,e);
+        }
+        return result;
+    }
 
     /**
      * 获取两个日期之间 相隔的小时数
@@ -129,7 +149,6 @@ public class DateUtils {
     public static void main(String[] args) {
        String date = "2019-09-08 12:00:00";
         System.out.println(addDay(date));
-
     }
 
     /**

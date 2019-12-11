@@ -13,6 +13,8 @@ import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by lsh on 2018/11/12 11:21.
@@ -67,6 +69,8 @@ public class CloseHttpUtil {
         }
     }
 
+
+
     public void httpGet() {
         HttpGet httpGetRequest = new HttpGet("http://www.baidu.com");
         RequestConfig requestConfig = RequestConfig.custom()
@@ -98,5 +102,29 @@ public class CloseHttpUtil {
         httpGet();
     }
 
+    public static void main(String[] args) {
+
+
+            int[] arr = new int[5];
+            Scanner input = new Scanner(System.in);
+            for(int i=0;i<5;i++) {
+                arr[i] = input.nextInt();
+            }
+            int count = 0;
+            int result = 0;
+            Arrays.sort(arr);//将数组排序
+            for(int i = arr[2];;i++) {//最小的最小众倍数肯定是大于或等于arr[2]
+                count = 0;
+                for(int j=0;j<5;j++) {
+                    if(i%arr[j]==0) {
+                        count++;//每满足一次条件加1
+                    }                 }
+                if(count >= 3) {//如果count>=3 则满足题目条件
+                    result = i;
+                    break;
+                }
+            }
+            System.out.println(result);
+    }
 
 }

@@ -53,4 +53,26 @@ public class CloseHttpUtil {
         }
     }
 
+
+    @Test
+    public void testKXYA()throws Exception{
+        HttpGet httpGetRequest = new HttpGet("http://localhost:8000?room=4545455");
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(10000)//设置为1，connectime out
+                .setSocketTimeout(10000)//设置为1，readtime out
+                .setConnectionRequestTimeout(10000)
+                .build();
+        httpGetRequest.setConfig(requestConfig);
+        CloseableHttpResponse response = closeableHttpClient.execute(httpGetRequest);
+        try {
+            // toString consume
+            System.out.println(EntityUtils.toString(response.getEntity(),"utf-8"));
+            EntityUtils.consume(response.getEntity());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            response.close();
+            EntityUtils.consumeQuietly(response.getEntity());
+        }
+    }
 }
