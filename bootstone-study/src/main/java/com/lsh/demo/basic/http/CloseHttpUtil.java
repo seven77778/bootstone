@@ -1,15 +1,22 @@
 package com.lsh.demo.basic.http;
 
+import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lsh on 2018/11/12 11:21.
@@ -53,6 +60,20 @@ public class CloseHttpUtil {
         }
     }
 
+    @Test
+    public void testPost()throws Exception{
+        HttpPost post = new HttpPost("http://xxx/account/member/getOpenApiToken/v2");
+        post.setHeader("Content-Type","application/json");
+        post.setHeader("Accept", "*/*");
+        List<NameValuePair> params=new ArrayList<NameValuePair>();
+        //建立一个NameValuePair数组，用于存储欲传送的参数
+        params.add(new BasicNameValuePair("orgCode","xxx"));
+        params.add(new BasicNameValuePair("appKey","xxx"));
+        post.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+        CloseableHttpResponse response = closeableHttpClient.execute(post);
+        String result = EntityUtils.toString(response.getEntity());
+        System.out.println(result);
+    }
 
     @Test
     public void testKXYA()throws Exception{
