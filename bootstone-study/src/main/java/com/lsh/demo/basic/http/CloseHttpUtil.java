@@ -13,10 +13,16 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lsh on 2018/11/12 11:21.
@@ -63,7 +69,7 @@ public class CloseHttpUtil {
     @Test
     public void testPost()throws Exception{
         HttpPost post = new HttpPost("http://xxx/account/member/getOpenApiToken/v2");
-        post.setHeader("Content-Type","application/json");
+        post.setHeader("Content-Type","application/json;charset=UTF-8");
         post.setHeader("Accept", "*/*");
         List<NameValuePair> params=new ArrayList<NameValuePair>();
         //建立一个NameValuePair数组，用于存储欲传送的参数
@@ -96,4 +102,20 @@ public class CloseHttpUtil {
             EntityUtils.consumeQuietly(response.getEntity());
         }
     }
+
+    @Test
+    public void testhhh(){
+        RestTemplate restTemplate = new RestTemplate();
+        String url = new String("http://xxx/account/member/getOpenApiToken/v2");
+        Map<String, String> body = new HashMap<>();
+        body.put("orgCode", "xxx");
+        body.put("appKey", "xxx");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Map<String, String>> request = new HttpEntity<>(body, headers);
+        String result = restTemplate.postForObject(url, request, String.class);
+        System.out.println("result : {}"+ result);
+    }
+
+
 }
