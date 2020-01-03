@@ -13,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +28,7 @@ import java.util.stream.Stream;
 @Component
 @RequestMapping("/hello")
 @ComponentScan(basePackages = "com.bootstone.spring.ioc.iocdemo1.MoAttack")
+@CrossOrigin("*")
 public class HelloController {
 
     @Value("${valuetest.test1}")
@@ -37,6 +36,11 @@ public class HelloController {
 
     @Autowired
     private MoAttack moAttack;
+
+    @PostMapping("/js")
+    public String js(){
+        return "jssssjssj";
+    }
 
     @GetMapping("/test2")
     public String test2(){
