@@ -38,8 +38,8 @@ public class HelloController {
     private MoAttack moAttack;
 
     @PostMapping("/js")
-    public String js(){
-        return "jssssjssj";
+    public String js(String username,String password){
+        return "hello " + username + " " + password;
     }
 
     @GetMapping("/test2")
