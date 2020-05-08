@@ -25,7 +25,16 @@
             <!--<artifactId>jvopf-client</artifactId>-->
             <!--<version>0.0.1-SNAPSHOT</version>-->
         <!--</dependency>-->
-
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.0.1</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
@@ -81,6 +90,18 @@
         <dependency>
             <groupId>com.lsh.demo</groupId>
             <artifactId>bootstone-dao</artifactId>
+            <version>1.1.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.lsh.demo</groupId>
+            <artifactId>redis</artifactId>
+            <version>1.1.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.lsh.demo</groupId>
+            <artifactId>demo</artifactId>
             <version>1.1.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

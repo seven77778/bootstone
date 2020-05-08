@@ -5,7 +5,54 @@
 
     <select id="selectAllStu" resultType="com.lsh.demo.bootstone.dao.mysql.Stu">
     select id,age from stu limit 0,10;
-     </select>
+    </select>
 
+    <!-- case when 的使用 -->
+
+    <select id="getScoreAndResult" resultType="com.lsh.demo.bootstone.dao.mysql.Stu">
+        SELECT
+        stu. NAME AS stuName,
+        stu.age AS age,
+        class.score AS score,
+        stu.address AS address,
+        (
+        CASE
+        WHEN ISNULL(stu.address) THEN
+        '未知位置'
+        ELSE
+        stu.address
+        END
+        ) address2,
+        (
+        CASE
+        WHEN ISNULL(class.score) THEN
+        '零分'
+        WHEN (
+        SELECT
+        CAST(class.score AS SIGNED)
+        ) &lt;60 THEN
+        '不及格'
+        ELSE
+        '及格'
+        END
+        ) result
+        FROM
+        stu
+        LEFT JOIN class ON stu.id = class.id
+
+    </select>
+
+
+    <!-- foreach的使用 -->
+    <select id="getByForeach" parameterType="java.lang.String" resultType="com.lsh.demo.bootstone.dao.mysql.Stu">
+        select stu.name,stu.age from stu
+        <where>
+            stu.id in
+            <foreach item="item" collection="ids" separator="," open="(" close=")" index="">
+                #{item,jdbcType=VARCHAR}
+            </foreach>
+            and stu.age=#{age,jdbcType=VARCHAR}
+        </where>
+    </select>
 
 </mapper>

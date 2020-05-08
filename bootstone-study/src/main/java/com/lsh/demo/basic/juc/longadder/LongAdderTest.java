@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.LongAdder;
  *
  * LongAdder 比 AtomicInteger 性能更好
  *
- * AtomicInteger的基本实现机制应该比较了解,它们是在一个死循环内,不断尝试修改目标值,知道修改成功,
+ * AtomicInteger的基本实现机制应该比较了解,它们是在一个死循环内,不断尝试修改目标值,直到修改成功,
  * 如果竞争不激烈,那么修改成功的概率就很高,
  * 否则,修改失败的概率就很高,在大量修改失败时,这些原子操作就会进行多次循环尝试,因此性能就会受到影响
  *

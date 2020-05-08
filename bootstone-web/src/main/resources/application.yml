@@ -2,7 +2,7 @@ env:
   type: @env.type@
 
 server:
-  port: 8083
+  port: 8084
 
 spring:
   thymeleaf:
@@ -13,6 +13,12 @@ spring:
     servlet:
       content-type: text/html
     encoding: UTF-8 #模板编码
+
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver

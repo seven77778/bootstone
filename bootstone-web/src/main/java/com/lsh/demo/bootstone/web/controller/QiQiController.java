@@ -5,10 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 
@@ -83,8 +80,9 @@ public class QiQiController {
     }
 
 
-    @RequestMapping("/getBooks")
+    @GetMapping("/getBooks")
     public String getBook(){
+        System.out.println("getBooks");
 
        return "[\n" +
                "  {\n" +

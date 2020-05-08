@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
@@ -27,7 +29,7 @@ public class LambdaTest {
         }
     };
 
-    List<Integer> newList = Lists.newArrayList(1,2,3,4,5,6);
+    List<Integer> newList = Lists.newArrayList(1, 2, 3, 4, 5, 6);
 
     @Test
 
@@ -53,7 +55,7 @@ public class LambdaTest {
      *
      */
     @Test
-    public void test2(){
+    public void test2() {
         long num = list.stream().filter(Objects::nonNull).count();
         System.out.println(num);
         nonNull(list);
@@ -66,9 +68,40 @@ public class LambdaTest {
 //        list.stream().allMatch().collect(Collectors.toList());
     }
 
-    public void replace(int x){
-        x = x+1000;
+    public void replace(int x) {
+        x = x + 1000;
     }
 
+
+    //******************
+
+    /**
+     *  filter 筛选list的数据
+     */
+    private List<Integer> mylist = Lists.newArrayList(1,2,3,4,5);
+
+    @Test
+    public void test4(){
+        System.out.println(mylist);
+        List<Integer> list2 = mylist.stream().filter(a -> a > 2).collect(Collectors.toList());
+        System.out.println(list2);
+    }
+
+    @Test
+    public void  test5(){
+
+
+
+    }
+
+
+    public static void main(String[] args) {
+        String ss = "015019aaa      ";
+        String regEx="\\d";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(ss);
+        System.out.println( m.replaceAll("").trim());
+
+    }
 
 }

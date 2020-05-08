@@ -2,12 +2,14 @@ package com.lsh.demo.bootstone.web.test;
 
 import com.lsh.demo.bootstone.dao.mysql.DataService;
 import com.lsh.demo.bootstone.web.BootStoneWebApplication;
+import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by lsh on 2019-11-29.
@@ -40,5 +42,17 @@ public class MysqlTest {
         System.out.println(service.selectAllStu());
     }
 
+    @Test
+    public void testGetResult(){
+        System.out.println(service.getScoreAndResult());
+    }
 
+    @Test
+    public void testForeach(){
+        List<String> list = Lists.newArrayList();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        System.out.println(service.getByForeach(list,"18"));
+    }
 }

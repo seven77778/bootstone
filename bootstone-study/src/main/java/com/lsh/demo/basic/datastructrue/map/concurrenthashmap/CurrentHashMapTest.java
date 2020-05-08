@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * Created by lsh on 2018/11/14 17:54.
  *
+ * @good
  * first，load有list，exception，collection，reader
  *
  * 源码解读
@@ -27,7 +28,8 @@ public class CurrentHashMapTest {
 
     @Test
     public void test(){
-        Map concurrentMap = Maps.newConcurrentMap();
+        Map<String,String> concurrentMap = Maps.newConcurrentMap();
         concurrentMap.put("a","1");
+        System.out.println(concurrentMap);
     }
 }

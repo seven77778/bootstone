@@ -10,7 +10,7 @@ public class CountTest {
     @Test
     public void test(){
         int sum = 0;
-        byte a = 1;
+        byte a = 109;
         System.out.println((sum + a)& 0xff );
     }
 

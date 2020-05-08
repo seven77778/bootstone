@@ -28,7 +28,7 @@ public class CopyBean {
     }
 
 
-    @Data // @date对内部类无作用？
+    @Data // @data 对内部类无作用？
     public static class MakeRequest{
         private String name;
         private String age;
