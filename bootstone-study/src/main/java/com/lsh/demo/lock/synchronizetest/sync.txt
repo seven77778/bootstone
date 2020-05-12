@@ -1,0 +1,1 @@
+一个类有两个方法，synchronize   Static void a()，synchronize void b()。两个线程t1，t2。t1调用a，t2调用b，会阻塞吗？

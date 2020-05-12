@@ -13,7 +13,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy
 @SpringBootApplication
 @EnableDubbo(scanBasePackages = {"com.lsh.demo.bootstone.workorder"})
-@ComponentScan(basePackages = {"com.lsh.demo.basic","com.lsh.demo.bootstone.web.controller","com.lsh.demo.spring","xml",
+@ComponentScan(basePackages = {"com.lsh.demo.basic","com.lsh.demo.bootstone.web","com.lsh.demo.spring","xml",
         "com.bootstone.spring.ioc.iocdemo1","com.lsh.demo.bootstone.service","com.lsh.demo.bootstone.web.point",
 "com.lsh.demo.bootstone.dao.mysql","sentinel"})
 @MapperScan("com.lsh.demo.bootstone.dao")

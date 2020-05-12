@@ -16,6 +16,9 @@ public interface DataService {
 
     List<Stu> getScoreAndResult();
 
+    /**
+     * SELECT CAST(class.score AS SIGNED) sql中转换数字
+     */
     List<Stu> getByForeach(@Param("ids") List<String> ids,@Param("age")String age);
 
 }

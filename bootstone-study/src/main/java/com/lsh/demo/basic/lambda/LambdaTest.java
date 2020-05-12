@@ -32,7 +32,6 @@ public class LambdaTest {
     List<Integer> newList = Lists.newArrayList(1, 2, 3, 4, 5, 6);
 
     @Test
-
     public void test1() {
 
         /*
@@ -40,7 +39,6 @@ public class LambdaTest {
          */
         Optional<Integer> list1 = list.stream().filter(x -> x > 1).findFirst();
         list1.ifPresent(System.out::print);
-
 
         System.out.println();
         /*

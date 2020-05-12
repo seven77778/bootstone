@@ -1,6 +1,7 @@
 package com.lsh.demo.bootstone.web.controller;
 
 import com.bootstone.spring.ioc.iocdemo1.MoAttack;
+import com.lsh.demo.bootstone.web.interceptor.LshAuth;
 import com.lsh.demo.bootstone.web.point.MyWithinPoint;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
@@ -36,6 +37,12 @@ public class HelloController {
 
     @Autowired
     private MoAttack moAttack;
+
+    @RequestMapping("/hello")
+    @LshAuth
+    public String hello(){
+        return "hello";
+    }
 
     @PostMapping("/js")
     public String js(String username,String password){

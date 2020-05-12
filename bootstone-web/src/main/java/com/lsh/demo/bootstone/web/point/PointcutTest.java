@@ -14,8 +14,10 @@ import java.util.List;
  * 1. around 需要有  point.proceed() + 返回值
  * 2. @Pointcut 可以有多个
  *
- * @After：该注解标注的方法在所有的Advice执行完成后执行，无论业务模块是否抛出异常，类似于finally的作用；
- * @Before是业务逻辑执行前执行，与其对应的是@AfterReturning，而不是@After，@After是所有的切面逻辑执行完之后才会执行，无论是否抛出异常
+ * @After
+ * 该注解标注的方法在所有的Advice执行完成后执行，无论业务模块是否抛出异常，类似于finally的作用；
+ * @Before
+ * 是业务逻辑执行前执行，与其对应的是@AfterReturning，而不是@After，@After是所有的切面逻辑执行完之后才会执行，无论是否抛出异常
  */
 @Aspect
 @Component
