@@ -36,6 +36,12 @@ public class HashMapLearn {
         hashMap.put("key","value");
         System.out.println(hashMap.get("key"));
 
+        //集合判空都用isEmpty
+        if(hashMap.isEmpty()){
+            //do some
+            System.out.println(123);
+        }
+
     }
 
 

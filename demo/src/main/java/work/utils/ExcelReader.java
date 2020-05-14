@@ -1,6 +1,7 @@
 package work.utils;
 
 import com.lsh.demo.bootstone.domain.object.DeviceImportVO;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -175,14 +176,19 @@ public class ExcelReader {
         Cell cell;
         int cellNum = 0;
         cell = row.getCell(cellNum++);
-        String name = convertCellValueToString(cell);
-        resultData.setDeviceId(name);
+        String deviceId = convertCellValueToString(cell);
+        //如果这一行某个值为空，直接忽略这一行
+        if (StringUtils.isBlank(deviceId)) {
+            return null;
+        }else {
+            resultData.setDeviceId(deviceId);
+        }
         cell = row.getCell(cellNum++);
-        String ageStr = convertCellValueToString(cell);
-        if (null == ageStr || "".equals(ageStr)) {
-            resultData.setFhHid(null);
-        } else {
-            resultData.setFhHid(ageStr);
+        String fhHid = convertCellValueToString(cell);
+        if (StringUtils.isBlank(fhHid)) {
+            return null;
+        }else {
+            resultData.setFhHid(fhHid);
         }
 
         return resultData;

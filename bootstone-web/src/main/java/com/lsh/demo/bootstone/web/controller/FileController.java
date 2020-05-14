@@ -12,16 +12,15 @@ import java.util.List;
 
 /**
  * Created by lsh on 2020-04-22.
- *
+ * <p>
  * http://localhost:8084/img/fileUpload.html
- *
  */
 @RestController
 @Component
 @RequestMapping("/file")
 public class FileController {
 
-        @PostMapping("/excel")
+    @PostMapping("/excel")
     public String readExcel(MultipartFile file) {
         // 检查前台数据合法性
         if (null == file || file.isEmpty()) {
