@@ -3,6 +3,7 @@ package com.lsh.demo.bootstone.service.impl;
 import com.lsh.demo.bootstone.service.CommonService;
 import com.lsh.demo.bootstone.service.util.RedisUtil;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +32,24 @@ public class CommonServiceImpl implements CommonService {
         return redisUtil.getKeyExpire(key, TimeUnit.SECONDS) + "";
     }
 
+
     /**
-     * lua
+     * 事务回滚的2种方式
+     * @param key
+     * @return
      */
+    @Override
+    @Transactional(value = "transactionManager", rollbackFor = Exception.class)
+    public String invokeSql(String key) {
+        return null;
+    }
+
+    /**
+     * 2. 加了 @Transactional 会自动去连接数据库，连不上也会抛出异常
+     */
+    @Override
+//    @Transactional
+    public String invokeSql2(String key) {
+        throw new RuntimeException("手动抛出异常");
+    }
 }

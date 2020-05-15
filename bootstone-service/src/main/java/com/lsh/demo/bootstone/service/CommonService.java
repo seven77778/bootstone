@@ -7,4 +7,8 @@ public interface CommonService {
 
     String getRestSeconds(String key);
 
+    String invokeSql(String key);
+
+    String invokeSql2(String key);
+
 }

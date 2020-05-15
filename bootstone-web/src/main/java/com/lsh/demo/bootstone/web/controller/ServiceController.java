@@ -29,4 +29,8 @@ public class ServiceController {
         return commonService.getRestSeconds(key);
     }
 
+    @RequestMapping("/runtime")
+    public String getRunTime(){
+        return commonService.invokeSql2("");
+    }
 }
