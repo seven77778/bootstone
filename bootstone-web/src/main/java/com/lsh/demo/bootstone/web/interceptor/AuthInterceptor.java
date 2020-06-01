@@ -13,23 +13,22 @@ import java.io.PrintWriter;
 
 /**
  * Created by lsh on 2020-05-12.
- *
+ * <p>
  * http://localhost:8084/hello/hello
  * postman返回
- *     "error": "Internal Server Error",
- *     "message": "Java heap space",
+ * "error": "Internal Server Error",
+ * "message": "Java heap space",
  * 1、-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=c:\oom -Xmx50m -Xms50m
  * 当时测试oom都设置为了50m
  * 2、在创建应答时，不小心递归调用了returnJosn方法，导致 java.lang.OutOfMemoryError: Java heap space
  * 3、WebAppConfigurer 需要添加配置，spring是xml - mvc:interceptors，boot实现WebMvcConfigurer
  * 4、还没成功，就是启动类没有扫描到 interceptor这个包
- *
- *
+ * <p>
+ * <p>
  * isAssignableFrom 是用来判断一个类Class1和另一个类Class2是否相同或是另一个类的超类或接口。
- *   通常调用格式是
- *         Class1.isAssignableFrom (Class2)
- *   调用者和参数都是   java.lang.Class   类型
- *
+ * 通常调用格式是
+ * Class1.isAssignableFrom (Class2)
+ * 调用者和参数都是   java.lang.Class   类型
  */
 public class AuthInterceptor implements HandlerInterceptor {
 
@@ -45,7 +44,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
 
         // 通过注解来判断
-        LshAuth methodAnnotation = ((HandlerMethod)handler).getMethodAnnotation(LshAuth.class);
+        LshAuth methodAnnotation = ((HandlerMethod) handler).getMethodAnnotation(LshAuth.class);
         if (methodAnnotation == null) {
             return true;
         }
@@ -59,10 +58,10 @@ public class AuthInterceptor implements HandlerInterceptor {
             return false;
         }
         //token存在，该怎么验证就怎么验证
-        if("lshtoken".equals(token)){
+        if ("lshtoken".equals(token)) {
             BootStoneLog.bootStone.info("auth success");
             return true;
-        }else {
+        } else {
             return false;
         }
 
@@ -97,8 +96,6 @@ public class AuthInterceptor implements HandlerInterceptor {
             if (writer != null) {
                 writer.close();
             }
-
         }
-
     }
 }

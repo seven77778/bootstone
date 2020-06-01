@@ -1,6 +1,7 @@
 package com.lsh.demo.bootstone.web.controller;
 
 import com.bootstone.spring.ioc.iocdemo1.MoAttack;
+import com.lsh.demo.bootstone.service.vo.RequsetVO;
 import com.lsh.demo.bootstone.web.interceptor.LshAuth;
 import com.lsh.demo.bootstone.web.point.MyWithinPoint;
 import org.apache.http.HttpEntity;
@@ -74,6 +75,29 @@ public class HelloController {
     }
 
 
+    /**
+     * 前端传参不能为空，可以是{}，否则
+     * RuntimeExceptionInvokeorg.springframework.http.converter.HttpMessageNotReadableException:
+     * Required request body is missing
+     * @RequestBody(required = false) 可解
+     * @param vo
+     * @return
+     */
+    @RequestMapping("/body")
+    public String testBody(@RequestBody RequsetVO vo){
+        if(null==vo){
+            return  "null";
+        }
+        return "ok";
+    }
+
+    @RequestMapping("/nullbody")
+    public String testNullBody(@RequestBody(required = false) RequsetVO vo){
+        if(null==vo){
+            return  "null";
+        }
+        return "ok";
+    }
 
 
     /**
