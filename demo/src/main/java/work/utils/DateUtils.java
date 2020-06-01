@@ -19,6 +19,18 @@ public class DateUtils {
 
 
     /**
+     * 直接获取当前时间的String
+     * @return
+     */
+    public static String getNowString(){
+        DateTimeFormatter df=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String stime = df.format(LocalDateTime.now());
+        System.out.println(stime);
+        return stime;
+    }
+
+
+    /**
      * 时间格式化，默认 yyyy-MM-dd HH:MM:ss
      */
     public static String format(String date){
@@ -147,8 +159,9 @@ public class DateUtils {
     }
 
     public static void main(String[] args) {
-       String date = "2019-09-08 12:00:00";
-        System.out.println(addDay(date));
+        DateTimeFormatter df=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String stime = df.format(LocalDateTime.now());
+        System.out.println(stime);
     }
 
     /**

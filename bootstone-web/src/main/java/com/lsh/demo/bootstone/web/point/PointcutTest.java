@@ -85,7 +85,7 @@ public class PointcutTest {
         System.out.println("after" + baseResponse);
     }
 
-    @Before("point8()")
+    @Before("point4()")
     public void before(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         List<Object> args = Arrays.asList(joinPoint.getArgs());
