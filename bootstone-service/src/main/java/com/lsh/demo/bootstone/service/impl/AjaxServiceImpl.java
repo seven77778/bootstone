@@ -42,7 +42,7 @@ public class AjaxServiceImpl implements AjaxService {
     @Override
     public BootResponse addHotel(AjaxHotelRequest rq) {
         if (StringUtils.isAnyBlank(rq.getHotelName(), rq.getId(), rq.getTel())) {
-            return BootResponse.ofFailure("酒店name,id,tel不能为空");
+            return BootResponse.ofFailure("酒店name,id,tel不能为空!");
         }
         AjaxHotel ajaxHotel;
         if (CollectionUtils.isEmpty(hotel.getData())) {
