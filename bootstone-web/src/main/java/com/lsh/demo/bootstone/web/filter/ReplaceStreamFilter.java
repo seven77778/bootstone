@@ -1,7 +1,7 @@
 package com.lsh.demo.bootstone.web.filter;
 
 import com.lsh.demo.bootstone.service.common.BootStoneLog;
-import com.lsh.demo.bootstone.web.interceptor.MyRequestWrapper;
+import com.lsh.demo.bootstone.web.interceptor.MyByteRequestWrapper;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -14,21 +14,22 @@ public class ReplaceStreamFilter implements Filter {
 
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
 
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        ServletRequest myRequestWrapper = null;
+        ServletRequest myByteRequestWrapper = null;
         if (request instanceof HttpServletRequest) {
-            myRequestWrapper = new MyRequestWrapper((HttpServletRequest) request);
+//            myByteRequestWrapper = new MyRequestWrapper((HttpServletRequest) request);
+            //会影响最终传递到controller的参数
+            myByteRequestWrapper = new MyByteRequestWrapper((HttpServletRequest) request);
         }
-
-        if (null == myRequestWrapper) {
+        if (null == myByteRequestWrapper) {
             chain.doFilter(request, response);
         } else {
-            chain.doFilter(myRequestWrapper, response);
+            chain.doFilter(myByteRequestWrapper, response);
         }
         BootStoneLog.bootStone.info("replace stream success");
     }

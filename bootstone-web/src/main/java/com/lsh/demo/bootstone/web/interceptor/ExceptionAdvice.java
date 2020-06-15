@@ -4,11 +4,14 @@ import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 
 /**
  * Created by lsh on 2020-05-15.
  *
- * 异常统一处理 ，这是一种方式
+ * 异常统一处理 ，这是一种方式  1.@ControllerAdvice+@ExceptionHandler
+ * 2.HandlerExceptionResolver 接口
+ * @see HandlerExceptionResolver
  *
  * 全局处理错误码，可以使用切面
  */

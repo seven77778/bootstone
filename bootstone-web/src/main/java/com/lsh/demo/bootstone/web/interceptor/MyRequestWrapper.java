@@ -8,8 +8,10 @@ import java.io.*;
 
 /**
  * 修改或者添加参数
+ * renewBody 改变了json格式
  *
  */
+@Deprecated
 public class MyRequestWrapper extends HttpServletRequestWrapper {
 
     /**

@@ -33,6 +33,13 @@ import javax.servlet.http.HttpServletResponse;
  *     }
  *
  * 其他方案：1.@Validated 2.切面
+ * 切面在interceptor之后
+ *
+ * 问题：MyRequestWrapper 处理过的body体，复杂json被改动，不是json报错  todo
+ *
+ * 最后方案：@ExceptionHandler(value = RuntimeException.class)
+ * e.toString().contains("Required request body is missing")来判断
+ * 返回前端固定错误码
  *
  */
 public class AssertRqNullInterceptor  implements HandlerInterceptor {
@@ -50,7 +57,15 @@ public class AssertRqNullInterceptor  implements HandlerInterceptor {
             return true;
         }
         MyRequestWrapper myRequestWrapper = new MyRequestWrapper((HttpServletRequest) httpServletRequest);
+        MyByteRequestWrapper myByteRequestWrapper = new MyByteRequestWrapper((HttpServletRequest)httpServletRequest);
+        //try to fix json 可以多次读取
+        String requestBodyString = myByteRequestWrapper.getReader().readLine();
+        requestBodyString = myByteRequestWrapper.getReader().readLine();
+        System.out.println(requestBodyString);
+        System.out.println(myByteRequestWrapper.getReader());
+        System.out.println(myByteRequestWrapper.getReader());
 
+        //myRequestWrapper 修改了json
         System.out.println(myRequestWrapper.getBody());
         System.out.println(myRequestWrapper.getBody());
         if(StringUtils.isBlank(myRequestWrapper.getBody())){

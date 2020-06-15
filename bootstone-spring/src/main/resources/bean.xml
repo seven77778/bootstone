@@ -7,6 +7,10 @@
     <bean id="stoneService" class="xml.AImpl" />
     <bean id="xmlstoneService" class="xml.XmlAImpl" />
     <bean id="xmlstoneService2" class="xml.XmlBImpl" />
+    <!-- bean get、set方法 对应 property 属性 -->
+    <bean id="aaa123" class="spring20200603.First" >
+        <property name="name"  value="123"/>
+    </bean>
 
 
 </beans>
