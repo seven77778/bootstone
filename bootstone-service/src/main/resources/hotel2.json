@@ -1,0 +1,31 @@
+[
+  {
+  "id": "1001",
+  "createTime": "2020-05-26 11:48:05",
+  "hotelName": "测试酒店1",
+  "hotelStatus": 1,
+  "tel": "13888888888"
+},
+  {
+    "id": "1002",
+    "createTime": "2020-05-26 11:48:05",
+    "hotelName": "测试酒店2",
+    "hotelStatus": 2,
+    "tel": "13888888888"
+  },
+  {
+    "id": "1003",
+    "createTime": "2020-05-26 11:48:05",
+    "hotelName": "测试酒店3",
+    "hotelStatus": 2,
+    "tel": "13888888888"
+  },
+  {
+    "id": "1004",
+    "createTime": "2020-05-26 11:48:05",
+    "hotelName": "测试酒店4",
+    "hotelStatus": 1,
+    "tel": "13888888888"
+  }
+
+]
