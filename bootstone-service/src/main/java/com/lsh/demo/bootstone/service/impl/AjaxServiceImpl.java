@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.*;
 import java.util.List;
@@ -34,7 +35,7 @@ public class AjaxServiceImpl implements AjaxService {
         if (!CollectionUtils.isEmpty(ajaxHotel.getData())) {
             return BootResponse.ofSuccess(ajaxHotel);
         } else {
-            return BootResponse.ofFailure("查询失败");
+            return BootResponse.ofFailure("查无酒店");
         }
     }
 
@@ -49,7 +50,6 @@ public class AjaxServiceImpl implements AjaxService {
         } else {
             ajaxHotel = hotel;
         }
-
         AjaxHotelData data = new AjaxHotelData();
         data.setHotelName(rq.getHotelName());
         data.setId(rq.getId());
@@ -64,6 +64,22 @@ public class AjaxServiceImpl implements AjaxService {
         hotel = ajaxHotel;
         return BootResponse.ofSuccess();
 
+    }
+
+    @Override
+    public BootResponse updateHotel(@RequestBody AjaxHotelRequest rq) {
+
+        if(StringUtils.isBlank(rq.getId())){
+            return BootResponse.ofFailure("id不能为空");
+        }
+
+        for(AjaxHotelData data:hotel.getData()){
+            if(rq.getId().equals(data.getId())){
+                data.setHotelName(rq.getHotelName());
+            }
+        }
+
+        return BootResponse.ofSuccess();
     }
 
     public AjaxHotel queryFromJson(String name) {
@@ -89,6 +105,7 @@ public class AjaxServiceImpl implements AjaxService {
             } else {
                 ajaxHotel.setData(list);
             }
+            hotel = ajaxHotel;
             return ajaxHotel;
         } catch (IOException e) {
             e.printStackTrace();

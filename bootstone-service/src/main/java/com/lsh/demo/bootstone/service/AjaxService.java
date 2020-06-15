@@ -13,4 +13,7 @@ public interface AjaxService {
 
     BootResponse addHotel(AjaxHotelRequest rq);
 
+    BootResponse updateHotel(AjaxHotelRequest rq);
+
+
 }

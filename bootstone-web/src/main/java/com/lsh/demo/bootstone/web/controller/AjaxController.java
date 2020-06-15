@@ -29,4 +29,9 @@ public class AjaxController {
     public BootResponse addhotel(@RequestBody AjaxHotelRequest rq){
         return ajaxService.addHotel(rq);
     }
+
+    @PostMapping("/updatehotel")
+    public BootResponse updatehotel(@RequestBody AjaxHotelRequest rq){
+        return ajaxService.updateHotel(rq);
+    }
 }

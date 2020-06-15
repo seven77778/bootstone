@@ -2,7 +2,7 @@ env:
   type: @env.type@
 
 server:
-  port: 8084
+  port: 8083
 
 spring:
   thymeleaf:
