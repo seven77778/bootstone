@@ -1,10 +1,9 @@
 package com.lsh.demo.bootstone.web.controller;
 
 import com.lsh.demo.bootstone.service.CommonService;
+import com.lsh.demo.bootstone.web.common.request.SaveStu;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -13,6 +12,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/service")
+@CrossOrigin
 public class ServiceController {
 
 
@@ -33,4 +33,22 @@ public class ServiceController {
     public String getRunTime(){
         return commonService.invokeSql2("");
     }
+    private SaveStu saveStu;
+
+    @PostMapping("savedata")
+    public String saveData(@RequestBody SaveStu stus){
+        if(null!=stus){
+            saveStu = stus;
+            return "success";
+
+        }else {
+            return "failed";
+        }
+    }
+
+    @PostMapping("getdata")
+    public SaveStu getData(){
+        return saveStu;
+    }
+
 }

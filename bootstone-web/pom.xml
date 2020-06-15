@@ -45,6 +45,12 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.13</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>3.0.9</version>
+        </dependency>
+
         <!-- aspectj支持 -->
         <dependency>
             <groupId>org.aspectj</groupId>

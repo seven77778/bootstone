@@ -2,6 +2,7 @@ package basic.fifteen;
 
 import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -81,6 +82,8 @@ public class FifTeen2 {
      */
     @Test
     public void test2(){
+        RequestConfig config = RequestConfig.custom().setConnectTimeout(3000).setSocketTimeout(3000).build();
+
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("http://localhost:8083/77/test3?username=77&password=123456");
         try {

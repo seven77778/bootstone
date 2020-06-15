@@ -26,10 +26,15 @@ public class CommonServiceImpl implements CommonService {
     @Override
     public String getRestSeconds(String key) {
         System.out.println("redis------");
-        if (!redisUtil.exists(key)) {
-            redisUtil.setKeyByTime(key, "key过期时间", 20, TimeUnit.SECONDS);
+        try{
+            if (!redisUtil.exists(key)) {
+                redisUtil.setKeyByTime(key, "key过期时间", 20, TimeUnit.SECONDS);
+            }
+            return redisUtil.getKeyExpire(key, TimeUnit.SECONDS) + "";
+        }catch (Exception e){
+            return "sdsadsadasda";
         }
-        return redisUtil.getKeyExpire(key, TimeUnit.SECONDS) + "";
+
     }
 
 
