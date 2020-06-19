@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script charset="utf-8" src="https://cdnjs.loli.net/ajax/libs/jquery/2.2.4/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="myDiv">将获取的txt 文件 展示出来</div>
+
+
+<button type="button" onclick="loadX()">通过 AJAX 改变内容</button>
+<button type="button" onclick="getJsonp()">jsonp</button>
+
+<script>
+
+    function loadX (){
+        /* 老版本的 Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：
+        variable=new ActiveXObject("Microsoft.XMLHTTP");
+        为了应对所有的现代浏览器，包括 IE5 和 IE6，请检查浏览器是否支持 XMLHttpRequest 对象。
+        如果支持，则创建 XMLHttpRequest 对象。如果不支持，则创建 ActiveXObject ：*/
+        var xmlhttp;
+        if(window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();     //IE7，FireFox,Chrome,OPera,Safari
+        }else{
+            xmlhttp = new ActiveXobject('Microsoft.xmlHTTP');  // IE6，IE5
+        }
+        /* 属性 描述
+         onreadystatechange 存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
+         readyState      存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+                         0: 请求未初始化
+                         1: 服务器连接已建立
+                         2: 请求已接收
+                         3: 请求处理中
+                         4: 请求已完成，且响应已就绪
+           status        200: "OK"
+                         404: 未找到页面
+      onreadystatechange 事件中，我们规定当服务器响应已做好被处理的准备时所执行的任务。
+        当 readyState 等于 4 且状态为 200 时，表示响应已就绪：*/
+        //    根据 readyState  值不同，代表响应状态 的进程
+        xmlhttp.onreadystatechange=function(){
+            if (xmlhttp.readyState==0){
+            }
+            else if (xmlhttp.readyState==1){
+            }
+            else if (xmlhttp.readyState==2){
+            }
+            else if (xmlhttp.readyState==3){
+            }
+            else if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open('GET','c:\\text.json',true);
+        xmlhttp.send();
+    }
+
+
+    function getJsonp(){
+
+        $.ajax({
+            url: "text.json",
+            type:"GET",
+            dataType: "jsonp",
+            jsonp:"callback", // 默认值是callback，可以修改
+            success: function (result) {
+                console.log(result);
+                $("body").append("<br>" + result);
+            }
+        });
+    }
+</script>
+</body>
+</html>
