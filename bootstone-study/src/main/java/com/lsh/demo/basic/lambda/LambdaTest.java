@@ -45,6 +45,10 @@ public class LambdaTest {
          * 将大于1 的数据重新组合
          */
         List<Integer> list2 = list.stream().filter(x -> x > 1).collect(Collectors.toList());
+
+        List<Integer> newList = Lists.newArrayList();
+        list2.stream().filter(i -> i > 1).forEach(newList::add);
+
         list2.forEach(System.out::print);
 
     }
@@ -74,20 +78,19 @@ public class LambdaTest {
     //******************
 
     /**
-     *  filter 筛选list的数据
+     * filter 筛选list的数据
      */
-    private List<Integer> mylist = Lists.newArrayList(1,2,3,4,5);
+    private List<Integer> mylist = Lists.newArrayList(1, 2, 3, 4, 5);
 
     @Test
-    public void test4(){
+    public void test4() {
         System.out.println(mylist);
         List<Integer> list2 = mylist.stream().filter(a -> a > 2).collect(Collectors.toList());
         System.out.println(list2);
     }
 
     @Test
-    public void  test5(){
-
+    public void test5() {
 
 
     }
@@ -95,10 +98,10 @@ public class LambdaTest {
 
     public static void main(String[] args) {
         String ss = "015019aaa      ";
-        String regEx="\\d";
+        String regEx = "\\d";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(ss);
-        System.out.println( m.replaceAll("").trim());
+        System.out.println(m.replaceAll("").trim());
 
     }
 

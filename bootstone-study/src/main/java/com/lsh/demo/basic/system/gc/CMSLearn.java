@@ -6,6 +6,30 @@ package com.lsh.demo.basic.system.gc;
  *
  * java程序最大可能占用内存 = Xmx指定的最大堆内存大小 + 最大活跃线程数量 * Xss指定的每个线程栈内存大小
  *      + XX:MaxDirectMemorySize指定的最大直接内存大小 + MetaSpace 大小
+ *
+ *      2020年7月2日 add -- CMS-concurrent-mark 耗时最长
+ *
+ *      ParallelGCThreads是年轻代的并行收集线程数，CMSScavengeBeforeRemark，
+ *      强制remark之前开始一次minor gc，减少remark的暂停时间， 因为发现你们 remark时间最长
+ *
+ *      也调大新生代试试吧， remark 期间，新生代晋升到老年代，或者有大对象直接到老年代，都会增加耗时
+ *
+ *      有二方包内存泄漏
+ */
+
+/**
+ * 2020-06-30T08:35:57.081+0800: 2890089.400: [CMS-concurrent-mark-start]
+ * 2020-06-30T08:36:01.175+0800: 2890093.494: [CMS-concurrent-mark: 4.009/4.094 secs] [Times: user=5.12 sys=0.00, real=4.09 secs]
+ * 2020-06-30T08:36:01.175+0800: 2890093.494: [CMS-concurrent-preclean-start]
+ * 2020-06-30T08:36:01.343+0800: 2890093.662: [CMS-concurrent-preclean: 0.109/0.168 secs] [Times: user=0.19 sys=0.00, real=0.17 secs]
+ * 2020-06-30T08:36:01.344+0800: 2890093.663: [CMS-concurrent-abortable-preclean-start]
+ * 2020-06-30T08:36:01.344+0800: 2890093.663: [CMS-concurrent-abortable-preclean: 0.000/0.000 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+ * 2020-06-30T08:36:01.349+0800: 2890093.668: [GC (CMS Final Remark) [YG occupancy: 1177162 K (1922432 K)]2020-06-30T08:36:01.349+0800: 2890093.668: [Rescan (parallel) , 0.4430175 secs]2020-06-30T08:36:01.792+0800: 2890094.111: [weak refs processing, 0.0000819 secs]2020-06-30T08:36:01.792+0800: 2890094.111: [class unloading, 0.1558433 secs]2020-06-30T08:36:01.948+0800: 2890094.267: [scrub symbol table, 0.0719194 secs]2020-06-30T08:36:02.020+0800: 2890094.339: [scrub string table, 0.0076511 secs][1 CMS-remark: 1768434K(2097152K)] 2945597K(4019584K), 0.6846606 secs] [Times: user=1.88 sys=0.00, real=0.68 secs]
+ * 2020-06-30T08:36:02.034+0800: 2890094.353: [CMS-concurrent-sweep-start]
+ * 2020-06-30T08:36:02.904+0800: 2890095.224: [CMS-concurrent-sweep: 0.870/0.870 secs] [Times: user=1.04 sys=0.00, real=0.87 secs]
+ * 2020-06-30T08:36:02.905+0800: 2890095.224: [CMS-concurrent-reset-start]
+ * 2020-06-30T08:36:02.908+0800: 2890095.227: [CMS-concurrent-reset: 0.003/0.003 secs] [Times: user=0.01 sys=0.00, real=0.01 secs]
+ * 2020-06-30T08:36:04.913+0800: 2890097.232: [GC (CMS Initial Mark) [1 CMS-initial-mark: 1768391K(2097152K)] 2970936K(4019584K), 0.4470559 secs] [Times: user=1.64 sys=0.00, real=0.45 secs]
  */
 public class CMSLearn {
 
