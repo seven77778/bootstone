@@ -2,6 +2,7 @@ package com.lsh.demo.bootstone.web.controller;
 
 import com.bootstone.spring.ioc.iocdemo1.MoAttack;
 import com.lsh.demo.bootstone.service.vo.RequsetVO;
+import com.lsh.demo.bootstone.web.common.request.BootStoneRequest;
 import com.lsh.demo.bootstone.web.interceptor.LshAuth;
 import com.lsh.demo.bootstone.web.point.MyWithinPoint;
 import org.apache.http.HttpEntity;
@@ -41,8 +42,14 @@ public class HelloController {
 
     @RequestMapping("/hello")
     @LshAuth
-    public String hello(){
-        return "hello";
+    public String hello(String lsh){
+        return lsh;
+    }
+
+    @RequestMapping("/hellopost")
+    @LshAuth
+    public String helloPost(@RequestBody BootStoneRequest rq){
+        return rq.getLsh();
     }
 
     @PostMapping("/js")

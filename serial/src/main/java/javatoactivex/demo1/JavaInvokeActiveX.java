@@ -7,7 +7,6 @@ import com.jacob.com.Variant;
 
 /**
  * Created by lsh on 2019/4/2.
- * todo java 调用 activeX
  *
  */
 public class JavaInvokeActiveX {

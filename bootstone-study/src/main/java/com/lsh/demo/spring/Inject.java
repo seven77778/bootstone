@@ -39,6 +39,8 @@ public class Inject {
     /**
      * 直接运行 @Test 不可行
      *
+     * fix throw error
+     *
      * Is it an abstract class?
      */
     @Test
