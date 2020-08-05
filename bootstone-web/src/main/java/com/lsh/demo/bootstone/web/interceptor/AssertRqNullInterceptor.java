@@ -56,7 +56,6 @@ public class AssertRqNullInterceptor  implements HandlerInterceptor {
         if(!"POST".equals(httpServletRequest.getMethod())){
             return true;
         }
-        MyRequestWrapper myRequestWrapper = new MyRequestWrapper((HttpServletRequest) httpServletRequest);
         MyByteRequestWrapper myByteRequestWrapper = new MyByteRequestWrapper((HttpServletRequest)httpServletRequest);
         //try to fix json 可以多次读取
         String requestBodyString = myByteRequestWrapper.getReader().readLine();
@@ -65,10 +64,7 @@ public class AssertRqNullInterceptor  implements HandlerInterceptor {
         System.out.println(myByteRequestWrapper.getReader());
         System.out.println(myByteRequestWrapper.getReader());
 
-        //myRequestWrapper 修改了json
-        System.out.println(myRequestWrapper.getBody());
-        System.out.println(myRequestWrapper.getBody());
-        if(StringUtils.isBlank(myRequestWrapper.getBody())){
+        if(StringUtils.isBlank( myByteRequestWrapper.getOriginBody())){
             BootStoneLog.bootStone.info("请求体body为空，已被拦截");
             HttpReturnUtil.returnJson(httpServletResponse, ErrorEnum.REQUEST_BODY_NULL);
             return false;

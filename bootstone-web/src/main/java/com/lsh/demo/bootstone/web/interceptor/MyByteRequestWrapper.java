@@ -1,6 +1,7 @@
 package com.lsh.demo.bootstone.web.interceptor;
 
 import com.lsh.demo.bootstone.service.common.BootStoneLog;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.StreamUtils;
 
 import javax.servlet.ReadListener;
@@ -25,11 +26,14 @@ public class MyByteRequestWrapper extends HttpServletRequestWrapper {
 
     private Map<String, String[]> parameterMap; // 所有参数的Map集合
     private  byte[] requestBody;
+    //用来保存post的请求体，如果没有请求体，直接拦截
+    private String originBody;
 
     public MyByteRequestWrapper(HttpServletRequest request) throws IOException {
         super(request);
         //request.getInputStream() 调用多次依然正常 todo
         requestBody = StreamUtils.copyToByteArray(request.getInputStream());
+        originBody = new String(requestBody);
         //todo 修改请求入参 ,在fliter中修改
         parameterMap = request.getParameterMap();
         String json = new String(requestBody, "utf-8");
@@ -37,7 +41,9 @@ public class MyByteRequestWrapper extends HttpServletRequestWrapper {
         String iii = "{\n" +
                 "    \"lsh\":\"aaaaa\"\n" +
                 "}";
-        requestBody = iii.getBytes();
+        if(StringUtils.isNotBlank(originBody)){
+            requestBody = iii.getBytes();
+        }
         //现在return到postman的全是aaaaa了
     }
 
@@ -48,6 +54,10 @@ public class MyByteRequestWrapper extends HttpServletRequestWrapper {
     @Override
     public Map<String, String[]> getParameterMap() {
         return this.parameterMap;
+    }
+
+    public String getOriginBody() {
+        return originBody;
     }
 
 
