@@ -11,4 +11,6 @@ public interface CommonService {
 
     String invokeSql2(String key);
 
+    String getDynamicData(String key);
+
 }

@@ -1,5 +1,6 @@
 package com.lsh.demo.bootstone.service.impl;
 
+import com.lsh.demo.bootstone.dao.mysql.DataService;
 import com.lsh.demo.bootstone.service.CommonService;
 import com.lsh.demo.bootstone.service.util.RedisUtil;
 import org.springframework.stereotype.Component;
@@ -57,4 +58,16 @@ public class CommonServiceImpl implements CommonService {
     public String invokeSql2(String key) {
         throw new RuntimeException("手动抛出异常");
     }
+
+    @Resource
+    private DataService service;
+
+    @Override
+    public String getDynamicData(String key) {
+
+        return null;
+
+    }
+
+
 }

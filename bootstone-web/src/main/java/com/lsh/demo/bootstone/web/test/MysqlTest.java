@@ -1,6 +1,7 @@
 package com.lsh.demo.bootstone.web.test;
 
 import com.lsh.demo.bootstone.dao.mysql.DataService;
+import com.lsh.demo.bootstone.dao.mysql.Stu;
 import com.lsh.demo.bootstone.web.BootStoneWebApplication;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
@@ -54,5 +55,12 @@ public class MysqlTest {
         list.add("2");
         list.add("3");
         System.out.println(service.getByForeach(list,"18"));
+    }
+
+    @Test
+    public void testDynamic(){
+        Stu result = service.getDynamicData("");
+
+        System.out.println(result);
     }
 }

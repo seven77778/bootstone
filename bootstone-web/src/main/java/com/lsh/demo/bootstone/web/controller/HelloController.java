@@ -52,6 +52,7 @@ public class HelloController {
         return rq.getLsh();
     }
 
+
     @PostMapping("/js")
     public String js(String username,String password){
         return "hello " + username + " " + password;

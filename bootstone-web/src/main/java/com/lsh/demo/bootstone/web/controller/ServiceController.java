@@ -21,6 +21,13 @@ public class ServiceController {
     private CommonService commonService;
 
 
+
+    @GetMapping("")
+    public String getDynamicData(){
+
+        return null;
+    }
+
     @GetMapping("/test")
     public Map<String, Object> test(String key){
         Map<String, Object> map = new HashMap();
