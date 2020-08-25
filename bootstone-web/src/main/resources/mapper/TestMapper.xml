@@ -55,4 +55,10 @@
         </where>
     </select>
 
+
+    <!--使用动态sql-->
+    <select id="getDynamicData" resultType="com.lsh.demo.bootstone.dao.mysql.Stu">
+     select name as name,age as age from stu where id='${@com.lsh.demo.bootstone.dao.mysql.DataConstant@one}'
+    </select>
+
 </mapper>
