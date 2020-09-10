@@ -40,6 +40,14 @@ public class HelloController {
     @Autowired
     private MoAttack moAttack;
 
+    /**
+     * 测试spring的controller是单例还是多例，怎么保证并发的安全
+     * @return
+     */
+    public String xx(@RequestBody BootStoneRequest rq){
+        return rq.getLsh();
+    }
+
     @RequestMapping("/hello")
     @LshAuth
     public String hello(String lsh){

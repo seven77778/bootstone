@@ -1,6 +1,7 @@
 package com.lsh.demo.bootstone.web.test;
 
 import com.lsh.demo.bootstone.dao.mysql.DataService;
+import com.lsh.demo.bootstone.dao.mysql.Football;
 import com.lsh.demo.bootstone.dao.mysql.Stu;
 import com.lsh.demo.bootstone.web.BootStoneWebApplication;
 import org.assertj.core.util.Lists;
@@ -10,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,4 +66,34 @@ public class MysqlTest {
 
         System.out.println(result);
     }
+
+
+    /**
+     * 测试时区插入数据库
+     *
+     * serverTimezone=Asia/Shanghai
+     * @JsonFormat(pattern="yyyy-MM-dd",timezone = "Asia/Shanghai")
+     */
+    @Test
+    public void testTimeZone(){
+        Football football = new Football();
+        football.setName("12");
+
+        Calendar c1 = Calendar.getInstance();
+
+        c1.set(1990,9,1,0,0,0);
+        football.setTime(c1.getTime());
+
+        Integer count = service.insertTimeZone(football);
+        System.out.println(count);
+
+        Calendar c2 = Calendar.getInstance();
+        c2.setTime(new Date());
+        if(c2.get(Calendar.MONTH)==c1.get(Calendar.MONTH) &&
+                c2.get(Calendar.DAY_OF_MONTH)==c1.get(Calendar.DAY_OF_MONTH)){
+            System.out.println(11);
+        }
+    }
+
+
 }

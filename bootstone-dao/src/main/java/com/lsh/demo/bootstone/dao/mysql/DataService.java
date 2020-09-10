@@ -22,4 +22,6 @@ public interface DataService {
     List<Stu> getByForeach(@Param("ids") List<String> ids,@Param("age")String age);
 
     Stu getDynamicData(String key);
+
+    Integer insertTimeZone(Football f);
 }

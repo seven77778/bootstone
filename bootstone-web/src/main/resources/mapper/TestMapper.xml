@@ -61,4 +61,9 @@
      select name as name,age as age from stu where id='${@com.lsh.demo.bootstone.dao.mysql.DataConstant@one}'
     </select>
 
+    <insert id="insertTimeZone" parameterType="com.lsh.demo.bootstone.dao.mysql.Football">
+    INSERT into football (name,create_time) VALUES(#{name,jdbcType=VARCHAR},#{time,jdbcType=TIMESTAMP});
+
+    </insert>
+
 </mapper>
