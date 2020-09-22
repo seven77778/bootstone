@@ -24,7 +24,7 @@
     </appender>
 
     <!-- mysql打印语句 -->
-    <logger name="com.lsh.demo.bootstone.dao" level="DEBUG" />
+    <logger name="com.lsh.demo.bootstone.dao.mysql" level="INFO" />
 
     <!--输出到文件-->
     <!-- RollingFileAppender：滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 -->
@@ -78,7 +78,7 @@
      -->
     <!--logback的配置，需要配置输出源appender，打日志的loger（子节点）和root（根节点），实际上，它输出日志是从子节点开始，子节点如果有输出源直接输入
     如果无，判断配置的addtivity，是否像上级传递，即是否向root传递，传递则采用root的输出源，否则不输出日志。-->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="bootStoneAppender" />
         <appender-ref ref="studyAppender" />
@@ -90,12 +90,9 @@
         <!--<appender-ref ref="jjjjjAppender" />-->
     </root>
 
-    <!--输出sql语句-->
-    <!--<logger name="xxx" level="DEBUG" />-->
-
     <!-- com.apache为根包，也就是只要是发生在这个根包下面的所有日志操作行为的权限都是WARN -->
     <logger name="org.apache" additivity="false">
-        <level value="INFO"/>
+        <level value="DEBUG"/>
         <appender-ref ref="CONSOLE"/>
     </logger>
 

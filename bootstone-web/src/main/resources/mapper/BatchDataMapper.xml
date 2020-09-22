@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lsh.demo.bootstone.dao.mysql.BatchDataService">
+
+    <update id="batchUpdate">
+        update stu
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="name =case" suffix="end,">
+                <foreach collection="list" item="item">
+                    <if test="item.name!=null">
+                        when id=#{item.id} then #{item.name}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="age =case" suffix="end,">
+                <foreach collection="list" item="item">
+                    <if test="item.age!=null">
+                        when id=#{item.id} then #{item.age}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="address =case" suffix="end,">
+                <foreach collection="list" item="item">
+                    <if test="item.address!=null">
+                        when id=#{item.id} then #{item.address}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        ,update_time=now()
+        <where>
+            <foreach collection="list" separator="or" item="item">
+                id = #{item.id}
+            </foreach>
+        </where>
+    </update>
+
+    <select id="batchSelect" resultType="com.lsh.demo.bootstone.dao.mysql.Stu">
+        select name as name,id as id,age as age,address as address,
+        create_time as createTime,create_time as createTime1
+        from stu where id in
+        <foreach item="id" collection="ids" separator="," open="(" close=")" index="">
+            #{id,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+
+    <insert id="duplicateInsert">
+        INSERT INTO stu (NAME, id)
+        VALUES
+	(#{name,jdbcType=VARCHAR},#{id,jdbcType=INTEGER})
+	ON DUPLICATE KEY UPDATE id = id + 1;
+    </insert>
+
+    <insert id="batchDuplicateInsert">
+        insert into stu(
+        name,id,address,update_time
+        )VALUES
+        <foreach collection="list" item="stu" index="index" separator=",">
+            (
+            #{stu.name}, #{stu.id}, #{stu.address},#{stu.updateTime}
+            )
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        name = VALUES(name),id = VALUES(id),address = VALUES(address),
+        update_time=values(update_time)
+
+    </insert>
+
+
+    <!--<insert id="">-->
+        <!--INSERT INTO stu (NAME, id)-->
+        <!--VALUES-->
+        <!--('1121212', 12),-->
+        <!--('1111', 1) ON DUPLICATE KEY UPDATE id =-->
+        <!--VALUES (id), NAME = VALUES (NAME);-->
+    <!--</insert>-->
+
+
+</mapper>
