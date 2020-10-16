@@ -6,7 +6,7 @@ import java.sql.*;
  * Created by lsh on 2019/4/18.
  */
 public class DBUtils {
-    private final static String URL = "jdbc:sqlserver://10.63.17.41:1433;DatabaseName=mylock1";
+    private final static String URL = "jdbc:sqlserver://xx.xx.xx.xx:1433;DatabaseName=mylock1";
     private static final String USER="sa";
     private static final String PASSWORD="x";
 

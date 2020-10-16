@@ -67,4 +67,13 @@ public class BatchDataTest {
         int result = batchDataService.batchDuplicateInsert(stus);
         System.out.println(result);
     }
+
+    /**
+     * 查询对比两列的结果,结果赋值给 sameFlag
+     */
+    @Test
+    public void testQueryTheSame(){
+        List<Stu> res = batchDataService.selectNotSame();
+        System.out.println(res);
+    }
 }

@@ -54,8 +54,21 @@ public class RedisUtil {
         return true;
     }
 
-    public Boolean setKeyByTime(String key,String value,long times,TimeUnit timeUnit){
-        redisTemplate.opsForValue().set(key,value,times,timeUnit);
+    public String get(String key) {
+        return redisTemplate.opsForValue().get(key);
+    }
+
+
+    public Long incr(String key){
+       return redisTemplate.opsForValue().increment(key,1);
+    }
+
+    public Long decrease(String key){
+        return redisTemplate.opsForValue().increment(key, -1);
+    }
+
+    public Boolean setKeyByTime(String key, String value, long times, TimeUnit timeUnit) {
+        redisTemplate.opsForValue().set(key, value, times, timeUnit);
         return true;
     }
 
@@ -68,12 +81,9 @@ public class RedisUtil {
         return redisTemplate.getExpire(key, timeUnit);
     }
 
-    public Boolean exists(String key){
+    public Boolean exists(String key) {
         return redisTemplate.hasKey(key);
     }
-
-
-
 
 
 }

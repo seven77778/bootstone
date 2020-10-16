@@ -31,6 +31,7 @@
         <module>demo</module>
         <module>nginx</module>
         <module>bootstone-77</module>
+        <module>rate-limiter</module>
     </modules>
 
     <properties>

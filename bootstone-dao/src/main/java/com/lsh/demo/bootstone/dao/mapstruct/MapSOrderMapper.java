@@ -5,6 +5,8 @@ import org.mapstruct.Mapper;
 
 /**
  * Created by lsh on 2020-09-02.
+ *
+ * processer包必不可少
  */
 @Mapper
 public interface MapSOrderMapper {

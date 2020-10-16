@@ -57,7 +57,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             returnJson(response, "token is blank");
             return false;
         }
-        //token存在，该怎么验证就怎么验证
+        //token存在，该怎么验证就怎么验证 todo 完善真实token登录
         if ("lshtoken".equals(token)) {
             BootStoneLog.bootStone.info("auth success");
             return true;

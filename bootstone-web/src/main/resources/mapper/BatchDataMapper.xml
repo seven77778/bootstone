@@ -68,12 +68,19 @@
 
 
     <!--<insert id="">-->
-        <!--INSERT INTO stu (NAME, id)-->
-        <!--VALUES-->
-        <!--('1121212', 12),-->
-        <!--('1111', 1) ON DUPLICATE KEY UPDATE id =-->
-        <!--VALUES (id), NAME = VALUES (NAME);-->
+    <!--INSERT INTO stu (NAME, id)-->
+    <!--VALUES-->
+    <!--('1121212', 12),-->
+    <!--('1111', 1) ON DUPLICATE KEY UPDATE id =-->
+    <!--VALUES (id), NAME = VALUES (NAME);-->
     <!--</insert>-->
+
+    <select id="selectNotSame" resultType="com.lsh.demo.bootstone.dao.mysql.Stu">
+    SELECT s.age, s.grade,
+    ( CASE WHEN s.age = s.grade THEN TRUE ELSE FALSE END ) AS sameFlag
+    FROM stu s;
+
+    </select>
 
 
 </mapper>

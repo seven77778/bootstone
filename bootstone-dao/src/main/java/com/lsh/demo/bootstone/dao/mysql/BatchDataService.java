@@ -31,13 +31,17 @@ public interface BatchDataService {
 
     /**
      * 批量使用ON DUPLICATE KEY UPDATE
-     */
-    int batchDuplicateInsert(List<Stu> stus);
-
-    /**
      * INSERT INTO stu (NAME, id)
      * VALUES
      * 	('121212', 12),('1111',1) ON DUPLICATE KEY UPDATE id =VALUES(id),name=VALUES(name);
      */
+    int batchDuplicateInsert(List<Stu> stus);
+
+
+    /**
+     * 查询出来的两列结果，进行对比是否一致，可以使用case when
+     */
+    List<Stu> selectNotSame();
+
 
 }

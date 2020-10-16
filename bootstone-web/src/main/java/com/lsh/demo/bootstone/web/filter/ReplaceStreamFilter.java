@@ -33,21 +33,17 @@ public class ReplaceStreamFilter implements Filter {
         }
 
         //修改入参lsh中的value  localhost:8084/hello/hello?lsh=123
-        if (null != myByteRequestWrapper && null!=myByteRequestWrapper.getParameterMap()) {
+        if (null != myByteRequestWrapper && null != myByteRequestWrapper.getParameterMap()) {
             Map<String, String[]> parameterMap = myByteRequestWrapper.getParameterMap();
-            if (null!=parameterMap.get("lsh") && StringUtils.isNotBlank(parameterMap.get("lsh")[0])) {
+            if (null != parameterMap.get("lsh") && StringUtils.isNotBlank(parameterMap.get("lsh")[0])) {
                 Map<String, String[]> changeMap = Maps.newHashMap();
                 changeMap.put("lsh", new String[]{"already changed lsh"});
                 myByteRequestWrapper.setParameterMap(changeMap);
+                BootStoneLog.bootStone.info("replace stream success");
             }
         }
-
-//        if (null == myByteRequestWrapper) {
-//            chain.doFilter(request, response);
-//        } else {
         chain.doFilter(myByteRequestWrapper, response);
-//        }
-        BootStoneLog.bootStone.info("replace stream success");
+        BootStoneLog.bootStone.info("request success");
     }
 
     @Override
