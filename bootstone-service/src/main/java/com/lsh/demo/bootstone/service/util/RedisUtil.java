@@ -2,8 +2,10 @@ package com.lsh.demo.bootstone.service.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -59,11 +61,11 @@ public class RedisUtil {
     }
 
 
-    public Long incr(String key){
-       return redisTemplate.opsForValue().increment(key,1);
+    public Long incr(String key) {
+        return redisTemplate.opsForValue().increment(key, 1);
     }
 
-    public Long decrease(String key){
+    public Long decrease(String key) {
         return redisTemplate.opsForValue().increment(key, -1);
     }
 
@@ -83,6 +85,18 @@ public class RedisUtil {
 
     public Boolean exists(String key) {
         return redisTemplate.hasKey(key);
+    }
+
+
+    public String invokeScript(String script, List<String> params, Object... args) {
+        DefaultRedisScript<Long> defaultRedisScript = new DefaultRedisScript<>();
+//        defaultRedisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("checkandset.lua")));
+        defaultRedisScript.setScriptText(script);
+        defaultRedisScript.setResultType(Long.TYPE);
+        Long res = redisTemplate.execute(defaultRedisScript, params, args);
+
+        System.out.println(res);
+        return res + "";
     }
 
 

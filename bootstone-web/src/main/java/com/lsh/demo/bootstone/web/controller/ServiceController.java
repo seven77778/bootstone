@@ -1,8 +1,10 @@
 package com.lsh.demo.bootstone.web.controller;
 
+import com.lsh.demo.bootstone.dao.mysql.DataService;
 import com.lsh.demo.bootstone.service.CommonService;
 import com.lsh.demo.bootstone.web.common.request.SaveStu;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -64,6 +66,21 @@ public class ServiceController {
     @PostMapping("getdata")
     public SaveStu getData(){
         return saveStu;
+    }
+
+
+    /**
+     * 测试@cacheAble注解
+     * 使用要点：要配置cacheNames,yml文件要配置cache-names=: mycaches
+     */
+    @Resource
+    private DataService dataService;
+
+    @RequestMapping("cache1")
+    @Cacheable(cacheNames = "mycaches")
+    public String getByAnno(){
+        System.out.println("调用数据库");
+        return dataService.getById(1).getName();
     }
 
 }

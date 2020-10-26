@@ -10,6 +10,7 @@ import java.util.List;
  */
 
 @Repository
+
 public interface DataService {
 
     List<Stu> selectAllStu();
@@ -22,6 +23,8 @@ public interface DataService {
     List<Stu> getByForeach(@Param("ids") List<String> ids,@Param("age")String age);
 
     Stu getDynamicData(String key);
+
+    Stu getById(Integer id);
 
     Integer insertTimeZone(Football f);
 }

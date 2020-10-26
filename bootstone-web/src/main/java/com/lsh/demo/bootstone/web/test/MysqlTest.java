@@ -1,5 +1,6 @@
 package com.lsh.demo.bootstone.web.test;
 
+import com.lsh.demo.bootstone.dao.mysql.DataManager;
 import com.lsh.demo.bootstone.dao.mysql.DataService;
 import com.lsh.demo.bootstone.dao.mysql.Football;
 import com.lsh.demo.bootstone.dao.mysql.Stu;
@@ -95,5 +96,16 @@ public class MysqlTest {
         }
     }
 
+
+    /**
+     * 测试cache注解
+     */
+    @Resource
+    private DataManager dataManager;
+    @Test
+    public void testCacheAnno(){
+        Stu res = dataManager.getByAnno(1);
+        System.out.println(res);
+    }
 
 }

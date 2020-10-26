@@ -66,4 +66,8 @@
 
     </insert>
 
+    <select id="getById" resultType="com.lsh.demo.bootstone.dao.mysql.Stu">
+        SELECT name,age,address FROM `stu` where id=#{id,jdbcType=INTEGER};
+    </select>
+
 </mapper>

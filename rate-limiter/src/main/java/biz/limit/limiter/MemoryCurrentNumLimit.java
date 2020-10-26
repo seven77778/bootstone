@@ -54,6 +54,7 @@ public class MemoryCurrentNumLimit implements RateLimit {
                     // Acquire阻塞
                     semaphore.acquire();
                     System.out.println("当前剩余可用信号量：" + semaphore.availablePermits());
+                    history.put(getHistoryKey(config), true);
                 } catch (InterruptedException e) {
                     throw new RateLimitException();
                 }

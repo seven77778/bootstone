@@ -28,4 +28,16 @@ public class RateLimitController {
         return "ok~";
     }
 
+    @RequestMapping("num4")
+    @RateLimitAnno(type = "memory-qps",num = 1,name="method4")
+    public String rateByQps4()throws Exception{
+        return "ok~";
+    }
+
+    @RequestMapping("num5")
+    @RateLimitAnno(type = "redis-qps",num = 2,name="method5")
+    public String rateByQps5()throws Exception{
+        return "ok~";
+    }
+
 }

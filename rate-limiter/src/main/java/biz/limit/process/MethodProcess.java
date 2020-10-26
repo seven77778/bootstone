@@ -48,7 +48,7 @@ public class MethodProcess  implements InitializingBean {
         int num= rateLimitAnno.num();
         boolean isWait = rateLimitAnno.waitFor() == 1;
 
-        System.out.println("注解的参数为" + rateLimitAnno.type() + rateLimitAnno.name());
+        System.out.println("注解的参数为 " + rateLimitAnno.type() + rateLimitAnno.name());
 
         RateLimit rateLimit = limitMap.get(rateLimitAnno.type());
 //        String numLimit = redisUtil.get(rateLimitAnno.name() + rateLimitAnno.type());
