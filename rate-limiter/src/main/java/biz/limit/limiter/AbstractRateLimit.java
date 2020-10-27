@@ -30,4 +30,9 @@ public class AbstractRateLimit extends AbstractConfiger implements RateLimit {
     public void releaseLimit(RateConfig config) {
 
     }
+
+    @Override
+    public void init() {
+
+    }
 }

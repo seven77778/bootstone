@@ -1,2 +1,4 @@
 1、2019年4月11日 https://www.cnblogs.com/xrq730/p/6285358.html
 熟读 ClassPathXmlApplicationContext
+
+2.spring创造bean是反射吗？

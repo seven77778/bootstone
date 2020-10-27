@@ -18,7 +18,7 @@ import org.springframework.context.annotation.ImportResource;
 @ComponentScan(basePackages = {"com.lsh.demo.basic","com.lsh.demo.bootstone.web","com.lsh.demo.spring","xml",
         "com.bootstone.spring.ioc.iocdemo1","com.lsh.demo.bootstone.service","com.lsh.demo.bootstone.web.point",
 "com.lsh.demo.bootstone.dao.mysql","sentinel","spring20200603","biz.limit",
-        "com.lsh.demo.annolearn.lazy"})
+        "com.lsh.demo.annolearn.lazy","baisc.redission"})
 @MapperScan("com.lsh.demo.bootstone.dao")
 @ImportResource("classpath:bean.xml")
 @EnableCaching

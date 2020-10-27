@@ -94,7 +94,6 @@ public class RedisUtil {
         defaultRedisScript.setScriptText(script);
         defaultRedisScript.setResultType(Long.TYPE);
         Long res = redisTemplate.execute(defaultRedisScript, params, args);
-
         System.out.println(res);
         return res + "";
     }

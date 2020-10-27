@@ -78,6 +78,11 @@ public class MemoryCurrentNumLimit implements RateLimit {
         }
     }
 
+    @Override
+    public void init() {
+
+    }
+
     private String getHistoryKey(RateConfig config) {
         return config.getName() + "-" + Thread.currentThread().getId();
     }

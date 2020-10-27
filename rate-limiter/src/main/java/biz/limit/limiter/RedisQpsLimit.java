@@ -45,6 +45,11 @@ public class RedisQpsLimit implements RateLimit {
 
     }
 
+    @Override
+    public void init() {
+
+    }
+
 
     /**
      * 使用lua脚本进行redis的操作

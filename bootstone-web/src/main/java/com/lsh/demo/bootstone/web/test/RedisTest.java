@@ -6,11 +6,15 @@ import com.lsh.demo.bootstone.web.BootStoneWebApplication;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.redisson.api.RPermitExpirableSemaphore;
+import org.redisson.api.RedissonClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes={BootStoneWebApplication.class})
@@ -43,5 +47,20 @@ public class RedisTest {
     public void testRedisGet(){
         String res = redisUtil.get("hh");
         System.out.println(res);
+    }
+
+    @Autowired
+    private RedissonClient redissonClient;
+
+    @Test
+    public void test()throws Exception{
+        RPermitExpirableSemaphore semaphore = redissonClient.getPermitExpirableSemaphore("lshasdasd");
+        while (!semaphore.trySetPermits(5)){
+
+        }
+        String res = semaphore.tryAcquire(1, 5, TimeUnit.SECONDS);
+        System.out.println(res);
+
+
     }
 }

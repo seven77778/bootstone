@@ -53,7 +53,7 @@ public class MethodProcess  implements InitializingBean {
         RateLimit rateLimit = limitMap.get(rateLimitAnno.type());
 //        String numLimit = redisUtil.get(rateLimitAnno.name() + rateLimitAnno.type());
         RateConfig config = new RateConfig(type,name,num,isWait);
-
+        rateLimit.init();
         //在切面中阻止代码继续进行，也就是限流，直接抛出异常
         rateLimit.limit(config);
         try {

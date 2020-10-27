@@ -18,4 +18,6 @@ public interface RateLimit {
      */
     void releaseLimit(RateConfig config);
 
+    void init();
+
 }

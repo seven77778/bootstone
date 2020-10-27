@@ -37,4 +37,9 @@ public class MemoryQpsLimit implements RateLimit {
         System.out.println("memory-qps release");
 
     }
+
+    @Override
+    public void init() {
+
+    }
 }

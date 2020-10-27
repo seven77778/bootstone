@@ -40,4 +40,10 @@ public class RateLimitController {
         return "ok~";
     }
 
+    @RequestMapping("num6")
+    @RateLimitAnno(type = "redis-num",num = 10,name="redisson-num-1")
+    public String rateByQps6()throws Exception{
+        return "ok~";
+    }
+
 }
