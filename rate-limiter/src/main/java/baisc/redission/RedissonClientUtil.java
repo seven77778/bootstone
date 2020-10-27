@@ -10,6 +10,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RedissonClientUtil {
 
+    /**
+     * 集群单机
+     * Caused by: org.redisson.client.RedisException:
+     * ERR This instance has cluster support disabled. channel:
+     * [id: 0x0fd46049, L:/127.0.0.1:62555 - R:/127.0.0.1:6379] command:
+     * CommandData [promise=org.redisson.misc.RedissonPromise@74bd3426[Not completed],
+     * command=(CLUSTER NODES), params=[], codec=null]
+     * @return
+     */
     @Bean
     public RedissonClient redissonClient() {
         Config config = new Config();
