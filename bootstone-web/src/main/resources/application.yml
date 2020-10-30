@@ -24,22 +24,29 @@ spring:
         port: 8719
         dashboard: localhost:8080
 
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    password: root
+#    username: root
+#    url: jdbc:mysql://localhost:3306/mydata?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+#    connectTimeout: 350000
+#    connection-timeout: 350000
+#    type: com.zaxxer.hikari.HikariDataSource
+#    # 配置了还是3秒超时
+#    hikari:
+#      connection-timeout: 300000
+
+#切换mybatis-plus
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    password: root
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql
+    url: jdbc:h2:mem:test
     username: root
-    url: jdbc:mysql://localhost:3306/mydata?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
-    connectTimeout: 350000
-    connection-timeout: 350000
-    type: com.zaxxer.hikari.HikariDataSource
-    # 配置了还是3秒超时
-    hikari:
-      connection-timeout: 300000
+    password: test
 
 
-#  dubbo:
-#    provider:
-#      filter: dubboLogFilter
+
 spring.datasource.test-while-idle: true
 #获取连接时候验证，会影响性能
 spring.datasource.test-on-borrow: true
@@ -66,13 +73,15 @@ dubbo:
     name: dubbo
     port: @dubbo.port@
   registry:
-    address: @dubbo.address@
     check: false
+    timeout: 10000
+    address: @dubbo.address@
   consumer:
     check: false
-  provider:
-    timeout: 10000
-    filter: @dubbo.provider.filter@
+    timeout: 3000
+#  provider:
+#    timeout: 10000
+#    filter: @dubbo.provider.filter@
 
 
 

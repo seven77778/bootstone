@@ -122,8 +122,7 @@ public class AtomicTest {
             num++;
             System.out.println("dodod");
         } while(num <5);
-
-
-
     }
+
+
 }

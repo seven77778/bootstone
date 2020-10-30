@@ -9,6 +9,17 @@ import java.util.Map;
 
 /**
  * Created by lsh on 2018/12/8.
+ *
+ * VM 启动参数格式：
+ * -Dubbo.registry.timeout=5000
+ * 但是无效。。。
+ *
+ * dubbo启动检查失败
+ * registry:
+ *     check: false
+ *     timeout: 10000
+ * 都无效
+ *
  */
 @Component
 @Service

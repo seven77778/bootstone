@@ -27,7 +27,7 @@ public class TestTmallThread {
      */
 
     public static void main(String[] args) {
-        ExecutorService pool = MyBasicThreadFactory.getTestExecutorService();
+        ExecutorService pool = MyBasicThreadFactory.getExecutorService();
 
         for(int i=0;i<10000;i++){
             pool.submit(() ->{
