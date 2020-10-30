@@ -10,6 +10,6 @@ public interface RegisterService {
      * @param name
      * @param age
      */
-    void register(String name, Integer age);
+    String register(String name, Integer age);
 
 }

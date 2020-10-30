@@ -24,7 +24,7 @@ Process finished with exit code 1
 3.打出来的jar名字异常 都是-sources
 
  <build>
-        <finalName>bootstone-spring-${version}</finalName>
+        <finalName>bootstone-spring-${project.version}</finalName>
     </build>
 
     即可解决

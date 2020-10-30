@@ -39,7 +39,7 @@
     </dependencies>
 
     <build>
-        <finalName>bootstone-spring-${version}</finalName>
+        <finalName>bootstone-spring-${project.version}</finalName>
     </build>
 
 </project>

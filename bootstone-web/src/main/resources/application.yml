@@ -36,7 +36,10 @@ spring:
     hikari:
       connection-timeout: 300000
 
-#验证连接的有效性
+
+#  dubbo:
+#    provider:
+#      filter: dubboLogFilter
 spring.datasource.test-while-idle: true
 #获取连接时候验证，会影响性能
 spring.datasource.test-on-borrow: true
@@ -56,17 +59,21 @@ mybatis:
   type-aliases-package: com.lsh.demo.bootstone.dao.mysql
 
 
-#dubbo:
-#  application:
-#    name: bootstone
-#  protocol:
-#    name: dubbo
-#    port: @dubbo.port@
-#  registry:
-#    address: @dubbo.address@
-#    check: false
-#  consumer:
-#    check: false
+dubbo:
+  application:
+    name: bootstone
+  protocol:
+    name: dubbo
+    port: @dubbo.port@
+  registry:
+    address: @dubbo.address@
+    check: false
+  consumer:
+    check: false
+  provider:
+    timeout: 10000
+    filter: @dubbo.provider.filter@
+
 
 
 #  port: 8082

@@ -1,0 +1,1 @@
+dubboFilter=com.lsh.demo.bootstone.dubbo.filter.DubboFilter
