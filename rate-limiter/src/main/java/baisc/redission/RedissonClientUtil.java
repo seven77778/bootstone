@@ -6,6 +6,7 @@ import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 @Configuration
 public class RedissonClientUtil {
@@ -20,6 +21,7 @@ public class RedissonClientUtil {
      * @return
      */
     @Bean
+    @Lazy
     public RedissonClient redissonClient() {
         Config config = new Config();
         // set集群版报错

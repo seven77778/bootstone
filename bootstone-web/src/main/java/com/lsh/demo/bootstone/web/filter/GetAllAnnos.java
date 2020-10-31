@@ -3,6 +3,7 @@ package com.lsh.demo.bootstone.web.filter;
 import biz.limit.anno.RateLimitAnno;
 import com.lsh.demo.bootstone.service.util.RedisUtil;
 import org.junit.Test;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -30,6 +31,7 @@ import java.util.jar.JarFile;
 public class GetAllAnnos {
 
     @Resource
+    @Lazy
     private RedisUtil redisUtil;
 
     @Test
@@ -67,7 +69,6 @@ public class GetAllAnnos {
                         String name = ((RateLimitAnno) annotation).name();
                         int num = ((RateLimitAnno) annotation).num();
                         String type = ((RateLimitAnno) annotation).type();
-                        redisUtil.set(name + type, num+"");
                     }
                 }
             }

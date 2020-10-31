@@ -1,8 +1,7 @@
 package com.lsh.demo.bootstone.dubbo.impl;
 
-import com.alibaba.dubbo.config.annotation.Service;
-import com.alibaba.dubbo.rpc.RpcContext;
 import com.lsh.demo.bootstone.dubbo.RegisterService;
+import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -22,7 +21,6 @@ import java.util.Map;
  *
  */
 @Component
-@Service
 public class RegisterServiceImpl implements RegisterService {
 
     @Override

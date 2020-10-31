@@ -16,7 +16,10 @@ spring:
   cache:
     cache-names=: mycaches
     type=: redis
-
+  dubbo:
+    registry:
+      check: false
+      timeout: 10000
 
   cloud:
     sentinel:
@@ -24,26 +27,26 @@ spring:
         port: 8719
         dashboard: localhost:8080
 
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    password: root
-#    username: root
-#    url: jdbc:mysql://localhost:3306/mydata?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
-#    connectTimeout: 350000
-#    connection-timeout: 350000
-#    type: com.zaxxer.hikari.HikariDataSource
-#    # 配置了还是3秒超时
-#    hikari:
-#      connection-timeout: 300000
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    username: root
+    url: jdbc:mysql://localhost:3306/mydata?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    connectTimeout: 350000
+    connection-timeout: 350000
+    type: com.zaxxer.hikari.HikariDataSource
+    # 配置了还是3秒超时
+    hikari:
+      connection-timeout: 300000
 
 #切换mybatis-plus
-  datasource:
-    driver-class-name: org.h2.Driver
-    schema: classpath:db/schema-h2.sql
-    data: classpath:db/data-h2.sql
-    url: jdbc:h2:mem:test
-    username: root
-    password: test
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    schema: classpath:db/schema-h2.sql
+#    data: classpath:db/data-h2.sql
+#    url: jdbc:h2:mem:test
+#    username: root
+#    password: test
 
 
 
@@ -66,19 +69,12 @@ mybatis:
   type-aliases-package: com.lsh.demo.bootstone.dao.mysql
 
 
-dubbo:
-  application:
-    name: bootstone
-  protocol:
-    name: dubbo
-    port: @dubbo.port@
-  registry:
-    check: false
-    timeout: 10000
-    address: @dubbo.address@
-  consumer:
-    check: false
-    timeout: 3000
+
+
+#    address: @dubbo.address@
+#  consumer:
+#    check: false
+#    timeout: 3000
 #  provider:
 #    timeout: 10000
 #    filter: @dubbo.provider.filter@

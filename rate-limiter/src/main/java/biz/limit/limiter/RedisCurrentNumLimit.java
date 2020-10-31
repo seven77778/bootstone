@@ -8,6 +8,7 @@ import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RPermitExpirableSemaphore;
 import org.redisson.api.RedissonClient;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -29,6 +30,7 @@ public class RedisCurrentNumLimit implements RateLimit {
     private Map<String, String> permitIds = Maps.newConcurrentMap();
 
     @Resource
+    @Lazy
     private RedissonClient redissonClient;
 
     @Override

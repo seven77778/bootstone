@@ -1,11 +1,10 @@
 package com.lsh.demo.bootstone.workorder;
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.alibaba.dubbo.rpc.RpcContext;
-import com.alibaba.dubbo.rpc.filter.ContextFilter;
 import com.lsh.demo.bootstone.dubbo.RegisterService;
+import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 
 /**
@@ -18,7 +17,7 @@ import java.io.IOException;
 @Component
 public class ProjectOrderService {
 
-    @Reference
+    @Resource
     private RegisterService registerService;
 
     public String give() throws IOException {
