@@ -66,7 +66,7 @@
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.8</version>
+            <version>3.4.14</version>
             <exclusions>
                 <!--如果你用的logback日志，该包会引起jar包冲突-->
                 <exclusion>
