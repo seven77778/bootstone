@@ -4,18 +4,12 @@
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
-    <dubbo:application name="bootstone"  />
+    <!-- executes 最大线程数 -->
 
-    <!-- 使用zookeeper注册中心暴露服务地址 -->
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" check="false" timeout="5000" />
-
-    <dubbo:protocol name="dubbo" port="28080" />
-
-    <dubbo:service interface="com.lsh.demo.bootstone.dubbo.RegisterService"
-                   ref="registerServiceImpl"
+    <dubbo:service  id="registerService"
+            interface="com.lsh.demo.bootstone.dubbo.RegisterService"
+                   ref="registerServiceImpl" retries="0" executes="100"
                    timeout="10000"
                    />
-    <bean id="registerService" class="com.lsh.demo.bootstone.dubbo.impl.RegisterServiceImpl"/>
 
 </beans>

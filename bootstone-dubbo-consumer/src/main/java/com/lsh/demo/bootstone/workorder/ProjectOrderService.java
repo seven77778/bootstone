@@ -17,7 +17,7 @@ import java.io.IOException;
 @Component
 public class ProjectOrderService {
 
-    @Resource
+    @Resource(name = "registerServiceImpl")
     private RegisterService registerService;
 
     public String give() throws IOException {
