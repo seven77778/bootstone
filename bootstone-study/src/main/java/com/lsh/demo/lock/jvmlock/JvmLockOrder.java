@@ -1,7 +1,7 @@
 package com.lsh.demo.lock.jvmlock;
 
 
-import com.lsh.demo.lock.MyBasicThreadFactory;
+import com.lsh.demo.basic.thread.threadpool.MyBasicThreadFactory;
 import com.lsh.demo.lock.lockutil.OrderLockServer;
 import com.lsh.demo.lock.lockutil.OrderService;
 import com.lsh.demo.lock.task.OrderTask;

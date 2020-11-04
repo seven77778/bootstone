@@ -58,7 +58,7 @@ public class ThreadPoolLearn {
                         new ArrayBlockingQueue<>(1024),
                         new ThreadFactoryBuilder().setNameFormat("hahah2a-demo2-pool-%d").build());
 
-        //创建一个无名子的来测试
+        //创建一个无名的来测试
         ThreadPoolExecutor threadPoolExecutor3 =
                 new ThreadPoolExecutor(1000, 99999, 1000,TimeUnit.SECONDS,
                         new LinkedBlockingDeque<>());
@@ -105,13 +105,24 @@ public class ThreadPoolLearn {
             threadPoolExecutor3.submit(() ->{
                 System.out.println(Thread.currentThread().getName());
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             });
         }
-        threadPoolExecutor.shutdown();
+        threadPoolExecutor3.shutdownNow();
+
+        /**
+         * 关闭线程池
+         * 关闭线程池有两种方式：shutdown和shutdownNow，关闭时，会遍历所有的线程，
+         * 调用它们的interrupt函数中断线程。但这两种方式对于正在执行的线程处理方式不同。
+         *
+         * shutdown()
+         * 仅停止阻塞队列中等待的线程，那些正在执行的线程就会让他们执行结束。
+         * shutdownNow()
+         * 不仅会停止阻塞队列中的线程，而且会停止正在执行的线程。
+         */
 
 
         /**

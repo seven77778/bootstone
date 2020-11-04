@@ -1,5 +1,8 @@
 package com.lsh.demo.basic.thread.threadlocal;
 
+import io.netty.util.concurrent.FastThreadLocal;
+import org.junit.Test;
+
 import java.lang.ref.WeakReference;
 
 /**
@@ -17,8 +20,11 @@ public class ThreadLocalLearn {
     private ThreadLocal<String> stringThreadLocal;
 
 
-    public static void main(String[] args) {
+    @Test
+    public void test(){
 
+        FastThreadLocal<String> fastThreadLocal = new FastThreadLocal<>();
+        fastThreadLocal.set("");
     }
 
 

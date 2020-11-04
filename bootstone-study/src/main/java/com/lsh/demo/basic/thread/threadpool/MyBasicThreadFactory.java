@@ -1,4 +1,4 @@
-package com.lsh.demo.lock;
+package com.lsh.demo.basic.thread.threadpool;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
@@ -32,7 +32,7 @@ import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
  */
 public class MyBasicThreadFactory {
 
-    private static final int CORE_POOL_SIZE = 10;
+    private static final int CORE_POOL_SIZE = 100;
     private static final int MAXIMUM_POOL_SIZE = 10000;
     private static final long KEEPALIVE_TIME = 200L;
 
@@ -40,7 +40,7 @@ public class MyBasicThreadFactory {
 
     public static ExecutorService getExecutorService() {
         ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("pool-%d").build();
-        return new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEPALIVE_TIME, TimeUnit.MILLISECONDS,
+        return new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEPALIVE_TIME, TimeUnit.SECONDS,
                 new LinkedBlockingDeque<Runnable>(1024), threadFactory, new AbortPolicy());
     }
 

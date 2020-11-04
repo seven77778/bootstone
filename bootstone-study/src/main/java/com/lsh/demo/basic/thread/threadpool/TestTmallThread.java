@@ -1,6 +1,5 @@
 package com.lsh.demo.basic.thread.threadpool;
 
-import com.lsh.demo.lock.MyBasicThreadFactory;
 import org.junit.Test;
 
 import java.util.concurrent.ExecutorService;

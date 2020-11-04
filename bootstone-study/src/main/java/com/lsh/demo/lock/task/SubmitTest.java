@@ -1,8 +1,9 @@
 package com.lsh.demo.lock.task;
 
-import com.lsh.demo.lock.MyBasicThreadFactory;
+import com.lsh.demo.basic.thread.threadpool.MyBasicThreadFactory;
 import org.junit.Test;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -22,7 +23,12 @@ public class SubmitTest {
     public void test1() throws Exception {
         ExecutorService pool = MyBasicThreadFactory.getExecutorService();
         Future<String> f = pool.submit(
-                this::get
+                new Callable<String>() {
+                    @Override
+                    public String call() throws Exception {
+                        return SubmitTest.this.get();
+                    }
+                }
         );
         System.out.println(f.get());
     }

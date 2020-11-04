@@ -1,6 +1,6 @@
 package com.lsh.demo.lock.atomic;
 
-import com.lsh.demo.lock.MyBasicThreadFactory;
+import com.lsh.demo.basic.thread.threadpool.MyBasicThreadFactory;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
