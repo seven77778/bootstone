@@ -43,6 +43,18 @@ public class RateLimiterLearn {
      * RateLimiter通过限制后面请求的等待时间，来支持一定程度的突发请求(预消费)，在使用过程中需要注意这一点，具体实现原理后面再分析。
      */
     @Test
+    public void testMaxLimit(){
+        //测试ratelimiter最大令牌数 create 多少，最大就会存储多少，记录的是下一次 可以执行的时间
+        RateLimiter rate = RateLimiter.create(6);
+        RateLimiter rate2 = RateLimiter.create(6,1,TimeUnit.SECONDS);
+        rate.setRate(1);
+        double waitTime = rate.acquire();
+
+
+    }
+
+
+    @Test
     public void test() throws Exception{
         RateLimiter limiter = RateLimiter.create(1);
         Thread.sleep(1000); // sleep1秒，创建一个令牌
