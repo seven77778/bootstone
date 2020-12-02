@@ -5,6 +5,7 @@
     <update id="batchUpdate">
         update stu
         <trim prefix="set" suffixOverrides=",">
+
             <trim prefix="name =case" suffix="end,">
                 <foreach collection="list" item="item">
                     <if test="item.name!=null">

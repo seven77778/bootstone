@@ -10,6 +10,9 @@ public interface BatchDataService {
 
     /**
      * 批量更新语句
+     *
+     * trim prefix 后面跟的是sql字段 begin_date
+     *
      */
     int batchUpdate(List<Stu> stus);
 
