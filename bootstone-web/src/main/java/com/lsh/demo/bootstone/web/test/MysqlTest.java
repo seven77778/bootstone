@@ -1,7 +1,7 @@
 package com.lsh.demo.bootstone.web.test;
 
 import com.lsh.demo.bootstone.dao.mysql.DataManager;
-import com.lsh.demo.bootstone.dao.mysql.DataService;
+import com.lsh.demo.bootstone.dao.mysql.mapper.DataService;
 import com.lsh.demo.bootstone.dao.mysql.Football;
 import com.lsh.demo.bootstone.dao.mysql.Stu;
 import com.lsh.demo.bootstone.web.BootStoneWebApplication;
@@ -28,10 +28,10 @@ import java.util.List;
  * @MapperScan("com.lsh.demo.bootstone.dao")
  *
  * 2.
- * org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.lsh.demo.bootstone.dao.mysql.DataService.selectAllStu
+ * org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.lsh.demo.bootstone.dao.mysql.mapper.DataService.selectAllStu
  *
  * 3.利用好 mybatis插件，因为多了个空格
- * <mapper namespace="com.lsh.demo.bootstone.dao.mysql.DataService">
+ * <mapper namespace="com.lsh.demo.bootstone.dao.mysql.mapper.DataService">
  *
  *     4.mysql 连不上，并不会影响项目整体启动
  */

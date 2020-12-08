@@ -1,5 +1,6 @@
 package com.lsh.demo.bootstone.dao.mysql;
 
+import com.lsh.demo.bootstone.dao.mysql.mapper.DataService;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Component;
 

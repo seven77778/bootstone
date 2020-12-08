@@ -1,6 +1,6 @@
 package com.lsh.demo.bootstone.service.impl;
 
-import com.lsh.demo.bootstone.dao.mysql.DataService;
+import com.lsh.demo.bootstone.dao.mysql.mapper.DataService;
 import com.lsh.demo.bootstone.service.CommonService;
 import com.lsh.demo.bootstone.service.util.RedisUtil;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package com.lsh.demo.bootstone.web.controller;
 
-import com.lsh.demo.bootstone.dao.mysql.DataService;
+import com.lsh.demo.bootstone.dao.mysql.mapper.DataService;
 import com.lsh.demo.bootstone.service.CommonService;
 import com.lsh.demo.bootstone.web.common.request.SaveStu;
 import org.apache.commons.lang3.StringUtils;

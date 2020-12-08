@@ -1,6 +1,6 @@
 package com.lsh.demo.bootstone.web.test;
 
-import com.lsh.demo.bootstone.dao.mysql.BatchDataService;
+import com.lsh.demo.bootstone.dao.mysql.mapper.BatchDataService;
 import com.lsh.demo.bootstone.dao.mysql.Stu;
 import com.lsh.demo.bootstone.web.BootStoneWebApplication;
 import org.assertj.core.util.Lists;

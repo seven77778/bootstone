@@ -1,11 +1,11 @@
-package com.lsh.demo.bootstone.dao.mysql;
+package com.lsh.demo.bootstone.dao.mysql.mapper;
 
+import com.lsh.demo.bootstone.dao.mysql.Stu;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+//@Repository
 public interface BatchDataService {
 
     /**
