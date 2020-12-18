@@ -21,7 +21,7 @@ public class RedisQpsLimit implements RateLimit {
     private RedisUtil redisUtil;
 
 //    @Resource
-//     CommandExecutor commandExecutor;
+//    CommandExecutor commandExecutor;
 
     @Override
     public String getType() {

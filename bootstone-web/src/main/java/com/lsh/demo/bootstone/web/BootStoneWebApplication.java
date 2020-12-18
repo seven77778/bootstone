@@ -23,4 +23,11 @@ public class BootStoneWebApplication {
     public static void main(String[] args) {
         SpringApplication.run(BootStoneWebApplication.class, args);
     }
+
+    /**
+     * @see SpringApplication#run(String...) 
+     * 1.StopWatch 计时器，记录启动时间，线程不安全
+     * 
+     * 
+     */
 }

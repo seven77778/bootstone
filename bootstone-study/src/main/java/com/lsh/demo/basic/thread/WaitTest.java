@@ -1,4 +1,4 @@
-package com.lsh.demo.basic.juc.thread;
+package com.lsh.demo.basic.thread;
 
 /**
  * Created by LSH on 2019/4/21 - 11:23.

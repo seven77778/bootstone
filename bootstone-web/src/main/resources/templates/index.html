@@ -5,43 +5,11 @@
     <!--<script type="text/javascript" src="/static/jquery-3.4.1.js"></script>-->
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 
-        <script>
-            function rest() {
-                var num;
-                var userdata = document.getElementById("input1").value;
-                console.log(userdata);
-                $.ajax({
-                    type: "get",
-                    url: "/service/rest",
-                    data: {"key":userdata},
-                    cache: false,
-                    async: false,
-                    dataType: "json",
-                    success: function (data) {
-
-                        num = parseInt(data);
-                        if (!isNaN(num) ){
-                            document.getElementById("d1").innerText = num;
-
-                            setInterval(function (num) {
-                                num =num-1;
-                                document.getElementById("d1").innerText = num;
-                            },1000);
-                        } else {
-                            document.getElementById("d1").innerText = "后端返回不是数字";
-                        }
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        document.getElementById("d1").innerText = "调用后端失败";
-                    }
-                })
-
-            };
-
+    <script>
 
     </script>
     <style>
-        div{
+        div {
             color: red;
         }
     </style>
@@ -49,9 +17,9 @@
 
 <body>
 
-<div id="d1" ></div>
-<input id = "input1">
-<button onclick="rest()">刷新倒计时</button>
+<div id="d1"></div>
+<input id="input1">
+<button onclick="rest()">主页</button>
 
 </body>
 

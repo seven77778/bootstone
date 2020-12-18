@@ -1,4 +1,4 @@
-package com.lsh.demo.basic.juc.thread;
+package com.lsh.demo.basic.thread;
 
 import org.junit.Test;
 
@@ -33,6 +33,7 @@ public class ThreadTest {
         new Thread(new Runnable() {
             @Override
             public void run() {
+
                 System.out.println("Runnable running..");
             }
 
@@ -41,7 +42,7 @@ public class ThreadTest {
             public void run() {
                 System.out.println("Thread running..");
             }
-            ;
+
         }.start();
 
         new Thread(new Runnable() {
@@ -55,5 +56,24 @@ public class ThreadTest {
                 System.out.println(22);
             }
         }).start();
+    }
+
+    /**
+     * 没有ccc的时候输出aaa
+     */
+    @Test
+    public void test2(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("aaa");
+            }
+        }){
+            @Override
+            public void run() {
+                System.out.println("ccc");
+            }
+
+        }.start();
     }
 }

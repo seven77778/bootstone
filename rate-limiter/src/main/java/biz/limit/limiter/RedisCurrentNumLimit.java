@@ -82,4 +82,11 @@ public class RedisCurrentNumLimit implements RateLimit {
         //todo
 
     }
+
+    public static void main(String[] args) {
+
+//        System.out.println(Integer.parseInt("2147483648"));
+        System.out.println(Long.parseLong("2147483648"));
+
+    }
 }

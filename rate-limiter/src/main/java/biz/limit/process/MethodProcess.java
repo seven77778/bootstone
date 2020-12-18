@@ -22,7 +22,7 @@ import java.util.Map;
 
 @Aspect
 @Component
-public class MethodProcess  implements InitializingBean {
+public class MethodProcess implements InitializingBean {
 
     @Resource
     private RedisUtil redisUtil;
@@ -43,16 +43,16 @@ public class MethodProcess  implements InitializingBean {
         List<Object> args = Arrays.asList(proceedingJoinPoint.getArgs());
         System.out.println("around：" + methodName + ",参数为：" + args);
 
-        String name=rateLimitAnno.name();
-        String type=rateLimitAnno.type();
-        int num= rateLimitAnno.num();
+        String name = rateLimitAnno.name();
+        String type = rateLimitAnno.type();
+        int num = rateLimitAnno.num();
         boolean isWait = rateLimitAnno.waitFor() == 1;
 
         System.out.println("注解的参数为 " + rateLimitAnno.type() + rateLimitAnno.name());
 
         RateLimit rateLimit = limitMap.get(rateLimitAnno.type());
 //        String numLimit = redisUtil.get(rateLimitAnno.name() + rateLimitAnno.type());
-        RateConfig config = new RateConfig(type,name,num,isWait);
+        RateConfig config = new RateConfig(type, name, num, isWait);
         rateLimit.init();
         //在切面中阻止代码继续进行，也就是限流，直接抛出异常
         rateLimit.limit(config);

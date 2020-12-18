@@ -11,9 +11,7 @@ public class RateConfig {
     private Integer id;
 
     /**
-     * qps
-     * currentNum
-     * rt
+     *
      */
     private String type;
 
@@ -30,6 +28,14 @@ public class RateConfig {
     }
 
     public RateConfig(String type, String name, Integer limit, Boolean wait) {
+        this.type = type;
+        this.name = name;
+        this.limit = limit;
+        this.wait = wait;
+    }
+
+    public RateConfig(Integer id, String type, String name, Integer limit, Boolean wait) {
+        this.id = id;
         this.type = type;
         this.name = name;
         this.limit = limit;
