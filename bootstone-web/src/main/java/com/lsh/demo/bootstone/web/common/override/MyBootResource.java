@@ -44,7 +44,7 @@ import org.springframework.core.env.StandardEnvironment;
  * 除了这些建议之外，子类还可以使用任何add&#42; ， remove或replace MutablePropertySources公开的方法，以创建所需属性源的准确排列。
  * 基本实现未注册任何属性源。
  * 请注意，任何ConfigurableEnvironment客户端都可以通过getPropertySources()访问器
- * （通常在ApplicationContextInitializergetPropertySources()进一步定制属性源。 例如：
+ * （通常在ApplicationContextInitializer#getPropertySources()进一步定制属性源。 例如：
  * 	   ConfigurableEnvironment env = new StandardEnvironment();
  * 	   env.getPropertySources().addLast(new PropertySourceX(...));
  *

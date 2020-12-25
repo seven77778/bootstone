@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lsh.demo.bootstone.dao.mysql.mapper.ComplexQuery2">
+
+
+    <select id="selectSellBestRoomType">
+SELECT
+	h.hotel_id,
+	h.hotel_name,
+	aaa.maxnum,
+	ccc.totalnum,
+	ddd.room_type,
+	type.type_name
+FROM
+	hotel h
+LEFT JOIN (
+	SELECT
+		MAX(bbb.num) AS maxnum,
+		bbb.hotel_id
+	FROM
+		(
+			SELECT
+				count(room_type) AS num,
+				hotel_id,
+				room_type
+			FROM
+				orders
+			GROUP BY
+				hotel_id,
+				room_type
+		) bbb
+	GROUP BY
+		bbb.hotel_id
+) aaa ON aaa.hotel_id = h.hotel_id
+LEFT JOIN (
+	SELECT
+		count(hotel_id) AS totalnum,
+		hotel_id
+	FROM
+		orders
+	GROUP BY
+		hotel_id
+) ccc ON ccc.hotel_id = h.hotel_id
+LEFT JOIN (
+	SELECT
+		count(room_type) AS num,
+		hotel_id,
+		room_type
+	FROM
+		orders
+	GROUP BY
+		hotel_id,
+		room_type
+) ddd ON ddd.hotel_id = h.hotel_id
+LEFT JOIN room_type type ON type.room_type = ddd.room_type
+WHERE
+	ddd.num = aaa.maxnum
+
+
+    </select>
+
+
+</mapper>
