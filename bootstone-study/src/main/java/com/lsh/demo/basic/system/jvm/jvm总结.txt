@@ -11,7 +11,7 @@
 
 触发Full GC的条件 ：
 
-①显式调用System.gc方法(建议JVM触发)，通过 -XX:+ DisableExplicitGC 禁止
+①显式调用System.gc方法，通过 -XX:+ DisableExplicitGC 禁止
 ②方法区空间不足(JDK8及之后不会有这种情况了，详见下文)
 ③老年代空间不足，引起Full GC。这种情况比较复杂，有以下几种：
 3.1 大对象直接进入老年代引起，由-XX:PretenureSizeThreshold参数定义

@@ -18,10 +18,6 @@ import java.util.List;
 public class ArrayAndLinkedList {
 
 
-
-
-
-
     @Test
     public void test(){
         /**
@@ -56,12 +52,6 @@ public class ArrayAndLinkedList {
 
 
     }
-
-
-
-
-
-
 
 
 

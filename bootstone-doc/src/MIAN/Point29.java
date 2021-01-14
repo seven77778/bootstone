@@ -8,16 +8,40 @@ import java.util.Objects;
 
 /**
  * Created by lsh on 2019/2/12.
- *
+ * <p>
  * 29个问题
- *
- *
- *
- *
  */
 
 
 public class Point29 {
+
+    private String name;
+    private int age;
+
+    public Point29() {
+        System.out.println("无参构造");
+    }
+
+    public static synchronized String staticAndSyncA() {
+        return "static and synchronized A";
+    }
+
+    public static synchronized String staticAndSyncB() {
+        return "static and synchronized B";
+    }
+
+    public synchronized String onlySyncA() {
+        return "only synchronized A";
+    }
+
+    public synchronized String onlySyncB() {
+        return "only synchronized B";
+    }
+
+
+    public static String onlyStatic() {
+        return "only static";
+    }
 
     /**
      * ==：比较的是存放在栈中对象的堆地址，比较两个变量中存储的对象地址是否相同， 即是否是同一个对象
@@ -28,7 +52,7 @@ public class Point29 {
      * 另外==的比较效率比equals高
      */
     @Test
-    public void test1(){
+    public void test1() {
         Object o1 = new Object();
         Object o2 = new Object();
         System.out.println(o1 == o2);
@@ -37,32 +61,32 @@ public class Point29 {
     }
 
     /**
-     *hashcode 和 equals 区别和联系
+     * hashcode 和 equals 区别和联系
      */
     @Test
-    public void test2(){
+    public void test2() {
 
     }
 
     /**
      * -ArrayList内部采用动态数组的方式实现了List的数据结构
      * -更适合于查询操作
-     *
+     * <p>
      * -解：arraylist是一个可变长数组，插入数据时，先将原始数据复制到一个新的数组（留出了要插入元素的位置），
      * 将要插入的元素赋值即可
-     *
+     * <p>
      * -LinkedList内部采用了 循环双向链表 数据结构实现List的数据结构
      * -既然是双向链表，那么它的顺序访问会非常高效，而随机访问效率比较低
      * -更适合于增删改操作
-     *
+     * <p>
      * -linkedlist插入元素，只需要改变 链表中对应两个节点之间的引用关系，
      * 而新数据被封装成一个新的节点，之前的两个节点指向这个新节点即可
-     *
-     *
+     * <p>
+     * <p>
      * todo
      */
     @Test
-    public void test3(){
+    public void test3() {
         List<Integer> arrList = new ArrayList<>(16);
         LinkedList<Integer> linList = new LinkedList<>();
         linList.addFirst(1);
@@ -72,7 +96,7 @@ public class Point29 {
      * 转发（forward）和重定向（redirect）
      */
     @Test
-    public void test4(){
+    public void test4() {
 
     }
 }

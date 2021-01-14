@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class JvmLockOrder {
 
     public static void main(String[] args) {
+
         //手动创建线程池
         ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -41,7 +42,7 @@ public class JvmLockOrder {
      * 手动创建线程池
      * coresize为5时，多个线程复用，为10时，名字都不同
      * 类锁和对象锁
-     * */
+     */
     @Test
     public void test() throws Exception {
         final ExecutorService executorService = MyBasicThreadFactory.getExecutorService();

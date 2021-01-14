@@ -10,10 +10,7 @@ import org.junit.Test;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by lsh on 2020-05-13.
@@ -147,5 +144,13 @@ public class UtilsCollections {
         List<String> linesWriter = new ArrayList<>();
         FileUtils.writeLines(new File(""),linesWriter);
 
+    }
+
+    /**
+     *
+     * @param list
+     */
+    public static void reverseList(List list){
+        Collections.reverse(list);
     }
 }

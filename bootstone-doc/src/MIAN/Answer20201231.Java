@@ -1,0 +1,63 @@
+/**
+ *1.
+ *
+ */
+public class Answer20201231{
+
+    /**
+    ① 说下spring事务，@Transition 这个注解在哪些情况下不会生效
+     1.@Transactional 必须在public方法上,在private，protect等都会失效
+     2.默认情况下，Spring会对unchecked异常进行事务回滚
+     unchecked 就是代码中不能被检测到的，比如空指针
+     [将派生于Error或者RuntimeException的异常称为unchecked异常，所有其他的异常成为checked异常]
+
+     --抛出checked异常，也不生效，例如 IOException
+     如果check异常也想回滚，@Transactional(rollbackFor=Exception.class)
+     3.数据库要支持事务，比如mysql的innodb
+     4.如果是springboot项目，是否加了事务的注解 @EnableTransactionManagement
+     5.其他还有异常是不是被catch住了
+
+     ② Redis的淘汰策略
+
+     Redis 3.0 支持的6大策略
+
+     noeviction: 不删除策略, 达到最大内存限制时, 如果需要更多内存, 直接返回错误信息。 大多数写命令都会导致占用更多的内存(有极少数会例外, 如 DEL )。
+     allkeys-lru: 所有key通用; 优先删除最近最少使用(less recently used ,LRU) 的 key。
+     volatile-lru: 只限于设置了 expire 的部分; 优先删除最近最少使用(less recently used ,LRU) 的 key。
+     allkeys-random: 所有key通用; 随机删除一部分 key。
+     volatile-random: 只限于设置了 expire 的部分; 随机删除一部分 key。
+     volatile-ttl: 只限于设置了 expire 的部分; 优先删除剩余时间(time to live,TTL) 短的key。
+
+     过期策略
+
+     set key time,也并不是过期就会删除
+     只是在你用到这个key的时候，查一下有没有过期
+
+     定期删除+惰性删除 todo
+
+     ③ Synchronized 基本原理
+      1.保证 原子性 、 可见性、有序性，所以也是解决并发最常用的
+     synchronized 可以把任意一个非null对象 加锁
+
+     ④ synchronized 基本原理+如何实现可重入的 + Synchronized和ReentrantLock的区别
+
+
+
+     ⑤JVM在什么情况下会发生 YoungGC 和FullGC
+     younggc 比如新生代比较小
+
+
+     ⑥什么情况会造成内存泄漏
+     对象可达，而且对象无用处 ，比如数据库每次请求都创建一个连接，然后还不去显示的关闭连接
+     内部类持有外部类，改变hash值，放入set的对象将不能为找到,而set的contains方法是通过的hash值
+     threadLocal
+
+     */
+
+    public void test()throws Exception{
+        String s ="1";
+        String ll=s.trim();
+
+    }
+
+}

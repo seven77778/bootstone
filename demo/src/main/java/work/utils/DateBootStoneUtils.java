@@ -7,15 +7,17 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.TimeZone;
 
 /**
  * Created by lsh on 2019-04-23.
  *
  * 往数据库写time，加'' string
  */
-public class DateUtils {
+public class DateBootStoneUtils {
 
 
     /**
@@ -159,9 +161,10 @@ public class DateUtils {
     }
 
     public static void main(String[] args) {
-        DateTimeFormatter df=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String stime = df.format(LocalDateTime.now());
-        System.out.println(stime);
+        DateTimeFormatter df=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String stime = df.format(LocalDateTime.now())+" 00:00:00";
+        Date date = new Date(stime);
+        System.out.println(date);
     }
 
     /**
@@ -183,6 +186,33 @@ public class DateUtils {
     }
 
 
+    /**
+     * 获取当天时间  零点零分零秒 -- 不推荐使用
+     * 获取的时间总不是 2021-01-05T00:00:00.000+0800
+     * 总是多了一些微秒 纳秒
+     */
+    @Deprecated
+    public static Date getCurrentDateTime(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar.getTime();
+    }
+
+
+    /**
+     * 精准获取当天的零点零分零秒，无残留
+     * 推荐
+     * @return
+     */
+    public static Date getTodayZero(){
+        long current = System.currentTimeMillis();
+        long zero = current/(1000*3600*24)*(1000*3600*24) - TimeZone.getDefault().getRawOffset();
+        System.out.println(zero);
+        return new Date(zero);
+    }
 
 
 }

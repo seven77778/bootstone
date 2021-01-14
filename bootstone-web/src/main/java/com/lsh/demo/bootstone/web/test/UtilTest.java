@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import work.utils.ListSortUtil;
 import work.utils.vo.UtilDateVo;
+import work.utilscollections.UtilsCollections;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,6 +20,9 @@ import java.util.List;
 @SpringBootTest(classes={BootStoneWebApplication.class})// 指定启动类
 public class UtilTest {
 
+    /**
+     * list排序
+     */
     @Test
     public void test(){
         List<UtilDateVo> list = Lists.newArrayList();
@@ -32,6 +36,18 @@ public class UtilTest {
         list.add(u4);
         System.out.println(list);
         ListSortUtil.sortListBySort(list);
+        System.out.println(list);
+    }
+
+    /**
+     * [1, 2, 3, 6]  反转list
+     * [6, 3, 2, 1]
+     */
+    @Test
+    public void test1(){
+        List<Integer> list = Lists.newArrayList(1,2,3,6);
+        System.out.println(list);
+        UtilsCollections.reverseList(list);
         System.out.println(list);
     }
 
