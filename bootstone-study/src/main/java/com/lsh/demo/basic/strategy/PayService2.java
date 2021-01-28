@@ -1,8 +1,10 @@
 package com.lsh.demo.basic.strategy;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,19 +26,20 @@ import java.util.Map;
 
 
 @Component
-public class PayService {
+public class PayService2 {
 
+    @Autowired
+    private static Map<String, IDiscount> map = new HashMap<>();
 
-    //Caused by: java.util.ConcurrentModificationException 目标map加上this
-    //map遍历的时候修改抛出ConcurrentModificationException
-    private final Map<String, IDiscount> map = new HashMap<>();
-
-    public PayService(Map<String, IDiscount> map) {
-        map.forEach((x, y) -> this.map.put(y.getType(), y));
-        System.out.println(map);
+    public PayService2(List<IDiscount> list) {
+        System.out.println(list);
+        list.forEach(iDiscount -> map.put(iDiscount.getType(), iDiscount));
     }
 
-    //
+    //存在无参构造，还是优先执行的 fixme
+    public PayService2() {
+    }
+
     public double payDiscount(String type, double cost) {
         System.out.println(map.size());
         return map.get(type).discount(cost);

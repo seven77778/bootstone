@@ -1,7 +1,7 @@
 package com.lsh.demo.bootstone.web.controller;
 
-import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import com.lsh.demo.basic.strategy.PayService;
+import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,4 +37,7 @@ public class RegisterController {
        return "您是" +type + "会员，享受的价格为 " + result;
     }
 
+    public static void main(String[] args) {
+        System.out.println((float) 61/10);
+    }
 }

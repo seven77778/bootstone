@@ -2,6 +2,7 @@ package work.utils;
 
 import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -29,6 +30,19 @@ public class DateBootStoneUtils {
         String stime = df.format(LocalDateTime.now());
         System.out.println(stime);
         return stime;
+    }
+
+    /**
+     * 获取当前时间的yyyy-MM-dd HH:mm:ss格式，
+     * 以及减去一小时的 日期字符串
+     */
+    @Test
+    public void  tetsts(){
+        DateTimeFormatter df=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String stime = df.format(LocalDateTime.now());
+        System.out.println(stime);
+        String end = df.format(LocalDateTime.now().minusHours(1));
+        System.out.println(end);
     }
 
 
@@ -212,6 +226,17 @@ public class DateBootStoneUtils {
         long zero = current/(1000*3600*24)*(1000*3600*24) - TimeZone.getDefault().getRawOffset();
         System.out.println(zero);
         return new Date(zero);
+    }
+    
+    @Test
+    public void testaa(){
+        LocalDateTime endTime = LocalDateTime.now();
+//        LocalDateTime startTime= endTime.minusHours(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:MM:ss");
+
+//        String res = startTime.format(formatter);
+        String res2 = endTime.format(formatter);
+        System.out.println(res2);
     }
 
 

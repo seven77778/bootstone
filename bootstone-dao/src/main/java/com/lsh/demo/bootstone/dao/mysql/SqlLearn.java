@@ -19,6 +19,9 @@ package com.lsh.demo.bootstone.dao.mysql;
  * 6.生产环境订正数据一定要提前备份数据库！！！ todo and important
  *
  * 7.查询出来两列结果需要对比时，可以用case when
+ *
+ * 8.已过期的时间条件 查询大于当天   查询大于今天
+ * and end_date>=CURDATE() ，查询结束日期大于今天的
  */
 public class SqlLearn {
 
