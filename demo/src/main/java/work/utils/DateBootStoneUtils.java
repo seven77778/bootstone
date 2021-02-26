@@ -5,9 +5,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -122,6 +124,28 @@ public class DateBootStoneUtils {
         return result;
 
     }
+
+    /**
+     * 获取两个日期之间 相隔的小时数
+     * yyyy-MM-dd HH:mm:ss 格式
+     *
+     * System.out.println("总相差的天数:" + startDate.until(endDate, ChronoUnit.DAYS));
+     * System.out.println("总相差的月数:" + startDate.until(endDate, ChronoUnit.MONTHS));
+     * System.out.println("总相差的年数:" + startDate.until(endDate, ChronoUnit.YEARS));
+     */
+    public static Integer countDays(String stratDate,String endDate){
+        Integer result =0;
+        try {
+            LocalDate begin = LocalDate.parse(stratDate.trim(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            LocalDate end = LocalDate.parse(endDate.trim(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            result = (int) begin.until(end, ChronoUnit.DAYS);
+        }catch (Exception e){
+            BootStoneLog.bootStone.error("diffHours error",e);
+        }
+        return result;
+    }
+
+
 
     /**
      * 减一个小时

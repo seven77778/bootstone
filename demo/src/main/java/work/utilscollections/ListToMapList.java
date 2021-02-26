@@ -9,6 +9,10 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * 管道的功能包括：Filter（过滤）、Map(映射)、sort(排序）等
+ */
+
 public class ListToMapList {
 
 
