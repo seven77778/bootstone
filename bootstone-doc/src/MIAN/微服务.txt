@@ -1,0 +1,13 @@
+1.前端调用后端报错404，不一定是url路径错误，可能是cro层抛了异常，并且没有全局的异常处理来兜底，
+404是找不到异常页面
+2.更改微服务，内部接口调用换成dubbo时，属性丢失 fixme
+-- sql的问题，resultMap改成resultBean
+
+3.a应用对外提供的应用，调用B系统的两个dubbo
+A接口耗时4000ms，  StopWatch stopWatch = new StopWatch();
+                     stopWatch.start();
+        来进行排查、 fixme
+
+
+     B系统没有慢sql，业务基本就是查询sql，beanutil进行copy
+     怎么看dubbo整体的耗时，不太像网络通信造成的，继续排查

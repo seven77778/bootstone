@@ -5,11 +5,13 @@ import com.lsh.demo.bootstone.web.BootStoneWebApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
 import work.utils.ListSortUtil;
 import work.utils.vo.UtilDateVo;
 import work.utilscollections.UtilsCollections;
 
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -51,5 +53,11 @@ public class UtilTest {
         System.out.println(list);
     }
 
+    @Test
+    public void testPath()throws Exception{
+        ClassPathResource classPathResource = new ClassPathResource("/static/testabc.txt");
+        InputStream inputStream = classPathResource.getInputStream();
+        System.out.println(inputStream);
+    }
 
 }

@@ -1,8 +1,10 @@
 package work.utilscollections;
 
 import org.junit.Test;
+import org.springframework.util.CollectionUtils;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -37,6 +39,7 @@ public class LambdaFinalUtil {
 
     /**
      * 利用 map + return + collectors.toList
+     * map 是映射，转换
      */
     @Test
     public void testGetListByReturn() {
@@ -135,6 +138,21 @@ public class LambdaFinalUtil {
         String names = students.stream()
                 .map(Student::getName).collect(Collectors.joining("--","[","]"));
         System.out.println(names);
+    }
+
+    /**
+     * 手动写一个map转换
+     */
+    @Test
+    public void testmyself(){
+        List<Student> students = new ArrayList<>(3);
+        students.add(new Student("路飞", 22, 175));
+        students.add(new Student("红发", 22, 180));
+        students.add(new Student("白胡子", 50, 185));
+
+        Map<Integer, Object> res = students.stream().collect(Collectors.toMap(Student::getAge, Function.identity(),(x,y)->x));
+        System.out.println(res);
+        System.out.println(CollectionUtils.isEmpty(res));
     }
 
 }

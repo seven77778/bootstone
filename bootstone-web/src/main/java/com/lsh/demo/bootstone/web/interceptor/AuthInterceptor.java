@@ -30,6 +30,10 @@ import java.io.PrintWriter;
  * Class1.isAssignableFrom (Class2)
  * 调用者和参数都是   java.lang.Class   类型
  */
+
+/**
+ * 登录拦截、或是权限校验、或是防重复提交、或是根据业务像12306去校验购票时间
+ */
 public class AuthInterceptor implements HandlerInterceptor {
 
     @Override
@@ -67,6 +71,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 
     }
 
+    /**
+     * 抛出异常，会去寻找/error 页面
+     * @param request
+     * @param response
+     * @param handler
+     * @param modelAndView
+     * @throws Exception
+     */
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         BootStoneLog.bootStone.info("this is postHandle");

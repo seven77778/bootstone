@@ -2,8 +2,11 @@ package com.lsh.demo.bootstone.web.controller;
 
 import com.lsh.demo.bootstone.dao.mysql.mapper.DataService;
 import com.lsh.demo.bootstone.service.CommonService;
+import com.lsh.demo.bootstone.web.common.request.HttpUafImpl;
+import com.lsh.demo.bootstone.web.common.request.HttpUafImplConfig;
 import com.lsh.demo.bootstone.web.common.request.SaveStu;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,11 +25,45 @@ public class ServiceController {
     @Resource
     private CommonService commonService;
 
+    @Resource
+    private HttpUafImplConfig httpUafImplConfig;
 
+    @Resource
+    private HttpUafImpl httpUaf;
 
-    @GetMapping("")
+    /**
+     * httpUaf 也可以，是因为@bean引入过了
+     */
+    @RequestMapping("/testbean")
+    public String testBean(){
+        HttpUafImpl rs = httpUafImplConfig.getBean();
+        return rs.getName() +"--" + httpUaf.getName();
+    }
+
+    /**
+     * 测试 不加 @compent 引入bean 直接报错
+     */
+    @RequestMapping("/testnobean")
+    public String testNoBean(){
+        return  httpUaf.getName();
+    }
+    /**
+     * 404不全是url路径不对，内部报错，寻error页无果
+     * @return
+     */
+    @GetMapping("404")
     public String getDynamicData(){
+        BeanUtils.copyProperties(null,null);
+        return null;
+    }
 
+    /**
+     * 前端用get方式调用post，会报405
+     * @return
+     */
+    @PostMapping("404post")
+    public String getDynamicDatap(){
+        BeanUtils.copyProperties(null,null);
         return null;
     }
 
@@ -50,6 +87,8 @@ public class ServiceController {
     public String getRunTime(){
         return commonService.invokeSql2("");
     }
+
+
     private SaveStu saveStu;
 
     @PostMapping("savedata")
@@ -63,6 +102,10 @@ public class ServiceController {
         }
     }
 
+    /**
+     * 405 - 前端用get来请求post接口
+     * @return
+     */
     @PostMapping("getdata")
     public SaveStu getData(){
         return saveStu;

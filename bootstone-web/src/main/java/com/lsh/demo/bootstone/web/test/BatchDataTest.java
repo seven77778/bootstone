@@ -25,7 +25,6 @@ public class BatchDataTest {
     public void batchUpdate() {
         List<Stu> lists = new ArrayList<Stu>() {
             private static final long serialVersionUID = 385437546496640496L;
-
             {
                 add(new Stu("aaaa", "9991", "地址1", "1"));
                 add(new Stu("bbbb", "9992", "地址2", "2"));

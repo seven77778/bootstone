@@ -33,7 +33,7 @@ public class CommonServiceImpl implements CommonService {
             }
             return redisUtil.getKeyExpire(key, TimeUnit.SECONDS) + "";
         }catch (Exception e){
-            return "sdsadsadasda";
+            return "exception error";
         }
 
     }

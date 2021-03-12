@@ -22,7 +22,24 @@ package com.lsh.demo.bootstone.dao.mysql;
  *
  * 8.已过期的时间条件 查询大于当天   查询大于今天
  * and end_date>=CURDATE() ，查询结束日期大于今天的
+ *
+ * 9.TRUNCATE和ROUND 的区别，round 四舍五入，TRUNCATE 直接截取】
+ *
+ * 10.查询百分比，前后相除的时候，一般都有sum，count，这样才是数字
+ * SELECT round(sum(CASE when type = '0' then 1 ELSE 0 END)/
+ * count(*) *100  ,2)  from stu where  status ='优秀' ;
+ * *100是计算出来的是小数，算成百分比
+ *
+ * 11.拼接 CONCAT
+ * SELECT CONCAT(round(sum(CASE when id=1 then age ELSE 0 end )/ sum(age) *100  ,2),'%')  from stu
+ *
+ * 12.当年第一天
+ * concat(year(now()),'-01-01')
+ *
+ * 13.
+ *
  */
+
 public class SqlLearn {
 
 

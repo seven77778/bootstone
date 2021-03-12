@@ -9,4 +9,8 @@
     <dubbo:reference id="registerServiceBean" interface="com.lsh.demo.bootstone.dubbo.RegisterService"
     check="false" retries="0" timeout="10000"/>
 
+    <!--<dubbo:reference id="xxx"-->
+                     <!--interface="com.xxx"-->
+                     <!--check="false" retries="0" version="1.0" timeout="5000"/>-->
+
 </beans>
