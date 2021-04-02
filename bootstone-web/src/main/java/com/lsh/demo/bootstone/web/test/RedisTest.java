@@ -11,6 +11,7 @@ import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import work.utils.RedisFinalUtil;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +23,27 @@ public class RedisTest {
 
     @Resource
     private RedisUtil redisUtil;
+
+    @Resource
+    private RedisFinalUtil redisFinalUtil;
+
+    @Test
+    public void testBasic() {
+        String str = redisFinalUtil.getStringKey("key");
+        System.out.println(str);
+    }
+
+    /**
+     * 2.3.5切换看似成功，取值还是0库，2.0.6 可以切换成功，2.1.3成功
+     * 看似切换成功，只是redisTemplate中看db是9，但是取值还是0
+     */
+    @Test
+    public void testDB() {
+        String str = redisFinalUtil.getDB("key",9);
+        String str2 = redisFinalUtil.getDB("key",9);
+        String str4 = redisFinalUtil.getDB("key",9);
+        System.out.println(str);
+    }
 
     @Test
     public void testRedisInvokeRedis() {
@@ -45,7 +67,7 @@ public class RedisTest {
 
     @Test
     public void testRedisGet() {
-        String res = redisUtil.get("hh");
+        String res = redisUtil.get("key");
         System.out.println(res);
     }
 

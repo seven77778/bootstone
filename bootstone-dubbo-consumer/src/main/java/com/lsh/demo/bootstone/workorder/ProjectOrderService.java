@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by lsh on 2019/2/13.
@@ -20,9 +21,9 @@ public class ProjectOrderService {
     @Resource(name = "registerServiceImpl")
     private RegisterService registerService;
 
+    private AtomicInteger atomicInteger;
+
     public String give() throws IOException {
-
-
         /**
          * RpcContext 只能消费者第一次接收到能拿到值
          * @see ContextFilter
@@ -35,7 +36,10 @@ public class ProjectOrderService {
         String res2 = registerService.register("aaa", 12);
         System.out.println("请求返回1-" + res2);
         return "11";
+    }
 
+    public String testDubbo(){
+        return "dubbo";
     }
 
 

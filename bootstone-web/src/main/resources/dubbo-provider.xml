@@ -8,7 +8,7 @@
 
     <dubbo:service  id="registerService"
             interface="com.lsh.demo.bootstone.dubbo.RegisterService"
-                   ref="registerServiceImpl" retries="0" executes="100"
+                   ref="registerServiceImpl" retries="0" executes="1"
                    timeout="10000"
                    />
 

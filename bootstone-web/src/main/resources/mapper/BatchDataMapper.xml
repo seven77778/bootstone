@@ -83,5 +83,21 @@
 
     </select>
 
+    <select id="selectMap" resultType="java.util.Map">
+SELECT count(age) ,source from stu
+GROUP BY source
+
+    </select>
+
+    <select id="selectMapList" resultType="java.util.Map">
+SELECT count(age) ,source from stu
+where source in
+        <foreach item="id" collection="ids" separator="," open="(" close=")" index="">
+            #{id,jdbcType=VARCHAR}
+        </foreach>
+GROUP BY source
+
+    </select>
+
 
 </mapper>

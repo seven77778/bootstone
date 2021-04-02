@@ -16,7 +16,8 @@ import org.springframework.context.annotation.ImportResource;
 @ComponentScan(basePackages = {"com.lsh.demo.basic","com.lsh.demo.bootstone","com.lsh.demo.spring","xml",
         "com.bootstone.spring.ioc.iocdemo1","com.lsh.demo.bootstone.service","com.lsh.demo.bootstone",
 "com.lsh.demo.bootstone.dao.mysql","sentinel","spring20200603","biz.limit",
-        "com.lsh.demo.annolearn.lazy","baisc.redission","com.bootstone.spring","com.lsh.demo.bootstone.dubbo.filter"})
+        "com.lsh.demo.annolearn.lazy","work.utils",
+        "baisc.redission","com.bootstone.spring","com.lsh.demo.bootstone.dubbo.filter"})
 @MapperScan("com.lsh.demo.bootstone.dao")
 @EnableCaching
 @ImportResource(value = {"classpath:dubbo-provider.xml","classpath:dubbo-consumer.xml","classpath:bean.xml"})

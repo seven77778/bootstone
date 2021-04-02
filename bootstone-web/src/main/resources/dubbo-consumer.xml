@@ -7,7 +7,10 @@
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
     <dubbo:reference id="registerServiceBean" interface="com.lsh.demo.bootstone.dubbo.RegisterService"
-    check="false" retries="0" timeout="10000"/>
+    check="false" retries="0" timeout="10000" />
+
+    <dubbo:reference id="dubboService" interface="com.lsh.scm.dubbo.MyDubboService"
+                     check="false" retries="0" timeout="10000" />
 
     <!--<dubbo:reference id="xxx"-->
                      <!--interface="com.xxx"-->

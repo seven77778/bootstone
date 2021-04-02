@@ -23,6 +23,8 @@ import java.util.stream.Stream;
  * <p>
  * reduce 操作可以实现从一组值中生成一个值。在上述例子中用到的 count 、 min 和 max 方 法，
  * 因为常用而被纳入标准库中。事实上，这些方法都是 reduce 操作。及早求值。
+ *
+ * mapToInt
  */
 public class LambdaFinalUtil {
     List<Money> list = Arrays.asList(
@@ -36,6 +38,22 @@ public class LambdaFinalUtil {
         new Student("红发", 40, 180),
         new Student("aaa", 333, 180),
         new Student("白胡子", 50, 185));
+
+    /**
+     * 找出list中年龄最小的
+     */
+    @Test
+    public void testMapToInt(){
+        int res = students.stream().mapToInt(Student::getAge).min().getAsInt();
+        System.out.println(res);
+
+        //正确姿势
+        OptionalInt optionalInt = students.stream().mapToInt(Student::getAge).min();
+        if(optionalInt.isPresent()){
+            System.out.println(optionalInt.getAsInt());
+        }
+    }
+
 
     /**
      * 利用 map + return + collectors.toList
@@ -70,6 +88,9 @@ public class LambdaFinalUtil {
     }
 
 
+    /**
+     * list中找出最大或最小，同mapToInt
+     */
     @Test
     public void testMaxMin() {
         List<Student> students = new ArrayList<>(3);
@@ -91,12 +112,7 @@ public class LambdaFinalUtil {
 
     @Test
     public void testCount() {
-
-
-
         long count = students.stream().filter(s1 -> s1.getAge() < 45).count();
-
-
         System.out.println("年龄小于45岁的人数是：" + count);
     }
 

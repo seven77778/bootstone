@@ -4,6 +4,7 @@ import com.lsh.demo.bootstone.dao.mysql.Stu;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 //@Repository
 public interface BatchDataService {
@@ -45,6 +46,12 @@ public interface BatchDataService {
      * 查询出来的两列结果，进行对比是否一致，可以使用case when
      */
     List<Stu> selectNotSame();
+
+    /**
+     * 返回数据是一个map的
+     */
+    List<Map> selectMap();
+    List<Map> selectMapList(@Param("ids") List<String> ids);
 
 
 }

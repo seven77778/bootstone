@@ -12,7 +12,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {BootStoneWebApplication.class})// 指定启动类
@@ -24,7 +26,6 @@ public class BatchDataTest {
     @Test
     public void batchUpdate() {
         List<Stu> lists = new ArrayList<Stu>() {
-            private static final long serialVersionUID = 385437546496640496L;
             {
                 add(new Stu("aaaa", "9991", "地址1", "1"));
                 add(new Stu("bbbb", "9992", "地址2", "2"));
@@ -35,6 +36,19 @@ public class BatchDataTest {
         System.out.println(result);
     }
 
+
+    @Test
+    public void testQueryMap(){
+        List<Map> rs = batchDataService.selectMap();
+        System.out.println(rs);
+    }
+
+
+    @Test
+    public void testQueryMapList(){
+        List<Map> rs = batchDataService.selectMapList(Arrays.asList("1","2","3"));
+        System.out.println(rs);
+    }
 
     @Test
     public void batchSelect() {

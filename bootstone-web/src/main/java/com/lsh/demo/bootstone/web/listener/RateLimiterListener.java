@@ -15,4 +15,9 @@ public class RateLimiterListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("contextInitialized");
     }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+
+    }
 }

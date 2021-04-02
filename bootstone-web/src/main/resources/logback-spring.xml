@@ -12,7 +12,7 @@
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <!--此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>INFO</level>
+            <level>DEBUG</level>
         </filter>
         <encoder>
             <!--<Pattern>${CONSOLE_LOG_PATTERN}</Pattern>-->
@@ -25,7 +25,7 @@
 
     <!-- mysql打印语句 -->
     <logger name="com.lsh.demo.bootstone.dao.mysql" level="INFO" />
-
+    <logger name="com.alibaba.dubbo" level="DEBUG"/>
     <!--输出到文件-->
     <!-- RollingFileAppender：滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 -->
     <appender name="bootStoneAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">

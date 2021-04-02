@@ -13,7 +13,7 @@ public class AtomicReferenceTest {
     private AtomicReference<Integer> reference = new AtomicReference<>();
 
     /**
-     * test AtomicReference
+     * route AtomicReference
      * */
     @Test
     public void test(){
@@ -30,7 +30,7 @@ public class AtomicReferenceTest {
         }
     }
     /**
-     * test lock()
+     * route lock()
      */
     @Test
     public void test2(){

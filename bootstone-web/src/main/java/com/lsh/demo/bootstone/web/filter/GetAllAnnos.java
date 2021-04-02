@@ -25,7 +25,7 @@ import java.util.jar.JarFile;
 
 
 /**
- * 读取所有类的注解，本身是不可取的，这里只是为了测试
+ * 读取所有类的注解，这里只是为了测试
  */
 @Component
 public class GetAllAnnos {
