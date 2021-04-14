@@ -1,5 +1,6 @@
 package com.lsh.demo.bootstone.web.point;
 
+import com.lsh.demo.bootstone.service.vo.RequsetVO;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -85,10 +86,19 @@ public class PointcutTest {
         System.out.println("after" + baseResponse);
     }
 
+    /**
+     * 怎么拿到入参，病修改入参的属性 todo
+     * @param joinPoint
+     */
     @Before("point4()")
     public void before(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         List<Object> args = Arrays.asList(joinPoint.getArgs());
+        args.forEach(x->{
+            if(x instanceof RequsetVO){
+                ((RequsetVO) x).setName("在before中修改的名字");
+            }
+        });
         System.out.println("before " + args);
     }
 

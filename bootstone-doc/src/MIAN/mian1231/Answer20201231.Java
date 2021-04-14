@@ -15,7 +15,7 @@ public class Answer20201231{
      如果check异常也想回滚，@Transactional(rollbackFor=Exception.class)
      3.数据库要支持事务，比如mysql的innodb
      4.如果是springboot项目，是否加了事务的注解 @EnableTransactionManagement
-     5.其他还有异常是不是被catch住了
+     5.其他还有异常是不是被catch住了，异常被捕捉，没有抛出新的异常
 
      ② Redis的淘汰策略
 

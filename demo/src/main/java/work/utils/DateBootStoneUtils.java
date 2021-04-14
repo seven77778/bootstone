@@ -140,7 +140,7 @@ public class DateBootStoneUtils {
             LocalDate end = LocalDate.parse(endDate.trim(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             result = (int) begin.until(end, ChronoUnit.DAYS);
         }catch (Exception e){
-            BootStoneLog.bootStone.error("diffHours error",e);
+            BootStoneLog.bootStone.error("countDays error",e);
         }
         return result;
     }

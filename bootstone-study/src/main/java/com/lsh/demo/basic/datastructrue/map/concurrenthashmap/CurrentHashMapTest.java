@@ -10,6 +10,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by lsh on 2018/11/14 17:54.
  *
  * @good first，load有list，exception，collection，reader
+ *
+ * @see ConcurrentHashMap#put(java.lang.Object, java.lang.Object)
+ *
  * <p>
  * 源码解读
  * key 和 value 均不能为null
@@ -68,5 +71,30 @@ public class CurrentHashMapTest {
         Map<String, String> concurrentMap = new ConcurrentHashMap<>();
         concurrentMap.put("1","2");
         concurrentMap.get("1");
+    }
+
+    /**
+     * 只有key不存在的时候，才能put成功
+     * put成功，返回null，put失败返回已存在的value
+     */
+    @Test
+    public void testPutIfAbsent(){
+        Map map = new ConcurrentHashMap();
+        map.put("1","2");
+        Object rs = map.putIfAbsent("222", 3);
+        Object rs2 = map.putIfAbsent("1", 333);
+        System.out.println(rs2);
+        System.out.println(rs);
+        System.out.println(map);
+    }
+
+    public static void main(String[] args) {
+        Map map = new ConcurrentHashMap();
+        map.put("1","2");
+        System.out.println(map);
+
+        Object rs = map.putIfAbsent("222", 3);
+        System.out.println(rs);
+        System.out.println(map);
     }
 }

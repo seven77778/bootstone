@@ -9,11 +9,16 @@ public class Student {
     private Integer age;
     private Integer price;
 
-
+    public Student() {
+    }
 
     public Student(String name, Integer age, Integer price) {
         this.name = name;
         this.age = age;
         this.price = price;
+    }
+
+    public void eat(){
+        System.out.println("student eat");
     }
 }

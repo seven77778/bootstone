@@ -104,7 +104,7 @@ public class HelloController {
         if(null==vo){
             return  "null";
         }
-        return "ok";
+        return "ok~ " +vo.getName();
     }
 
     @RequestMapping("/nullbody")

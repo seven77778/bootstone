@@ -36,7 +36,7 @@ package com.lsh.demo.bootstone.dao.mysql;
  * 12.当年第一天
  * concat(year(now()),'-01-01')
  *
- * 13.
+ * 13.round(hotel_id, 2) 一个round会影响到最终结果的小数点位数
  *
  */
 

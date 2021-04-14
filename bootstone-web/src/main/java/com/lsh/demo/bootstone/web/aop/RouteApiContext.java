@@ -54,6 +54,9 @@ public class RouteApiContext implements ApplicationContextAware, InitializingBea
              */
             //determineCandidateConstructors 中有判断contextType是否等于userClass todo 什么时候不一样呢
             Class<?> contextType = applicationContext.getType(beanName);
+            if(null == contextType){
+                return;
+            }
             Class<?> userClass = ClassUtils.getUserClass(contextType);
             Object bean = applicationContext.getBean(beanName);
             putMethodInMap(userClass,bean);
@@ -67,7 +70,7 @@ public class RouteApiContext implements ApplicationContextAware, InitializingBea
         Set<Method> methods = MethodIntrospector.selectMethods(userClass,
                 (ReflectionUtils.MethodFilter) method -> AnnotatedElementUtils.hasAnnotation(method, RouteApiName.class));
         System.out.println(methods);
-        //思考，既然每个目标方法上都有 @RouteApiName 注解，为什么不直接开局扫描所有的注解，拿到目前方法来缓存起来？
+        //思考，既然每个目标方法上都有 @RouteApiName 注解，为什么不直接开局扫描所有的注解，拿到有注解的来缓存起来？
         //现在是先拿到所有的 RequestBeanRouteService 的实现类，在这里的方法再拿@RouteApiName 注解
         for (Method m : methods) {
             String methodName = getAnnoFromMethod(m);

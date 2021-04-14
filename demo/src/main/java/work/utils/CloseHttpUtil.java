@@ -11,6 +11,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -25,6 +26,7 @@ import java.util.Scanner;
  * 实现 CloseableHttpClient
  * 1.EntityUtils.toString 中finally 中关闭了 InputStream
  */
+@Component
 public class CloseHttpUtil {
 
     private static CloseableHttpClient closeableHttpClient;
@@ -80,6 +82,11 @@ public class CloseHttpUtil {
                 .build();
 
         httpGetRequest.setConfig(requestConfig);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         try {
             CloseableHttpResponse response = closeableHttpClient.execute(httpGetRequest);
