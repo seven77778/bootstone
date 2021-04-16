@@ -24,7 +24,7 @@ public class MyFilterConfig implements FilterConfig {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(replaceStreamFilter());
         registration.addUrlPatterns("/*");
-        registration.setName("streamFilter");
+        registration.setName("replaceStreamFilter");
         return registration;
     }
 

@@ -2,6 +2,8 @@ package com.lsh.demo.bootstone.web.controller;
 
 import com.lsh.demo.basic.thread.threadpool.MyBasicThreadFactory;
 import com.lsh.demo.bootstone.service.common.BootStoneLog;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +13,8 @@ import java.util.concurrent.Executors;
 @RestController
 @RequestMapping("/pool")
 public class ThreadPoolController {
+
+    private ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
     /**
      * 测试线程池
@@ -47,6 +51,19 @@ public class ThreadPoolController {
         return "ok";
     }
 
+    /**
+     * http://localhost:8088/pool/threadLocal
+     * 先set几次值，后面就是get，数据是乱的，所以remove是必须的
+     * @param msg
+     * @return
+     */
+    @GetMapping("threadLocal")
+    public String testThreadLocal(String msg){
+        if(StringUtils.isNotBlank(msg)){
+            threadLocal.set(msg);
+        }
+        return threadLocal.get();
+    }
 
     public void printLog() {
         try {

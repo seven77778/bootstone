@@ -4,10 +4,7 @@ import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
@@ -263,5 +260,25 @@ public class DateBootStoneUtils {
         System.out.println(res2);
     }
 
+    /**
+     * 获取前一天的00:00:00
+     */
+    @Test
+    public void getBeforeDayZeroTime(){
+        LocalDateTime today_start = LocalDateTime.of(LocalDate.now(), LocalTime.MIN).minusDays(1);
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println(df.format(today_start));
+    }
+
+    /**
+     *
+     *获取当天24:00:00
+     */
+    @Test
+    public void getToday24Time(){
+        LocalDateTime today_start = LocalDateTime.of(LocalDate.now(), LocalTime.MAX);
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println(df.format(today_start));
+    }
 
 }

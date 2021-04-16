@@ -18,10 +18,14 @@ import java.util.Random;
  *
  * 2.threadLocal 提升性能
  *
+ * 3.threadLocal一定要在finally中清理掉，否则可能会影响其他线程
+ * @see
+ * com.lsh.demo.bootstone.web.controller.ThreadPoolController#testThreadLocal(java.lang.String)
+ * 很奇怪，这里get到的数据是错乱的，没用规律，随机性 fixme
  */
 public class ThreadLocalLearn {
 
-    private ThreadLocal<String> stringThreadLocal;
+    private ThreadLocal<String> stringThreadLocal = new ThreadLocal<>();
 
 
     Random random = new Random(123);
@@ -38,6 +42,7 @@ public class ThreadLocalLearn {
     public void test(){
         FastThreadLocal<String> fastThreadLocal = new FastThreadLocal<>();
         fastThreadLocal.set("");
+        fastThreadLocal.get();
     }
 
 

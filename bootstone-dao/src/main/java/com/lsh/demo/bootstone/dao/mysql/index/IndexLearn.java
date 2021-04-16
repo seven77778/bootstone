@@ -21,6 +21,7 @@ package com.lsh.demo.bootstone.dao.mysql.index;
  *
  * EXPLAIN sql;
  *
+ * type字段：
  * NULL > system > const > eq_ref > ref > ref_or_null > index_merge >range > index > ALL
  * type为 const，性能非常好，唯一索引，keyname=PRIMARY。且唯一。
  *
@@ -29,6 +30,10 @@ package com.lsh.demo.bootstone.dao.mysql.index;
  * 更新会变更B+树，更新频繁的字段建立索引会大大降低数据库性能。
  * ②“性别”这种区分度不大的属性，建立索引是没有什么意义的，不能有效过滤数据，性能与全表扫描类似。
  * ③建立组合索引，必须把区分度高的字段放在前面。
+ *
+ * 案例1：订单表，业务需求，先查 预定的，查不到预定的，就查在住的订单
+ * 写两个sql，先查预定- 查不到，再查在住，查两次
+ * 或者，一条sql，用in查询出两个状态的所有订单，在java代码中筛选 fixme 哪个好
  *
  */
 public class IndexLearn {
