@@ -9,13 +9,13 @@ using System.Collections.Specialized;
 using System.Threading;
 using System.Runtime.InteropServices;
 
-namespace babai
+namespace httpService
 {
     class Program
     {
-       private static HotelLockDll.HotelLockDll h = new HotelLockDll.HotelLockDll();
+       private static XXXkDll.YYYDll h = new XXXDll.YYYDll();
        private static HttpListener httpListener = new HttpListener();
-       private static string INITIALIZEERRORSTR = "BaBai Lock init error";
+       private static string INITIALIZEERRORSTR = "ser Lock init error";
        const int SW_HIDE = 0;
        const int SW_SHOW = 5;
 
@@ -43,12 +43,12 @@ namespace babai
         static void StartServer()
         {
             httpListener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
-            var prefixes = new List<string>() { "http://*:8082/babai/" };
+            var prefixes = new List<string>() { "http://*:8082/ser/" };
             foreach (string prefix in prefixes)
             {
                 httpListener.Prefixes.Add(prefix);
             }
-            Console.WriteLine("Server start on *:8082/babai/");
+            Console.WriteLine("Server start on *:8082/ser/");
             httpListener.Start();
             new Thread(new ThreadStart(delegate
             {
@@ -61,9 +61,9 @@ namespace babai
                     string cmd = getValueFromNV(nv, "cmd");
                     if (null == cmd)
                     {
-                        res = "BaBai Service Start ,but unknown cmd , please invoke like this ,ReadCard : http://localhost:8082/babai?cmd=read&Stores_Number=316091 ,MakeCard : http://localhost:8082/babai?cmd=make&Stores_Number=316091&User_Name=Lish&Room_Num=10301&Control_Code=0100&Begin_Time=2019-03-26%2022:34:00&End_Time=2019-03-26%2022:34:00";
+                        res = "http Service Start ,but unknown cmd , please invoke like this ,ReadCard : http://localhost:8082/ser?cmd=read&Stores_Number=316091 ,MakeCard : http://localhost:8082/ser?cmd=make&Stores_Number=316091&User_Name=Lish&Room_Num=10301&Control_Code=0100&Begin_Time=2019-03-26%2022:34:00&End_Time=2019-03-26%2022:34:00";
                     }
-                    //http://localhost:8082/babai?cmd=read&Stores_Number=316091
+                    //http://localhost:8082/ser?cmd=read&Stores_Number=316091
                     else if (cmd.ToUpper().StartsWith("READ"))
                     {
 
@@ -75,7 +75,7 @@ namespace babai
                         
                        
                     }
-                    //http://localhost:8082/babai?cmd=make&Stores_Number=316091&User_Name=Lish&Room_Num=10301&Control_Code=0100&Begin_Time=2019-03-26%2022:34:00&End_Time=2019-03-26%2022:34:00
+                    //http://localhost:8082/ser?cmd=make&Stores_Number=316091&User_Name=Lish&Room_Num=10301&Control_Code=0100&Begin_Time=2019-03-26%2022:34:00&End_Time=2019-03-26%2022:34:00
                     else if (cmd.ToUpper().StartsWith("MAKE"))
                     {
                         if (0 == h.Initialize())
