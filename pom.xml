@@ -22,54 +22,24 @@
         <module>bootstone-service</module>
         <module>bootstone-web</module>
         <module>bootstone-study</module>
-        <module>bootstone-domain</module>
         <module>bootstone-dubbo-consumer</module>
         <module>bootstone-doc</module>
         <module>bootstone-spring</module>
         <module>serial</module>
         <module>redis</module>
         <module>demo</module>
-        <module>nginx</module>
         <module>bootstone-77</module>
         <module>rate-limiter</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
-<!--        <guava.version>[24.1.1,)</guava.version>-->
         <guava.version>29.0-jre</guava.version>
-        <apache.dubbo.version>2.7.7</apache.dubbo.version>
+        <dubbo.version>2.7.7</dubbo.version>
     </properties>
 
     <dependencies>
-        <!--apache.dubbo-->
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>${apache.dubbo.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>${apache.dubbo.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-dependencies-zookeeper</artifactId>
-            <version>${apache.dubbo.version}</version>
-            <type>pom</type>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!--apache.dubbo-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -79,10 +49,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-cache</artifactId>-->
-        <!--</dependency>-->
+
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

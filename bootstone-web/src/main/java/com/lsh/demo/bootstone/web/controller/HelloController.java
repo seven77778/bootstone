@@ -5,21 +5,12 @@ import com.lsh.demo.bootstone.service.vo.RequsetVO;
 import com.lsh.demo.bootstone.web.common.request.BootStoneRequest;
 import com.lsh.demo.bootstone.web.interceptor.LshAuth;
 import com.lsh.demo.bootstone.web.point.MyWithinPoint;
-import org.apache.http.HttpEntity;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -44,9 +35,7 @@ public class HelloController {
      * 测试spring的controller是单例还是多例，怎么保证并发的安全
      * @return
      */
-    public String xx(@RequestBody BootStoneRequest rq){
-        return rq.getLsh();
-    }
+
 
     @RequestMapping("/hello")
     @LshAuth
@@ -75,19 +64,15 @@ public class HelloController {
     }
 
 
+    /**
+     * 测试 @before 切面
+     * @return
+     */
     @GetMapping("/test1")
     @MyWithinPoint
     public String test22(){
         System.out.println("test1 @MyWithinPoint ");
         return "test1";
-    }
-
-    /**
-     * springboot 完全ok
-     */
-    @PostConstruct
-    public void test(){
-        System.out.println("this is post Construct");
     }
 
 
@@ -107,6 +92,10 @@ public class HelloController {
         return "ok~ " +vo.getName();
     }
 
+    /**
+     * {} 并不算请求body为null
+     * 请求为null的进不来了
+     */
     @RequestMapping("/nullbody")
     public String testNullBody(@RequestBody(required = false) RequsetVO vo){
         if(null==vo){
@@ -124,35 +113,6 @@ public class HelloController {
         return "hello, "+name.get()+id;
     }
 
-    @GetMapping("/test")
-    public String test(HttpServletResponse httpServletResponse) throws Exception{
-        httpServletResponse.setContentType("image/jpeg");
-        CloseableHttpClient httpClient = null;
-        CloseableHttpResponse response = null;
-        String result = "";
-        // 通过址默认配置创建一个httpClient实例
-        httpClient = HttpClients.createDefault();
-        // 创建httpGet远程连接实例
-        HttpGet httpGet = new HttpGet("http://all-daily.oss-cn-hangzhou.aliyuncs.com/jvopf/1961_c.jpg");
-        // 设置请求头信息，鉴权
-        httpGet.setHeader("Content-Type", "image/jpeg");
-        // 设置配置请求参数
-        RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(35000)// 连接主机服务超时时间
-                .setConnectionRequestTimeout(35000)// 请求超时时间
-                .setSocketTimeout(60000)// 数据读取超时时间
-                .build();
-        // 为httpGet实例设置配置
-        httpGet.setConfig(requestConfig);
-        // 执行get请求得到返回对象
-        response = httpClient.execute(httpGet);
-        // 通过返回对象获取返回数据
-        HttpEntity entity = response.getEntity();
-        // 通过EntityUtils中的toString方法将结果转换为字符串
-        result = EntityUtils.toString(entity);
-
-        return null;
-    }
-
     public static void main(String[] args) {
         int [] ab = new int[] {0,0,0,1};
 
@@ -166,6 +126,7 @@ public class HelloController {
 
         long time2 = System.currentTimeMillis();
         boolean result = Stream.of(ab).allMatch(x -> Arrays.equals(x, new int[0]));
+        System.out.println(result);
         System.out.println(System.currentTimeMillis() - time2);
 
         long ss = Arrays.stream(ab).filter(x -> x != 0).count();

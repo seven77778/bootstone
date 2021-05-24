@@ -61,6 +61,27 @@ public class FinalizeTest {
 
     /**
      * -XX:+PrintCommandLineFlags
+     *
+     * -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:D:\gc\gc.log
+     * -- 测试gclog输出，必须有文件的路径，gc.log会自动创建
+     * 在docker配置文件中创建文件路径 RUN mkdir -p /lsh/gc/
+     * -p 会逐级创建路径
+     *
+     * 只有 -XX:+PrintGCDetails，不配置xloggc，会输出到哪里
+     * 1.在idea中会输出到控制台
+     *
+     * old star use -XX:+UseParallelGC，改成 -XX:+UseConcMarkSweepGC，
+     * perfma推荐加上参数
+     * -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses
+     * -XX:CMSInitiatingOccupancyFraction=70 -- 内存占到70%的时候开始gc
+     * -XX:+UseCMSInitiatingOccupancyOnly -- 配合上面的值
+     *
+     * 详解：//标志-XX:+ExplicitGCInvokesConcurrent命令JVM无论什么时候调用系统GC，都执行CMS GC，而不是Full GC。
+     * //第二个标志-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses保证当有系统GC调用时，
+     * //永久代也被包括进CMS垃圾回收的范围内。因此，通过使用这些标志，我们可以防止出现意料之外的”stop-the-world”的系统GC。
+     *
+     *
+     * jvm参数中配置两个垃圾收集器，最后生效的是哪个？fixme
      */
     @Test
     public void test(){

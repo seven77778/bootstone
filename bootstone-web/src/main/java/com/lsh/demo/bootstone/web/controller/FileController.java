@@ -1,12 +1,12 @@
 package com.lsh.demo.bootstone.web.controller;
 
-import com.lsh.demo.bootstone.domain.object.DeviceImportVO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import work.utils.ExcelReader;
+import work.utils.vo.DeviceImportVO;
 
 import java.util.List;
 
