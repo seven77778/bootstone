@@ -2,8 +2,8 @@ package com.lsh.demo.bootstone.web.controller;
 
 import com.lsh.demo.bootstone.dao.mysql.mapper.DataService;
 import com.lsh.demo.bootstone.service.CommonService;
-import com.lsh.demo.bootstone.web.common.request.HttpUafImpl;
-import com.lsh.demo.bootstone.web.common.request.HttpUafImplConfig;
+import com.lsh.demo.bootstone.web.common.request.HttpRateImpl;
+import com.lsh.demo.bootstone.web.common.request.HttpRateImplConfig;
 import com.lsh.demo.bootstone.web.common.request.SaveStu;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -26,18 +26,18 @@ public class ServiceController {
     private CommonService commonService;
 
     @Resource
-    private HttpUafImplConfig httpUafImplConfig;
+    private HttpRateImplConfig httpRateImplConfig;
 
     @Resource
-    private HttpUafImpl httpUaf;
+    private HttpRateImpl httpRate;
 
     /**
      * httpUaf 也可以，是因为@bean引入过了
      */
     @RequestMapping("/testbean")
     public String testBean(){
-        HttpUafImpl rs = httpUafImplConfig.getBean();
-        return rs.getName() +"--" + httpUaf.getName();
+        HttpRateImpl rs = httpRateImplConfig.getBean();
+        return rs.getName() +"--" + httpRate.getName();
     }
 
     /**
@@ -45,7 +45,7 @@ public class ServiceController {
      */
     @RequestMapping("/testnobean")
     public String testNoBean(){
-        return  httpUaf.getName();
+        return  httpRate.getName();
     }
     /**
      * 404不全是url路径不对，内部报错，寻error页无果

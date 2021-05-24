@@ -1,6 +1,6 @@
 package com.lsh.demo.bootstone.web.controller;
 
-import com.lsh.demo.annolearn.lazy.MyLazyTest;
+import com.lsh.demo.annolearn.lazy.MyLazyUtil;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,16 +14,14 @@ public class LazyController {
 
     @Resource
     @Lazy
-    private MyLazyTest MyLazyTest;
-
-
+    private MyLazyUtil util;
 
     /**
-     * 使用@bean注解的来测试
+     * 两个地方都要加 @lazy
      */
-    @RequestMapping("test2")
+    @RequestMapping("test")
     public String testLazyWithBean(){
-        return MyLazyTest.getUtil();
+        return util.getStr();
     }
 
 

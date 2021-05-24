@@ -11,13 +11,13 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
 /**
- * Created by lsh on 2018/12/8.
+ * 测试模式
  */
 
 @RestController
 @Component
-@RequestMapping("/bootstone")
-public class RegisterController {
+@RequestMapping("/pay")
+public class PayServiceController {
 
     @Resource
     private PayService payService;
@@ -37,7 +37,4 @@ public class RegisterController {
        return "您是" +type + "会员，享受的价格为 " + result;
     }
 
-    public static void main(String[] args) {
-        System.out.println((float) 61/10);
-    }
 }

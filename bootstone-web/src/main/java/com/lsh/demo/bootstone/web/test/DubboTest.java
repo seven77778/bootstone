@@ -9,16 +9,4 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = {BootStoneWebApplication.class})
 public class DubboTest {
 
-//    @Autowired
-//    private xx xxx;
-//
-//
-//
-//    @Test
-//    public void test(){
-//
-//        CikProviderBaseRS<FhosDistributorRoomTypeRS> rs = fhosDistributorService.queryAllTypes("5405010041100729");
-//        System.out.println(rs);
-//    }
-
 }

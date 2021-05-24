@@ -1,8 +1,0 @@
-1.dubbo启动不检查
-配置了registry:
-       check: false
-       timeout: 10000
-       依然不生效
-   dubbo版本太多，要找到一套固定使用的
-
-2.启动报错redis加载

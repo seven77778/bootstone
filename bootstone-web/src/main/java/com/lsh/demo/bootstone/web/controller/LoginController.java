@@ -18,7 +18,7 @@ public class LoginController {
 
 
     @Resource
-    public LoginService commonservice;
+    public LoginService loginService;
 
     @RequestMapping(value = "/", method = {RequestMethod.POST, RequestMethod.GET})
     public String login() {
@@ -32,7 +32,7 @@ public class LoginController {
         System.out.println("你输入的用户名为：" + tno);
         System.out.println("你输入的密码为：" + password);
         session.setAttribute("tname", "");
-        if(commonservice.login(tno, password)){
+        if(loginService.login(tno, password)){
             return "登录成功";
         } else {
             return "登录失败";
@@ -44,7 +44,7 @@ public class LoginController {
         String age = request.getParameter("age");
         System.out.println("你输入的年龄为：" + age);
         session.setAttribute("tname", "");
-        if(commonservice.marry(age)){
+        if(loginService.marry(age)){
             return "验证通过，可以结婚";
         } else {
             return "验证失败，无法结婚";

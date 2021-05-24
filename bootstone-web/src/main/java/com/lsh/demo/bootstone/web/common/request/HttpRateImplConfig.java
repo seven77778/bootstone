@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class HttpUafImplConfig {
+public class HttpRateImplConfig {
 
     @Bean
-    public HttpUafImpl getBean(){
-        return new HttpUafImpl();
+    public HttpRateImpl getBean(){
+        return new HttpRateImpl();
     }
 }

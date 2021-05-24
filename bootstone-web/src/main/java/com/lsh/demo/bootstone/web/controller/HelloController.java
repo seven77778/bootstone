@@ -11,9 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 /**
  * Created by lsh on 2019/2/12.
@@ -110,30 +108,11 @@ public class HelloController {
      */
     @GetMapping("get")
     public String getUser(String id, Optional<String> name){
-        return "hello, "+name.get()+id;
-    }
-
-    public static void main(String[] args) {
-        int [] ab = new int[] {0,0,0,1};
-
-        long time1 = System.currentTimeMillis();
-        for(int x : ab){
-            if(0!=x){
-                System.out.println("false");
-            }
+        if(name.isPresent()) {
+            return "hello, " + name.get() + id;
+        }else {
+            return "no name";
         }
-        System.out.println(System.currentTimeMillis() - time1 );
-
-        long time2 = System.currentTimeMillis();
-        boolean result = Stream.of(ab).allMatch(x -> Arrays.equals(x, new int[0]));
-        System.out.println(result);
-        System.out.println(System.currentTimeMillis() - time2);
-
-        long ss = Arrays.stream(ab).filter(x -> x != 0).count();
-        System.out.println(ss);
-
-
-
-
     }
+
 }

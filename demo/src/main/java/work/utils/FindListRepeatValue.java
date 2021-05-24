@@ -23,6 +23,7 @@ public class FindListRepeatValue {
         lists.add(new Stu("1002", "哈哈2"));
         lists.add(new Stu("1003", "哈哈3"));
         lists.add(new Stu("1001", "哈哈1"));
+        lists.add(new Stu("1002", "哈哈1"));
         //找出重复的stu
         List<String> list = lists.stream().
                 collect(Collectors.groupingBy(Stu::getId, Collectors.counting()))

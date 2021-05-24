@@ -33,6 +33,8 @@ public class LambdaFinalUtil {
             new Money("ccc", 66, "2020-01-03", "2020-01-02", "3")
     );
 
+    List<String> strings = Arrays.asList("a","b","1","2");
+
     List<Student> students = Arrays.asList(
         new Student("路飞", 1, 175),
         new Student("红发", 3, 180),
@@ -221,6 +223,32 @@ public class LambdaFinalUtil {
     public void getSum(){
         long rs = students.stream().mapToLong(Student::getAge).sum();
         System.out.println(rs);
+    }
+
+    /**
+     * anyMatch
+     */
+    @Test
+    public void testAnyMatch(){
+        /**
+         * 1.为什么一直false -- 之前写成 allMatch()了
+         * 2.为什么每次循环次数不一样 -- 找到第一个合适的就结束，条件不同，循环次数不同
+         */
+        boolean any = students.stream().anyMatch(x ->{
+            System.out.println(x);
+           return  x.getAge()==1;
+        } );
+        System.out.println(any);
+
+
+        //String 的 list，正常用法
+        boolean stringBoolean = strings.stream().anyMatch(x -> x.equals("a"));
+        System.out.println(stringBoolean);//true
+
+        boolean stringBooleanAll = strings.stream().allMatch(x -> x.equals("a"));
+        System.out.println(stringBooleanAll);//false
+
+
     }
 
 }

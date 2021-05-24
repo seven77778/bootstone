@@ -1,0 +1,6 @@
+1.查看jvm参数
+jinfo -flags pid
+
+jcmd pid VM.flags
+
+todo jvm中同时配了-XX:+UseParallelGC  -XX:+UseConcMarkSweepGC，最终哪个生效

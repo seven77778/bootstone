@@ -29,7 +29,7 @@ public class SomeDayOfWeekUtils {
     }
 
     public static void main(String[] args) throws Throwable {
-        String a = dayForWeek("2020-12-25");
+        String a = dayForWeek("2021-05-25");
         System.out.println(a);
     }
 

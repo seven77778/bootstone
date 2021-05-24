@@ -31,8 +31,6 @@ public class CloseHttpUtil {
 
     private static CloseableHttpClient closeableHttpClient;
     private static HttpClientBuilder httpClientBuilder;
-    static final int CONNTECT_TIMEOUT = 1;
-    static final int SOCKET_TIMEOUT = 1;
 
     static {
         httpClientBuilder = HttpClients.custom();

@@ -1,8 +1,8 @@
 package com.lsh.demo.bootstone.web.common.request;
 
-public class HttpUafImpl {
+public class HttpRateImpl {
 
     public String getName(){
-        return "HttpUafImpl";
+        return "HttpRateImpl";
     }
 }
