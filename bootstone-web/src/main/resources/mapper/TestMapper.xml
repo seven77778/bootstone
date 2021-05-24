@@ -67,7 +67,16 @@
     </insert>
 
     <select id="getById" resultType="com.lsh.demo.bootstone.dao.mysql.Stu">
-        SELECT name,age,address FROM `stu` where id=#{id,jdbcType=INTEGER};
+        SELECT name,age,address ,version FROM `stu` where id=#{id,jdbcType=INTEGER};
     </select>
+
+    <update id="updateByVersion">
+        UPDATE stu
+            SET grade = #{grade},
+             version = version + 1
+            WHERE
+                id = #{id}
+            AND version = #{version}
+    </update>
 
 </mapper>

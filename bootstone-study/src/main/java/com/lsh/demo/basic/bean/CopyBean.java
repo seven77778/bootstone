@@ -8,6 +8,7 @@ import org.springframework.beans.BeanUtils;
  * <p>
  * declaration : 复制bean属性的方法集合
  */
+@Data
 public class CopyBean {
 
     public static void main(String[] args) {
@@ -23,49 +24,18 @@ public class CopyBean {
         /*
         CopyBean.ReadRequest(name=haha, age=16, sum=0.0)
 
-        why sum is 0.0
+        why sum is 0.0 readRequest中是double啊
          */
     }
 
 
-    @Data // @data 对内部类无作用？
+    @Data
     public static class MakeRequest{
         private String name;
         private String age;
-        private int sum;
-        private boolean check;
+        public Integer sum;
+        public boolean check;
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getAge() {
-            return age;
-        }
-
-        public void setAge(String age) {
-            this.age = age;
-        }
-
-        public int getSum() {
-            return sum;
-        }
-
-        public void setSum(int sum) {
-            this.sum = sum;
-        }
-
-        public boolean isCheck() {
-            return check;
-        }
-
-        public void setCheck(boolean check) {
-            this.check = check;
-        }
     }
 
 
@@ -73,30 +43,6 @@ public class CopyBean {
     public static class ReadRequest{
         private String name;
         private String age;
-        private double sum;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getAge() {
-            return age;
-        }
-
-        public void setAge(String age) {
-            this.age = age;
-        }
-
-        public double getSum() {
-            return sum;
-        }
-
-        public void setSum(double sum) {
-            this.sum = sum;
-        }
+        private int sum;
     }
 }

@@ -64,7 +64,9 @@ public class AssertRqNullInterceptor  implements HandlerInterceptor {
         System.out.println(myByteRequestWrapper.getReader());
         System.out.println(myByteRequestWrapper.getReader());
 
-        if(StringUtils.isBlank( myByteRequestWrapper.getOriginBody())){
+        //有些post接口，没设置请求参数，这种不应该拦截的-- 这种确实没拦截，
+        //是系统报错后的，应该是error那次请求过来，originBody为空，报错了，error页为什么是post？
+        if(StringUtils.isBlank( myByteRequestWrapper.getOriginBody()) && !"/error".equals(myByteRequestWrapper.getRequestURI())){
             BootStoneLog.bootStone.info("请求体body为空，已被拦截");
             HttpReturnUtil.returnJson(httpServletResponse, ErrorEnum.REQUEST_BODY_NULL);
             return false;

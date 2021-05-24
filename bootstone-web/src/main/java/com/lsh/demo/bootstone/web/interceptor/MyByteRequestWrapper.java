@@ -39,12 +39,12 @@ public class MyByteRequestWrapper extends HttpServletRequestWrapper {
         String json = new String(requestBody, "utf-8");
         BootStoneLog.bootStone.info("original request is "+json);
         String iii = "{\n" +
-                "    \"lsh\":\"aaaaa\"\n" +
+                "    \"lsh\":\"修改后的内容\"\n" +
                 "}";
         if(StringUtils.isNotBlank(originBody)){
             requestBody = iii.getBytes();
         }
-        //现在return到postman的全是aaaaa了
+        //现在return到postman的全是  修改后的内容  了
     }
 
     public void setParameterMap(Map<String, String[]> parameterMap) {

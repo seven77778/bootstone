@@ -26,6 +26,7 @@ public class Stu {
     private LocalDateTime createTime;
     private Date createTime1;
     private LocalDateTime updateTime;
+    private Integer version;
     /**
      * 不是sql字段，用来保存对比结果
      */
@@ -50,4 +51,5 @@ public class Stu {
         this.address = address;
         this.id = id;
     }
+
 }

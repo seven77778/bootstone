@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @author lsh
@@ -19,7 +20,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
         "baisc.redission","com.bootstone.spring","com.lsh.demo.bootstone.dubbo.filter"})
 @MapperScan("com.lsh.demo.bootstone.dao")
 @EnableCaching
-//@ImportResource(value = {"classpath:dubbo-provider.xml","classpath:dubbo-consumer.xml","classpath:bean.xml"})
+@ImportResource(value = {"classpath:dubbo-provider.xml","classpath:dubbo-consumer.xml","classpath:bean.xml"})
 public class BootStoneWebApplication {
     public static void main(String[] args) {
         SpringApplication.run(BootStoneWebApplication.class, args);

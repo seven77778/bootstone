@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  * 如果返回值是Stream，那么是惰性求值；
  * 如果返回值是另一个值或为空，那么就是及早求值
  * <p>
- * map -- 转换功能，内部就是Function接口。惰性求值
+ * map -- 转换功能，内部就是Function接口,将数据重新组合，惰性求值
  * filter -- 顾名思义，起过滤筛选的作用。内部就是Predicate接口。惰性求值。
  * flatMap -- 将多个Stream合并为一个Stream。惰性求值
  * max & min -- 我们经常会在集合中求最大或最小值，使用流就很方便。及早求值。
@@ -34,10 +34,10 @@ public class LambdaFinalUtil {
     );
 
     List<Student> students = Arrays.asList(
-        new Student("路飞", 22, 175),
-        new Student("红发", 40, 180),
-        new Student("aaa", 333, 180),
-        new Student("白胡子", 50, 185));
+        new Student("路飞", 1, 175),
+        new Student("红发", 3, 180),
+        new Student("aaa", 3, 180),
+        new Student("白胡子", 1, 185));
 
     /**
      * 找出list中年龄最小的
@@ -114,13 +114,34 @@ public class LambdaFinalUtil {
     public void testCount() {
         long count = students.stream().filter(s1 -> s1.getAge() < 45).count();
         System.out.println("年龄小于45岁的人数是：" + count);
+
+        //找出年龄为45的
+        long rs = students.stream().filter(x -> x.getAge() == 40).count();
+        System.out.println(rs);
     }
 
 
+    /**
+     * 官方解释：使用提供的标识值和关联的累加函数对此流的元素进行归约，然后返回归约后的值。
+     *
+     * 用Reduce()将集合中的所有数据变为一个结果
+     */
     @Test
     public void testReduce() {
-        Integer reduce = Stream.of(1, 2, 3, 4, 100).reduce(0, (acc, x) -> acc - x);
-        System.out.println(reduce);
+        Integer reduce = Stream.of(10, 20, 30, 40, 100).reduce(0, (acc, x) -> acc - x);
+        Integer reduce2 = Stream.of(10, 20, 30, 40, 100).parallel().reduce(0, (acc, x) -> acc + x);
+        System.out.println(reduce);// -200
+        System.out.println(reduce2);// 200
+        System.out.println("**************");
+
+        Integer reduce3 = Stream.of(10, 20, 30, 40, 100).reduce(0, (acc, x) -> {
+            acc -= x;
+            System.out.println("x="+x);//acc 是最后的结果，可以认为是一个匿名变量，初始是0，从0开始减，从0开始加
+            System.out.println("acc="+acc);
+            return acc;
+        });
+        System.out.println(reduce3);
+        System.out.println("*****************");
     }
 
     /**
@@ -145,6 +166,9 @@ public class LambdaFinalUtil {
         System.out.println(listMap);
     }
 
+    /**
+     * @see LambdaFinalUtil#testJoinContact() 用*拼接不应该用reduce啊，应该用Collectors.joining
+     */
     @Test
     public void testJoin(){
         List<Student> students = new ArrayList<>(3);
@@ -169,6 +193,34 @@ public class LambdaFinalUtil {
         Map<Integer, Object> res = students.stream().collect(Collectors.toMap(Student::getAge, Function.identity(),(x,y)->x));
         System.out.println(res);
         System.out.println(CollectionUtils.isEmpty(res));
+    }
+
+    /**
+     * 给一个list中的某个字段用 * 拼接起来，并且最后一个不要
+     */
+    @Test
+    public void testJoinContact(){
+        List<Student> students = new ArrayList<>(3);
+        students.add(new Student("路飞", 22, 175));
+        students.add(new Student("红发", 22, 180));
+        students.add(new Student("白胡子", 50, 185));
+        String name = students.stream().map(Student::getName).reduce((x, y) -> x + "•" + y).orElse("null");
+        System.out.println(name);//路飞•红发•白胡子
+    }
+
+    /**
+     * flatMapToInt todo
+     */
+
+
+    /**
+     * list中某一项求和
+     *
+     */
+    @Test
+    public void getSum(){
+        long rs = students.stream().mapToLong(Student::getAge).sum();
+        System.out.println(rs);
     }
 
 }

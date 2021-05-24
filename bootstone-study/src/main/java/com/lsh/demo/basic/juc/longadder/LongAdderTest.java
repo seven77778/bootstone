@@ -17,6 +17,8 @@ import java.util.concurrent.atomic.LongAdder;
  * LongAdder 类与AtomicLong类的区别在于
  * 高并发时  LongAdder 将对单一变量的CAS操作分散为对数组cells中多个元素的CAS操作，取值时进行求和；
  * 而在并发较低时仅对base变量进行CAS操作，与AtomicLong类原理相同。不得不说这种分布式的设计还是很巧妙的
+ *
+ * fixme 1.longAdder怎么区分是不是高并发的
  */
 public class LongAdderTest {
 

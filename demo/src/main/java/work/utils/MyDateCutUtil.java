@@ -102,17 +102,17 @@ public class MyDateCutUtil {
         Calendar calEnd = Calendar.getInstance();
         calEnd.setTime(rate.getEndDate());
         while (calEnd.after(calBegin)) {
-            PriceDate fhRateplanDO = new PriceDate();
+            PriceDate priceDate = new PriceDate();
             calBegin.add(Calendar.DAY_OF_YEAR, 1);
             if (calEnd.after(calBegin)) {
-                fhRateplanDO.setBeginDate(calBegin.getTime());
-                fhRateplanDO.setEndDate(calBegin.getTime());
+                priceDate.setBeginDate(calBegin.getTime());
+                priceDate.setEndDate(calBegin.getTime());
             } else {
-                fhRateplanDO.setBeginDate(calEnd.getTime());
-                fhRateplanDO.setEndDate(calEnd.getTime());
+                priceDate.setBeginDate(calEnd.getTime());
+                priceDate.setEndDate(calEnd.getTime());
             }
-            fhRateplanDO.setPrice(rate.getPrice());
-            priceDates.add(fhRateplanDO);
+            priceDate.setPrice(rate.getPrice());
+            priceDates.add(priceDate);
         }
         return priceDates;
     }

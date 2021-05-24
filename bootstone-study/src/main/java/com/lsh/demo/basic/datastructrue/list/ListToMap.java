@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
  *
  * list 转换 map
  *
- * result.stream().collect(Collectors.toMap(FhCikGuestInfo::getPmsOrderId,
- * FhCikGuestInfo::getName,(key1,key2)->key2));
+ * result.stream().collect(Collectors.toMap(OrderDO::getOrderId,
+ * OrderDO::getName,(key1,key2)->key2));
  *
  */
 public class ListToMap {

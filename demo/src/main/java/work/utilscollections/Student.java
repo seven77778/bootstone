@@ -7,7 +7,7 @@ public class Student {
 
     private String name;
     private Integer age;
-    private Integer price;
+    private  Integer price;
 
     public Student() {
     }
@@ -20,5 +20,9 @@ public class Student {
 
     public void eat(){
         System.out.println("student eat");
+    }
+
+    public  Integer getPrice(){
+        return price;
     }
 }

@@ -48,7 +48,7 @@ public class ListToMapList {
     public void testSet(){
         List<Money> list = Lists.newArrayList();
         Money money1 = new Money("人民币", 10);
-        Money money2 = new Money( "人民币", 99);
+        Money money2 = new Money("人民币", 99);
         Money money3 = new Money("比特币", 2);
         Money money4 = new Money("蚂蚁币", 6);
         list.add(money1);

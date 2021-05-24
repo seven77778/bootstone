@@ -12,7 +12,6 @@ import java.util.List;
  */
 
 @Repository
-
 public interface DataService {
 
     List<Stu> selectAllStu();
@@ -29,4 +28,9 @@ public interface DataService {
     Stu getById(Integer id);
 
     Integer insertTimeZone(Football f);
+
+    /**
+     * 使用版本号更新stu表
+     */
+    Integer updateByVersion(@Param("id") Integer id,@Param("grade")String grade,@Param("version")Integer version);
 }
