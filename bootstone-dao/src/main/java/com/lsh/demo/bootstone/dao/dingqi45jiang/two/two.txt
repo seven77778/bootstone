@@ -71,8 +71,8 @@ InnoDB 就可以保证即使数据库发生异常重启，之前提交的记录�
 重要的日志模块：binlog前面我们讲过，MySQL 整体来看，
 其实就有两块：一块是 Server 层，它主要做的是 MySQL 功能层面的事情；
 还有一块是引擎层，负责存储相关的具体事宜。
-上面我们聊到的粉板 redo log 是 InnoDB 引擎特有的日志，-- server 层，引擎层都有自己的日志
-而 Server 层也有自己的日志，称为 binlog（归档日志）。
+上面我们聊到的粉板 redo log 是 InnoDB 引擎特有的日志，-- 引擎层日志
+而 Server 层也有自己的日志，称为 binlog（归档日志）。--server层日志
 我想你肯定会问，为什么会有两份日志呢？因为最开始 MySQL 里并没有 InnoDB 引擎。
 MySQL 自带的引擎是 MyISAM，但是 MyISAM 没有 crash-safe 的能力，binlog 日志只能用于归档。
 而 InnoDB 是另一个公司以插件形式引入 MySQL 的，既然只依靠 binlog 是没有 crash-safe 能力的，

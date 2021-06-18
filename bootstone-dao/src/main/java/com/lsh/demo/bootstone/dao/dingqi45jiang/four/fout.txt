@@ -48,22 +48,11 @@ InnoDB 的索引模型
 5
 
 
-
  mysql> create table T(
 id int primary key,
 k int not null,
 name varchar(16),
 index (k))engine=InnoDB;
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -121,17 +110,6 @@ alter table T add index(k);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 如果你要重建主键索引，也可以这么写：
 复制代码
 1
@@ -141,17 +119,6 @@ alter table T add index(k);
 
  alter table T drop primary key;
 alter table T add primary key(id);
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -192,52 +159,7 @@ Percona 的 pt-kill 这个工具不错，推荐使用；
 
 
 
-
-
-
-
-
-
-
 将学到的知识总结成笔记，方便日后快速查找及复习
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -245,7 +167,6 @@ Percona 的 pt-kill 这个工具不错，推荐使用；
 
 unpreview
 
-© 版权归极客邦科技所有，未经许可不得传播售卖。 页面已增加防盗追踪，如有侵权极客邦将依法追究其法律责任。
 
 
 
