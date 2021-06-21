@@ -35,6 +35,11 @@ public class Stu {
     public Stu() {
     }
 
+    public Stu(String name, String age) {
+        this.name = name;
+        this.age = age;
+    }
+
     public Stu(String name, String id, String age, String grade, String address, LocalDateTime createTime, LocalDateTime updateTime) {
         this.name = name;
         this.id = id;

@@ -59,6 +59,12 @@ package com.lsh.demo.bootstone.dao.mysql;
  *  -- UPDATE table_room set name = CONCAT('A',name)
  *  where id='123' and LEFT(name,1) != 'A';
  *
+ *  17.todo foreach 的原理
+ *  比如 hotelid in (1001,1002) room in (A1,A2)
+ *  是 1001-A1 1002-A2
+ *  还是 1001-A1,1001-A2,1002-A1,1002-A2
+ *
+ *
  *
  *
  *

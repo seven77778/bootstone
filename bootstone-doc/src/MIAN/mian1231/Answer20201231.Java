@@ -19,21 +19,22 @@ public class Answer20201231{
 
      ② Redis的淘汰策略
 
-     Redis 3.0 支持的6大策略
+     Redis 3.0 【内存淘汰策略】
 
-     noeviction: 不删除策略, 达到最大内存限制时, 如果需要更多内存, 直接返回错误信息。 大多数写命令都会导致占用更多的内存(有极少数会例外, 如 DEL )。
-     allkeys-lru: 所有key通用; 优先删除最近最少使用(less recently used ,LRU) 的 key。
+     noeviction: 不删除策略, 达到最大内存限制时, 如果需要更多内存, 直接返回错误信息。
+     大多数写命令都会导致占用更多的内存(有极少数会例外, 如 DEL )。
+     allkeys-lru【常用】: 所有key通用; 优先删除最近最少使用(less recently used ,LRU) 的 key。
      volatile-lru: 只限于设置了 expire 的部分; 优先删除最近最少使用(less recently used ,LRU) 的 key。
      allkeys-random: 所有key通用; 随机删除一部分 key。
      volatile-random: 只限于设置了 expire 的部分; 随机删除一部分 key。
      volatile-ttl: 只限于设置了 expire 的部分; 优先删除剩余时间(time to live,TTL) 短的key。
 
-     过期策略
-
+     【redis过期策略】 定期删除+惰性删除
+       定期删除，也就是每隔100ms随机抽查一些设置了过期时间的
      set key time,也并不是过期就会删除
-     只是在你用到这个key的时候，查一下有没有过期
+     只是在你用到这个key的时候，查一下有没有过期，这就是 惰性删除
 
-     定期删除+惰性删除 todo
+
 
      ③ Synchronized 基本原理
       1.保证 原子性 、 可见性、有序性，所以也是解决并发最常用的
@@ -57,7 +58,6 @@ public class Answer20201231{
     public void test()throws Exception{
         String s ="1";
         String ll=s.trim();
-
     }
 
 }

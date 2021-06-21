@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // 点击按钮 请求数据，
+            $("#b01").click(function(){
+                // 请求数据
+                htmlobj=$.ajax({url:"http://www.aaa1.com/scm/cross",
+                    // crossDomain:true,
+                    // xhrFields: {
+                    //     withCredentials: true
+                    // },
+                    async:false});
+                // 将请求的数据显示在div中
+                $("#myDiv").html(htmlobj.responseText);
+            });
+        });
+
+        $(document).ready(function(){
+            // 点击按钮 请求数据，
+            $("#b02").click(function(){
+                // 请求数据
+                htmlobj=$.ajax({url:"http://www.bbb2.com/scm/noCross",
+                    xhrFields: {
+                           withCredentials: true
+                         },
+                    crossDomain: true,
+                    async:false});
+                // 将请求的数据显示在div中
+                $("#myDiv").html(htmlobj.responseText);
+            });
+        });
+
+        $(document).ready(function(){
+            // 点击按钮 请求数据，
+            $("#b03").click(function(){
+                // 请求数据
+                htmlobj=$.ajax({url:"http://www.bbb2.com/scm/huohu",
+                    xhrFields: {
+                           withCredentials: true
+                         },
+                    crossDomain: true,
+                    async:false});
+                // 将请求的数据显示在div中
+                $("#myDiv").html(htmlobj.responseText);
+            });
+        });
+
+    </script>
+
+
+</head>
+<!--目标：跨域携带cookie-->
+<body>
+
+
+<div id="myDiv">结果显示</div>
+<button id="b01" type="button">GetPort</button>
+<button id="b02" type="button">GetPort</button>
+<button id="b03" type="button">GetPort</button>
+</body>
+</html>
+
+<!--1. 跨域注解 和 Nginx 跨域配置是冲突的，一个地方配置了就OK，两个地方配了反而跨域了
+            add_header Access-Control-Allow-Origin *;
+			add_header Access-Control-Allow-Methods *;
+			add_header Access-Control-Allow-Headers *;
+			add_header Access-Control-Allow-Credentials true;
+
+2.
+add_header 'Access-Control-Allow-Origin' '*' always
+和
+@CrossOrigin(origins = "*")
+是冲突的
+
+3.
+This Set-Cookie was blocked because it had the "Secure" attribute but was not received over a secure connection.
+谷歌浏览器
+
+ -->

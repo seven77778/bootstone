@@ -5,6 +5,7 @@ import biz.limit.RateConfig;
 import biz.limit.RateLimit;
 import biz.limit.anno.RateLimitAnno;
 import com.google.common.collect.Maps;
+import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import com.lsh.demo.bootstone.service.util.RedisUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -51,6 +52,10 @@ public class MethodProcess implements InitializingBean {
         System.out.println("注解的参数为 " + rateLimitAnno.type() + rateLimitAnno.name());
 
         RateLimit rateLimit = limitMap.get(rateLimitAnno.type());
+        if(null == rateLimit){
+            BootStoneLog.bootStone.info("注解参数有误："+ rateLimitAnno);
+            return proceedingJoinPoint.proceed();
+        }
 //        String numLimit = redisUtil.get(rateLimitAnno.name() + rateLimitAnno.type());
         RateConfig config = new RateConfig(type, name, num, isWait);
         rateLimit.init();

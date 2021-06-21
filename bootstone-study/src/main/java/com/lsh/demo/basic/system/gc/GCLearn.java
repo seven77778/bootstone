@@ -25,7 +25,9 @@ package com.lsh.demo.basic.system.gc;
  * 2.被同步锁持有的对象，synchronize修饰的对象，锁没释放，就不回收
  *
  * 问：什么时候会stop the world？
- * 目前所有的新生代gc都是需要STW的
+ * 目前所有的新生代gc都是需要STW的 todo 怀疑态度
+ * -- 复制算法会stw，但是对象比较少，影响不大，就s1到s2
+ * -- 查看资料原来ParNew也会在GC的时候stop-the-world
  *
  * Serial：单线程STW，复制算法
  * ParNew：多线程并行STW，复制算法

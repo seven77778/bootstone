@@ -24,7 +24,7 @@
     </appender>
 
     <!-- mysql打印语句 -->
-    <logger name="com.lsh.demo.bootstone.dao.mysql" level="INFO" />
+    <logger name="com.lsh.demo.bootstone.dao.mysql" level="DEBUG" />
     <logger name="com.alibaba.dubbo" level="DEBUG"/>
     <!--输出到文件-->
     <!-- RollingFileAppender：滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 -->

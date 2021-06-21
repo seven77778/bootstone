@@ -33,7 +33,48 @@ package com.lsh.demo.bootstone.dao.mysql.index;
  *
  * 案例1：订单表，业务需求，先查 预定的，查不到预定的，就查在住的订单
  * 写两个sql，先查预定- 查不到，再查在住，查两次
- * 或者，一条sql，用in查询出两个状态的所有订单，在java代码中筛选 fixme 哪个好
+ * 或者，一条sql，用in查询出两个状态的所有订单，在java代码中筛选 fixme 哪个好 查一次好
+ *
+ */
+
+/* sql1：
+EXPLAIN SELECT * FROM room
+LEFT JOIN  rtype ON room.roomcode = rtype.code
+WHERE room.hotelid = '123';
+sql2：
+EXPLAIN SELECT * FROM room
+LEFT JOIN  rtype ON room.hotelid = rtype.hotelid and room.roomcode = rtype.code
+WHERE room.hotelid = '123';
+sql3：
+EXPLAIN SELECT * FROM room,  rtype
+WHERE room.hoteild = '123' and room.hoteilid = rtype.hoteilid and room.roomcode=rtype.code ;
+ */
+/**
+   id select_type table type  possible_keys key key_len ref rows filtered Extra  partitions(都空)
+ * 一：
+ * 1	SIMPLE	room	ref	    PRIMARY	PRIMARY	50	  const	    28	100
+ * 1	SIMPLE	rtype	ALL		null	null	                663	100	  Using where; Using join buffer (Block Nested Loop)
+ *
+ * 四: 发现少了条件，排除
+ * 1	SIMPLE	room	ref	    PRIMARY	PRIMARY	50	 const	    28	100
+ * 1	SIMPLE	rtype	ref	    PRIMARY	PRIMARY	50	 hotelId    2	100
+ *
+ * 二：
+ * 1	SIMPLE	room	ref	    PRIMARY	PRIMARY	50	 const	            28	100
+ * 1	SIMPLE	rtype	eq_ref	PRIMARY	PRIMARY	148	 hotelId,roomCode	1	100
+ * 三：不用left on
+ * 1	SIMPLE	rtype	ref	   PRIMARY	PRIMARY	50	const	4	100
+ * 1	SIMPLE	room	ref	   PRIMARY	PRIMARY	50	const	28	10	Using where
+ *
+ * 哪个好？
+ * 1.key_len越短越好 -- 表示索引中使用的字节数
+ * 2.type -- system > const > eq_ref > ref > range > index > all
+ * 3.第一条之所以有Using join buffer (Block Nested Loop)，因为 room.roomcode 没索引
+ * 4.看 2和3，一个是ref，一个eq_ref，一个extra无，一个是 using where ？？
+ *
+ * 5.索引失效实例 room表
+ * explain room=1001，扫描结果为all ，原因是 hotelid+room 共同组成了PRIMARY索引
+ * 单独用room查询，作为组合索引的第二个，不生效
  *
  */
 public class IndexLearn {

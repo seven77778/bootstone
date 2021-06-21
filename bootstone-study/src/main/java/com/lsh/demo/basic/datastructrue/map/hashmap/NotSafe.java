@@ -6,12 +6,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  Created by lsh on 2019-05-14.
+ *  JDK1.7—》数组 + 链表
+ *
+ *  JDK1.8—》数组 + 链表，红黑树 （JDK1.8之后，当链表长度超过8转换红黑树）
  *
  *  * HashMap之所以线程不安全，就是resize出的问题 todo
  *  http://www.ruanyifeng.com/blog/2018/09/hash-collision-and-birthday-attack.html
  *  哈希碰撞 和 生日攻击
- *  https://www.cnblogs.com/fswhq/p/hashmap.html resize
+ *  https://blog.csdn.net/hll174/article/details/50915346
+ *  更详细的区别：
+ *  https://blog.csdn.net/qq_36520235/article/details/82417949
  *
  *  *
  *  *1.initialCapacity 初始44 -> 64  threshold
@@ -63,6 +67,7 @@ public class NotSafe {
 
     /**
      * hashcode相同，值不一定相同
+     * @see HashMap#putVal(int, java.lang.Object, java.lang.Object, boolean, boolean)
      */
     @Test
     public void test(){

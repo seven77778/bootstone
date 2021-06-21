@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class RateLimitController {
 
     @RequestMapping("num1")
-    @RateLimitAnno(type = "memory",num = 3,name="method1",waitFor = 1)
+    @RateLimitAnno(type = "memory-sdsad",num = 3,name="method1",waitFor = 1)
     public String rateByQps(){
         return "ok~";
     }
 
     @RequestMapping("num2")
-    @RateLimitAnno(type = "memory",num = 5,name="method2",waitFor = 1)
+    @RateLimitAnno(type = "memory-num",num = 5,name="method2",waitFor = 1)
     public String rateByQps2()throws Exception{
         Thread.sleep(10000);
         return "ok~";

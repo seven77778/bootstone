@@ -5,7 +5,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import java.util.concurrent.*;
 
 /**
- * Created by lsh on 2019-04-23.
+ * 十问十答：https://mp.weixin.qq.com/s/axWymUaYaARtvsYqvfyTtw
  * <p>
  * write a myself threadlocal pool todo
  * <p>
@@ -132,7 +132,11 @@ public class ThreadPoolLearn {
          * corePooSize -> 队列 -> maximumPoolSize -> 拒绝策略
          *
          *1 corePoolSize
-         * 核心线程数
+         * 核心线程数 能为0吗？
+         * 上述问题需区分JDK版本。在1.6版本之后，如果corePoolSize=0，提交任务时如果线程池为空，则会立即创建一个线程来执行任务（先排队再获取）；如果提交任务的时候，线程池不为空，则先在等待队列中排队，只有队列满了才会创建新线程。
+         *
+         * 所以，优化在于，在队列没有满的这段时间内，会有一个线程在消费提交的任务；1.6之前的实现是，必须等队列满了之后，才开始消费。
+         * 要区分版本
          *
          *
          *2 maximumPoolSize

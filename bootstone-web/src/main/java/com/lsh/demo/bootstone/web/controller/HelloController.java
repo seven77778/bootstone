@@ -11,6 +11,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 /**
@@ -34,11 +37,28 @@ public class HelloController {
      * @return
      */
 
+    /**
+     *1.  xhrFields: { //加了这个，后端返回的set-cookie，下次 同源 请求自动带cookie了
+     *                     withCredentials: true
+     *                 },
+     *
+     *                 前端加上这个，只要不跨越，就能带cookie
+     *
+     *  2. withCredentials: false ，+后端@cross注解，可以跨域，无cookie
+     */
+    @RequestMapping("/crossOrigin")
+    public String crossOrigin(String param, HttpServletRequest request, HttpServletResponse response){
+        Cookie[] getC = request.getCookies();
+        System.out.println("拿到前端cookie-" + (getC ==null));
+        Cookie cookie = new Cookie("cookie-key","cookie-value");
+        response.addCookie(cookie); //有了这个，response header中就有了 Set-Cookie: cookie-key=cookie-value
+        return param+ "crossOrigin";
+    }
 
     @RequestMapping("/hello")
-    @LshAuth
+//    @LshAuth
     public String hello(String lsh){
-        return lsh;
+        return "第222台";
     }
 
     @RequestMapping("/hellopost")

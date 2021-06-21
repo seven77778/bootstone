@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +37,19 @@ public class MysqlTest {
 
     @Resource
     private DataService service;
+
+    @Test
+    public void testManyIn(){
+        List<Stu> stus = Arrays.asList(new Stu("aa","18"),new Stu("bb","1"));
+        List<Stu> rs = service.queryByManyIn(stus);
+        System.out.println(rs);
+    }
+
+    @Test
+    public void testUpdateTimeByStringDate(){
+        Integer res = service.updateByStringDate("5011-05-05");
+        System.out.println(res);
+    }
 
     @Test
     public void test() {

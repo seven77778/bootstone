@@ -32,6 +32,17 @@ public class DateBootStoneUtils {
     }
 
     /**
+     * 直接获取当前时间的String -- yyyy-MM-dd格式
+     * @return
+     */
+    public static String getTodayString(){
+        DateTimeFormatter df=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String format = df.format(LocalDateTime.now());
+        System.out.println(format);
+        return format;
+    }
+
+    /**
      * 获取当前时间的yyyy-MM-dd HH:mm:ss格式，
      * 以及减去一小时的 日期字符串
      */

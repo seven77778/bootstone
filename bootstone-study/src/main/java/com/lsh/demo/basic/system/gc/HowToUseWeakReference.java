@@ -10,7 +10,8 @@ import java.lang.ref.WeakReference;
  * 如果这时GC运行, 那么这个对象就会被回收，不论当前的内存空间是否足够，这个对象都会被回收。
  * <p>
  * <p>
- * Entity 的key为什么用弱引用，因为如果强引用，ThreadLocal gc回收了，但是Entity 的value得不到回收，导致内存泄露
+ * Entity 的key为什么用弱引用，因为如果强引用，ThreadLocal gc回收了，但是Entity 的value得不到回收，
+ * 导致内存泄露
  */
 public class HowToUseWeakReference {
 

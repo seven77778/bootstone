@@ -24,7 +24,11 @@ package com.lsh.demo.basic.system.gc;
  * 2020-06-30T08:36:01.343+0800: 2890093.662: [CMS-concurrent-preclean: 0.109/0.168 secs] [Times: user=0.19 sys=0.00, real=0.17 secs]
  * 2020-06-30T08:36:01.344+0800: 2890093.663: [CMS-concurrent-abortable-preclean-start]
  * 2020-06-30T08:36:01.344+0800: 2890093.663: [CMS-concurrent-abortable-preclean: 0.000/0.000 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
- * 2020-06-30T08:36:01.349+0800: 2890093.668: [GC (CMS Final Remark) [YG occupancy: 1177162 K (1922432 K)]2020-06-30T08:36:01.349+0800: 2890093.668: [Rescan (parallel) , 0.4430175 secs]2020-06-30T08:36:01.792+0800: 2890094.111: [weak refs processing, 0.0000819 secs]2020-06-30T08:36:01.792+0800: 2890094.111: [class unloading, 0.1558433 secs]2020-06-30T08:36:01.948+0800: 2890094.267: [scrub symbol table, 0.0719194 secs]2020-06-30T08:36:02.020+0800: 2890094.339: [scrub string table, 0.0076511 secs][1 CMS-remark: 1768434K(2097152K)] 2945597K(4019584K), 0.6846606 secs] [Times: user=1.88 sys=0.00, real=0.68 secs]
+ * 2020-06-30T08:36:01.349+0800: 2890093.668: [GC (CMS Final Remark) [YG occupancy: 1177162 K (1922432 K)]2020-06-30T08:36:01.349+0800: 2890093.668:
+ * [Rescan (parallel) , 0.4430175 secs]2020-06-30T08:36:01.792+0800: 2890094.111: [weak refs processing, 0.0000819 secs]2020-06-30T08:36:01.792+0800: 2890094.111:
+ * [class unloading, 0.1558433 secs]2020-06-30T08:36:01.948+0800: 2890094.267: [scrub symbol table, 0.0719194 secs]2020-06-30T08:36:02.020+0800: 2890094.339:
+ * [scrub string table, 0.0076511 secs][
+ * 1 CMS-remark: 1768434K(2097152K)] 2945597K(4019584K), 0.6846606 secs] [Times: user=1.88 sys=0.00, real=0.68 secs]
  * 2020-06-30T08:36:02.034+0800: 2890094.353: [CMS-concurrent-sweep-start]
  * 2020-06-30T08:36:02.904+0800: 2890095.224: [CMS-concurrent-sweep: 0.870/0.870 secs] [Times: user=1.04 sys=0.00, real=0.87 secs]
  * 2020-06-30T08:36:02.905+0800: 2890095.224: [CMS-concurrent-reset-start]
@@ -32,6 +36,14 @@ package com.lsh.demo.basic.system.gc;
  * 2020-06-30T08:36:04.913+0800: 2890097.232: [GC (CMS Initial Mark) [1 CMS-initial-mark: 1768391K(2097152K)] 2970936K(4019584K), 0.4470559 secs] [Times: user=1.64 sys=0.00, real=0.45 secs]
  */
 public class CMSLearn {
+    /**
+     * 1.cms是old gc，还是young gc，还是别的啥
+     * -- cms只作用于 老年代
+     * 看日志，伴随着cms的young gc 是 ParNew
+     *
+     * 2.缺点：
+     * 默认是没有碎片处理的，时间长了以后，碎片化严重
+     */
 
     public static void main(String[] args) {
         System.gc();
@@ -68,13 +80,14 @@ public class CMSLearn {
 
 
     3.CMS缺点
-    CMS回收器采用的基础算法是Mark-Sweep。所有CMS不会整理、压缩堆空间。
+    CMS回收器采用的基础算法是Mark-Sweep。CMS不会整理、压缩堆空间。
     这样就会有一个问题：经过CMS收集的堆会产生空间碎片。
     CMS不对堆空间整理压缩节约了垃圾回收的停顿时间，但也带来的堆空间的浪费。
     为了解决堆空间浪费问题，CMS回收器不再采用简单的指针指向一块可用堆空间来为下次对象分配使用。
     而是把一些未分配的空间汇总成一个列表，当JVM分配对象空间的时候，会搜索这个列表找到足够大的空间来hold住这个对象。
     需要更多的CPU资源。从上面的图可以看到，为了让应用程序不停顿，CMS线程和应用程序线程并发执行，
-    这样就需要有更多的CPU，单纯靠线程切换是不靠谱的。并且，重新标记阶段，为空保证STW快速完成，也要用到更多的甚至所有的CPU资源。
+    这样就需要有更多的CPU，单纯靠线程切换是不靠谱的。并且，重新标记阶段，为空保证STW快速完成，
+    也要用到更多的甚至所有的CPU资源。
     当然，多核多CPU也是未来的趋势！
 
     CMS的另一个缺点是它需要更大的堆空间。因为CMS标记阶段应用程序的线程还是在执行的，
@@ -88,6 +101,21 @@ public class CMSLearn {
     4.啥时候用CMS
     如果你的应用程序对停顿比较敏感，并且在应用程序运行的时候可以提供更大的内存和更多的CPU(也就是硬件牛逼)，
     那么使用CMS来收集会给你带来好处。还有，如果在JVM中，有相对较多存活时间较长的对象(老年代比较大)会更适合使用CMS。
+
+     5. 日常请求超时，排查到刚好发生full gc，耗时6秒，【class unloading,5.5285249 secs】
+     同时，swap很高,swap交换就用到硬盘了，
+     GC慢机器 cat /proc/sys/vm/swappiness 60
+     GC正常机器 cat /proc/sys/vm/swappiness 1
+
+     -- https://blogs.oracle.com/poonam/long-class-unloading-pauses-with-jdk8
+
+     在这种情况下，问题似乎也不在于 JVM，或者更具体地说，不是与类卸载步骤有关，而是与 GC 线程被阻塞有关。
+     事实证明，类卸载阶段导致在系统级别发生了大量分页活动，这占用了 GC 线程的 CPU 时间。
+
+    JVM 中从 JDK7 到 JDK8 的变化是在 JDK8 中我们没有 PermGen。相反，我们有 MetaSpace，它是在本机内存空间之外分配的。
+正如我之前提到的，用户运行时启用了大页面。在 JDK7 中，通过使用选项 -XX:+UseLargePages，
+我们可以为 Java Heap 和 PermGen 启用大页面。但是对于jdk8，类元数据存储在MetaSpace（原生空间）中，
+当我们使用+UseLargePages时，默认情况下我们不会为MetaSpace启用大页面。
 
      */
 

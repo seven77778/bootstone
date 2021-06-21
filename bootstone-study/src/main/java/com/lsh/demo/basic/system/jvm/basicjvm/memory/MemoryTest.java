@@ -1,6 +1,9 @@
 package com.lsh.demo.basic.system.jvm.basicjvm.memory;
 
+import org.assertj.core.util.Lists;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 /**
  * Created by lsh on 2018/10/29.
@@ -28,5 +31,33 @@ public class MemoryTest {
         System.out.println(Runtime.getRuntime().availableProcessors());
         Runtime.getRuntime().exec("calc");
     }
+
+    /**
+     * StackOverflow
+     * no,最终是 java.lang.OutOfMemoryError: Java heap space
+     * 堆内存不足
+     */
+    @Test
+    public void testStackOverflow(){
+        ArrayList list = Lists.newArrayList();
+        for(;;){
+            list.add(new Object());
+        }
+    }
+
+
+    /**
+     * StackOverflow
+     * -- yes,递归调用直接报错
+     */
+    @Test
+    public void testStackOverflow2(){
+
+        for(;;){
+            testStackOverflow2();
+        }
+    }
+
+
 
 }

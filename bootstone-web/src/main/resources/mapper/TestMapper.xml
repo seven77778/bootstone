@@ -79,4 +79,17 @@
             AND version = #{version}
     </update>
 
+    <update id="updateByStringDate">
+        update stu set update_time=#{date,jdbcType=VARCHAR} where id =1;
+    </update>
+
+    <select id="queryByManyIn" resultType="com.lsh.demo.bootstone.dao.mysql.Stu">
+    SELECT * FROM stu where
+        <foreach collection="stus" open="(" close=")" item="stu" separator=" or ">
+           name = #{stu.name} and age =    #{stu.age}
+        </foreach>
+
+
+
+    </select>
 </mapper>
