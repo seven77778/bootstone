@@ -30,6 +30,7 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-dependencies-zookeeper</artifactId>
             <version>${dubbo.version}</version>
+            <type>pom</type>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
