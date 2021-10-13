@@ -43,10 +43,15 @@ public class MyBasicThreadFactory {
         return new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEPALIVE_TIME, TimeUnit.SECONDS,
                 new LinkedBlockingDeque<Runnable>(1024), threadFactory, new AbortPolicy());
     }
-
+    public static ExecutorService getExecutorService(int num) {
+        ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("pool-%d").build();
+        return new ThreadPoolExecutor(num, num, KEEPALIVE_TIME, TimeUnit.SECONDS,
+                new LinkedBlockingDeque<Runnable>(1024), threadFactory, new AbortPolicy());
+    }
 
 
     //神奇，灵狐插件不报错。。。
     private ExecutorService executor = Executors.newFixedThreadPool(1);
+    private ExecutorService executor2 = Executors.newScheduledThreadPool(11);
 
 }

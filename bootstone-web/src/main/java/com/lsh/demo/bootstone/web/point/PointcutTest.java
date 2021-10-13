@@ -103,10 +103,11 @@ public class PointcutTest {
     }
 
     @After("point2()")
-    public void afterMethod(JoinPoint point) {
+    public Object afterMethod(JoinPoint point) {
         String methodName = point.getSignature().getName();
         List<Object> args = Arrays.asList(point.getArgs());
         System.out.println("After：" + methodName + ",参数为：" + args);
+        return null;
     }
 
     @Around("point7()")

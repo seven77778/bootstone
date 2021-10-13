@@ -20,15 +20,18 @@ public class PringJvmSettings {
     /**
      * -Xmn 年轻代大小
      *
-     * -verbose:gc -Xms20m -Xmx20m -Xmn10m -XX:+PrintGCDetails  -XX:MaxTenuringThreshold=1
+     * -verbose:gc -Xms20m -Xmx20m -Xmn10m -XX:+PrintGCDetails  -XX:MaxTenuringThreshold=15
+     *
+     * 断点发现，程序一直在full gc ，怀疑是空间分配担保机制
      * */
     private static final int _1MB = 1024 * 1024;
 
     public static void main(String[] args) {
         byte[] allocation1, allocation2, allocation3,allocation4;
-        allocation1 = new byte[2 * _1MB];
-        allocation2 = new byte[2 * _1MB];
-        allocation3 = new byte[2 * _1MB];
+        allocation1 = new byte[ _1MB / 4];
+        allocation2 = new byte[4 * _1MB];
+        allocation3 = new byte[4 * _1MB];
+        allocation3=null;
         allocation4 = new byte[4 * _1MB];
     }
 

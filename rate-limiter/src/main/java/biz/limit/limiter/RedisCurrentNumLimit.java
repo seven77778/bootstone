@@ -43,9 +43,8 @@ public class RedisCurrentNumLimit implements RateLimit {
         RPermitExpirableSemaphore semaphore = semphores.get(config.getName());
         if (null == semaphore) {
             semaphore = redissonClient.getPermitExpirableSemaphore(config.getName());
-            while (!semaphore.trySetPermits(config.getLimit())) {
-            }
-            semphores.put(config.getName(), semaphore);
+            while (!semaphore.trySetPermits(config.getLimit()))
+                semphores.put(config.getName(), semaphore);
         } else {
             try {
                 String per = semaphore.tryAcquire(1, 1, TimeUnit.SECONDS);

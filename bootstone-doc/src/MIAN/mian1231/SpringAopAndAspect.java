@@ -1,3 +1,6 @@
+package mian1231;
+
+import org.junit.Before;
 import org.springframework.aop.AfterReturningAdvice;
 import org.springframework.aop.MethodBeforeAdvice;
 
@@ -30,6 +33,7 @@ public class SpringAopAndAspect implements MethodBeforeAdvice, AfterReturningAdv
 
     }
 
+    @Before
     @Override
     public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
 

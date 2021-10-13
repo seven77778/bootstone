@@ -26,6 +26,9 @@ import java.util.Random;
 public class ThreadLocalLearn {
 
     private ThreadLocal<String> stringThreadLocal = new ThreadLocal<>();
+    private ThreadLocal<String> stringThreadLoca2 = new ThreadLocal<>();
+    private ThreadLocal<String> stringThreadLoca3 = new ThreadLocal<>();
+    private ThreadLocal<String> stringThreadLoca4 = new ThreadLocal<>();
 
 
     Random random = new Random(123);
@@ -33,6 +36,13 @@ public class ThreadLocalLearn {
     @Test
     public void testRandom(){
         System.out.println(random.nextInt());
+        stringThreadLoca2.set("123");
+        stringThreadLocal.set("12233232");
+        stringThreadLoca3.set("12233232");
+
+        System.out.println(123);
+        stringThreadLocal.get();
+        stringThreadLoca2.get();
 
     }
 

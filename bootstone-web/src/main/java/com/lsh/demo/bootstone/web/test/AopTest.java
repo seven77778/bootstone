@@ -4,13 +4,14 @@ import org.junit.Test;
 import work.utils.CloseHttpUtil;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 
 public class AopTest extends BaseTest {
     @Resource
     private CloseHttpUtil httpUtil;
 
     @Test
-    public void testHttpCostAndAop(){
+    public void testHttpCostAndAop()throws IOException {
         httpUtil.httpGet();
     }
 }

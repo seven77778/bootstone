@@ -11,8 +11,8 @@ public class LinkedHash {
 
     @Test
     public void test() {
-//        LinkedHashMap<String, String> map = new LinkedHashMap<>();
-//        map.put("1", "1");
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        map.put("1", "1");
 //        map.put("3", "3");
 //        map.put("2", "2");
 

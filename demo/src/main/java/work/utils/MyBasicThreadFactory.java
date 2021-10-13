@@ -26,8 +26,10 @@ public class MyBasicThreadFactory {
     private static final int MAXIMUM_POOL_SIZE = 10000;
     private static final long KEEPALIVE_TIME = 200L;
 
+
     public static ExecutorService getExecutorService(){
         ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("pool-%d").build();
+
         return new ThreadPoolExecutor(CORE_POOL_SIZE,MAXIMUM_POOL_SIZE,KEEPALIVE_TIME, TimeUnit.MILLISECONDS,
             new LinkedBlockingDeque<Runnable>(1024),threadFactory,new AbortPolicy());
     }
@@ -35,5 +37,14 @@ public class MyBasicThreadFactory {
     public static ExecutorService getTestExecutorService(){
         return new ThreadPoolExecutor(1000,99999,5000, TimeUnit.MILLISECONDS,
                 new LinkedBlockingDeque<Runnable>(1024));
+    }
+
+    public static void main(String[] args) {
+        MyBasicThreadFactory.getExecutorService().execute(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
     }
 }

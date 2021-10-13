@@ -3,6 +3,7 @@ package com.lsh.demo.bootstone.dao.mysql;
 import lombok.Data;
 
 import java.sql.Date;
+import java.sql.PseudoColumnUsage;
 import java.time.LocalDateTime;
 
 /**
@@ -55,6 +56,10 @@ public class Stu {
         this.age = age;
         this.address = address;
         this.id = id;
+    }
+
+    public static void main(String[] args) {
+        System.out.println( (System.currentTimeMillis()/1000) % 30);
     }
 
 }

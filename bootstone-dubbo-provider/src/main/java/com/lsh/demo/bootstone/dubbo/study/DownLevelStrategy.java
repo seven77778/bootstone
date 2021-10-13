@@ -21,7 +21,9 @@ import org.apache.dubbo.rpc.cluster.support.wrapper.MockClusterInvoker;
  * -- 加上dubbomock，也没问题了。。
  *
  * @see MockClusterInvoker
- * @see https://mp.weixin.qq.com/s?__biz=MzIyNzYzMTQ2Ng==&mid=2247485588&idx=1&sn=c6aeceef91c4ca5f21f867dca6efa2c2&chksm=e85f0091df2889872d4738441b5772b9670c821faf42754dc83f97a6f331d6999d69430ea3d9&cur_album_id=1568872034091237377&scene=190#rd
+ * @see https://mp.weixin.qq.com/s?__biz=MzIyNzYzMTQ2Ng==&mid=2247485588&idx=1&sn=
+ c6aeceef91c4ca5f21f867dca6efa2c2&chksm=e85f0091df2889872d4738441b5772b9670c821faf42754dc83f97a6f331d6999d69430ea3d9
+ &cur_album_id=1568872034091237377&scene=190#rd
  */
 public class DownLevelStrategy {
 

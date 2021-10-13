@@ -3,10 +3,13 @@ package com.lsh.demo.bootstone.web.controller;
 import com.lsh.demo.basic.thread.threadpool.MyBasicThreadFactory;
 import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import org.apache.commons.lang3.StringUtils;
+import org.assertj.core.util.Lists;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -15,6 +18,7 @@ import java.util.concurrent.Executors;
 public class ThreadPoolController {
 
     private ThreadLocal<String> threadLocal = new ThreadLocal<>();
+    private ThreadLocal<String> threadLocal2 = new ThreadLocal<>();
 
     /**
      * 测试线程池
@@ -75,5 +79,8 @@ public class ThreadPoolController {
         }
 
     }
+
+
+
 
 }

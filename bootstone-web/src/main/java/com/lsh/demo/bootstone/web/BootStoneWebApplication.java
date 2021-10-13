@@ -4,9 +4,12 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author lsh
@@ -23,7 +26,8 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource(value = {"classpath:dubbo-provider.xml","classpath:dubbo-consumer.xml","classpath:bean.xml"})
 public class BootStoneWebApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BootStoneWebApplication.class, args);
+        ApplicationContext ss = SpringApplication.run(BootStoneWebApplication.class, args);
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext();
     }
 
     /**

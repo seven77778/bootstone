@@ -1,8 +1,12 @@
 package com.lsh.demo.basic.juc;
 
-import org.junit.Test;
+import com.lsh.demo.basic.thread.threadpool.MyBasicThreadFactory;
 
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.LongAdder;
 
 /**
  * Created by lsh on 2019/2/25.
@@ -13,10 +17,41 @@ import java.util.concurrent.CyclicBarrier;
  */
 public class CyclicBarrierTest {
 
-    @Test
-    public void test () throws Exception{
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(8 );
-            cyclicBarrier.await();
+    // 请求的数量
+   static LongAdder longAdder = new LongAdder();
+    // 需要同步的线程数量
+    private static final CyclicBarrier cyclicBarrier = new CyclicBarrier(5);
+
+    public static void main(String[] args) throws InterruptedException {
+        // 创建线程池
+        ExecutorService threadPool = MyBasicThreadFactory.getExecutorService(10);
+
+        for (int i = 0; i < 50; i++) {
+            Thread.sleep(10);
+            threadPool.execute(() -> {
+                try {
+                    test(longAdder.intValue());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        threadPool.shutdown();
+        cyclicBarrier.reset();
+    }
+
+    public static void test(int threadnum) throws InterruptedException, BrokenBarrierException {
+        longAdder.increment();
+        System.out.println("threadnum:" + threadnum + "is ready");
+        try {
+            /**等待60秒，保证子线程完全执行结束*/
+            cyclicBarrier.await(5, TimeUnit.SECONDS);
+        } catch (Exception e) {
+            System.out.println("-----CyclicBarrierException------");
+        }
+        System.out.println("threadnum:" + threadnum + "is finish");
     }
 
 

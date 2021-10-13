@@ -29,6 +29,12 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class CurrentHashMapTest {
 
+    @Test
+    public void testGetHashCode(){
+        String key="1233";
+        System.out.println(new ConcurrentHashMap());
+    }
+
     /**
      * >>> 的含义
      *

@@ -1,8 +1,11 @@
 package com.lsh.demo.bootstone.dao.mysql.transactional;
 
 import org.junit.Test;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
+
+import static org.springframework.transaction.TransactionDefinition.PROPAGATION_REQUIRED;
 
 /**
  *  @Transactional 为什么是spring的注解，不是mybatis的吗
@@ -17,7 +20,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
  *
  * @see TransactionAspectSupport#invokeWithinTransaction(java.lang.reflect.Method, java.lang.Class, org.springframework.transaction.interceptor.TransactionAspectSupport.InvocationCallback)
  */
-@Transactional
+@Transactional(propagation= Propagation.REQUIRED)
 public class TransactionalLearn {
 
     /**

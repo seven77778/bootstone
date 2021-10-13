@@ -30,6 +30,7 @@
         <module>demo</module>
         <module>bootstone-77</module>
         <module>rate-limiter</module>
+        <module>lsh-spring-boot-starter</module>
     </modules>
 
     <properties>
@@ -37,7 +38,21 @@
         <guava.version>30.0-jre</guava.version>
         <dubbo.version>2.7.7</dubbo.version>
         <http.version>4.5.13</http.version>
+        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
     </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
 

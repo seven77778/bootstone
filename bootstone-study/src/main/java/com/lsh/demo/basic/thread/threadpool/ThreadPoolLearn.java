@@ -53,13 +53,23 @@ public class ThreadPoolLearn {
                         new LinkedBlockingDeque<>(),
                         new ThreadFactoryBuilder().setNameFormat("lsh-demo-pool-%d").build());
 
+        ThreadPoolExecutor threadPoolExecutor2 =
+                new ThreadPoolExecutor(10, 20, 1000,TimeUnit.SECONDS,
+                        new LinkedBlockingQueue<>(),
+                        new ThreadFactoryBuilder().setNameFormat("lsh-demo-pool-%d").build());
+
+        ThreadPoolExecutor threadPoolExecutor3 =
+                new ThreadPoolExecutor(10, 20, 1000,TimeUnit.SECONDS,
+                        new SynchronousQueue<>(),
+                        new ThreadFactoryBuilder().setNameFormat("lsh-demo-pool-%d").build());
+
         ThreadPoolExecutor threadPoolExecutor1 =
                 new ThreadPoolExecutor(1, 2, 100, TimeUnit.SECONDS,
-                        new ArrayBlockingQueue<>(1024),
+                        new ArrayBlockingQueue<>(1),
                         new ThreadFactoryBuilder().setNameFormat("hahah2a-demo2-pool-%d").build());
 
         //创建一个无名的来测试
-        ThreadPoolExecutor threadPoolExecutor3 =
+        ThreadPoolExecutor threadPoolExecutor5 =
                 new ThreadPoolExecutor(1000, 99999, 1000,TimeUnit.SECONDS,
                         new LinkedBlockingDeque<>());
         /*

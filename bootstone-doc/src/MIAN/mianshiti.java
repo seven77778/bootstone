@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -103,6 +104,8 @@ public class mianshiti {
     public static void main(String[] args) {
         try {
             lock.tryLock();
+            Condition con = lock.newCondition();
+            con.await();
             throw new Exception("");//add -> 进入异常，并且进入finally
         } catch (Exception e) {
             e.printStackTrace();

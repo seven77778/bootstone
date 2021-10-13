@@ -98,7 +98,6 @@ public class LRUCache<K, V> {
         first.pre = node;
         first = node;
         first.pre=null;
-
     }
 
     private void removeLast(){
@@ -158,6 +157,7 @@ public class LRUCache<K, V> {
         lru.remove(1);      //5:e 2:bb
         System.out.println(lru.toString());
         lru.put(1, "aaa");  //1:aaa 5:e 2:bb
+
         System.out.println(lru.toString());
     }
 

@@ -1,11 +1,13 @@
 package com.lsh.demo.bootstone.web.test;
 
 
+import baisc.redission.RedissonClientUtil;
 import com.lsh.demo.bootstone.service.util.RedisUtil;
 import com.lsh.demo.bootstone.web.BootStoneWebApplication;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.redisson.api.RLock;
 import org.redisson.api.RPermitExpirableSemaphore;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,5 +90,16 @@ public class RedisTest {
         System.out.println(permitId);
         //释放许可证还需要之前获得permitId
         semaphore.release(permitId);
+
+
+    }
+
+    @Resource
+    private RedissonClientUtil redissonClientUtil;
+    @Test
+    public void testTimeout(){
+
+        RLock lock = redissonClientUtil.redissonClient().getLock("111");
+        lock.lock(11,TimeUnit.DAYS);
     }
 }

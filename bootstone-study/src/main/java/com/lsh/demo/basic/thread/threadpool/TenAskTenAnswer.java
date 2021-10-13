@@ -11,7 +11,8 @@ import java.util.concurrent.*;
  *
  * 3 核心线程永远不会销毁么？
  * -- 在JDK1.6之后，如果allowsCoreThreadTimeOut=true，核心线程也可以被终止。
- * 这个问题有点tricky。首先我们要明确一下概念，虽然在JavaDoc中也使用了“core/non-core threads”这样的描述，但其实这是一个动态的概念，JDK并没有给一部分线程打上“core”的标记，做什么特殊化的处理。这个问题我认为想要探讨的是闲置线程终结策略的问题。
+ * 这个问题有点tricky。首先我们要明确一下概念，虽然在JavaDoc中也使用了“core/non-core threads”这样的描述，但其实这是一个动态的概念，JDK并没有给一部分线程打上“core”的标记，做什么特殊化的处理。
+ * 这个问题我认为想要探讨的是闲置线程终结策略的问题。
  *
  * 在JDK1.6之前，线程池会尽量保持corePoolSize个核心线程，即使这些线程闲置了很长时间。这一点曾被开发者诟病，所以从JDK1.6开始，提供了方法allowsCoreThreadTimeOut，如果传参为true，则允许闲置的核心线程被终止。
  *
@@ -52,10 +53,12 @@ import java.util.concurrent.*;
  * 或者实现Thread.UncaughtExceptionHandler接口，实现void uncaughtException(Thread t, Throwable e);方法，并将该handler传递给线程池的ThreadFactory。
  *
  *
- * 但是注意，afterExecute和UncaughtExceptionHandler都不适用submit。因为通过上面的FutureTask.run()不难发现，它自己对Throwable进行了try-catch，封装到了outcome属性，所以底层方法execute的Worker是拿不到异常信息的。
+ * 但是注意，afterExecute和UncaughtExceptionHandler都不适用submit。因为通过上面的FutureTask.run()不难发现，它自己对Throwable进行了try-catch，封装到了outcome属性，
+ * 所以底层方法execute的Worker是拿不到异常信息的。
  *
  * 8 线程池需不需要关闭?
- * -- 一般来讲，线程池的生命周期跟随服务的生命周期。如果一个服务（Service）停止服务了，那么需要调用shutdown方法进行关闭。所以ExecutorService.shutdown在Java以及一些中间件的源码中，是封装在Service的shutdown方法内的。
+ * -- 一般来讲，线程池的生命周期跟随服务的生命周期。如果一个服务（Service）停止服务了，那么需要调用shutdown方法进行关闭。
+ * 所以ExecutorService.shutdown在Java以及一些中间件的源码中，是封装在Service的shutdown方法内的。
  *
  * 如果是Server端不重启就不停止提供服务，我认为是不需要特殊处理的。
  *
@@ -123,6 +126,7 @@ public class TenAskTenAnswer {
         }
 
         pool.execute(() -> {});//void
+        Executors.newFixedThreadPool(10);
     }
 
     /**

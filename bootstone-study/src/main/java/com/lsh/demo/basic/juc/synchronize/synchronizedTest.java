@@ -49,7 +49,7 @@ public class synchronizedTest {
                 countDownLatch.countDown();
             }).start();
         }
-        countDownLatch.await();
+         countDownLatch.await();
     }
 
 
