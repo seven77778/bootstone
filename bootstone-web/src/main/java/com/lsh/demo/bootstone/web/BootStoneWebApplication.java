@@ -26,14 +26,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 @ImportResource(value = {"classpath:dubbo-provider.xml","classpath:dubbo-consumer.xml","classpath:bean.xml"})
 public class BootStoneWebApplication {
     public static void main(String[] args) {
-        ApplicationContext ss = SpringApplication.run(BootStoneWebApplication.class, args);
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext();
+        SpringApplication.run(BootStoneWebApplication.class, args);
     }
 
     /**
      * @see SpringApplication#run(String...) 
      * 1.StopWatch 计时器，记录启动时间，线程不安全
      * 
-     * 
+     * 1·
      */
 }
