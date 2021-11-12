@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SentinelBootDemo  {
 
-    @SentinelResource(value = "sayHello")
+    @SentinelResource(value = "sayHello",blockHandler ="blockHandlerForUser")
     public String sayHello(String name) {
         return "Hello, " + name;
     }

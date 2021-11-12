@@ -12,7 +12,7 @@ public class MybatisPlusTest {
 //    @Autowired
 //    private UserMapper userMapper;
 //
-//    @Test
+//    @Print20211027
 //    public void testSelect() {
 //        System.out.println(("----- selectAll method test ------"));
 //        List<User> userList = userMapper.selectList(null);

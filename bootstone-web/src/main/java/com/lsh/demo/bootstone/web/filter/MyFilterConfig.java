@@ -23,6 +23,7 @@ public class MyFilterConfig implements FilterConfig {
     public FilterRegistrationBean someFilterRegistration() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(replaceStreamFilter());
+        registration.setOrder(1);
         registration.addUrlPatterns("/*");
         registration.setName("replaceStreamFilter");
         return registration;

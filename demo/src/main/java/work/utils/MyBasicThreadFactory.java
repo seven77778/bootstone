@@ -40,11 +40,9 @@ public class MyBasicThreadFactory {
     }
 
     public static void main(String[] args) {
-        MyBasicThreadFactory.getExecutorService().execute(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
+        //coresize=0,配合无界队列，会怎么样
+        ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("pool-%d").build();
+        ThreadPoolExecutor ss = new ThreadPoolExecutor(0, MAXIMUM_POOL_SIZE, KEEPALIVE_TIME, TimeUnit.MILLISECONDS,
+                new LinkedBlockingDeque<Runnable>(), threadFactory, new AbortPolicy());
     }
 }

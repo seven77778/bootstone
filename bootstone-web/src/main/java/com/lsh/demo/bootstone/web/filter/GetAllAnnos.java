@@ -3,6 +3,7 @@ package com.lsh.demo.bootstone.web.filter;
 import biz.limit.anno.RateLimitAnno;
 import com.lsh.demo.bootstone.service.util.RedisUtil;
 import org.junit.Test;
+import org.openjdk.btrace.core.annotations.*;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -23,16 +24,23 @@ import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+import static org.openjdk.btrace.core.BTraceUtils.Strings.str;
+import static org.openjdk.btrace.core.BTraceUtils.Strings.strcat;
+import static org.openjdk.btrace.core.BTraceUtils.println;
+
 
 /**
  * 读取所有类的注解，这里只是为了测试
  */
 @Component
+
 public class GetAllAnnos {
 
     @Resource
     @Lazy
     private RedisUtil redisUtil;
+
+
 
     @Test
     @PostConstruct

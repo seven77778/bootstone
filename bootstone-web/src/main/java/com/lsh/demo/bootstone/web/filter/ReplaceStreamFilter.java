@@ -4,16 +4,24 @@ import com.google.common.collect.Maps;
 import com.lsh.demo.bootstone.service.common.BootStoneLog;
 import com.lsh.demo.bootstone.web.interceptor.MyByteRequestWrapper;
 import org.apache.commons.lang3.StringUtils;
+import org.openjdk.btrace.core.annotations.*;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Map;
 
+import static org.openjdk.btrace.core.BTraceUtils.Strings.str;
+import static org.openjdk.btrace.core.BTraceUtils.Strings.strcat;
+import static org.openjdk.btrace.core.BTraceUtils.println;
+
 /**
  * Created by lsh on 2020-06-01.
  * 解决HttpServletRequest的输入流只能读取一次的问题
  */
+
+
+@BTrace
 public class ReplaceStreamFilter implements Filter {
 
 
@@ -21,6 +29,9 @@ public class ReplaceStreamFilter implements Filter {
     public void init(FilterConfig filterConfig) {
 
     }
+
+
+
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

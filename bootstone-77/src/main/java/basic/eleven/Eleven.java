@@ -25,6 +25,7 @@ public class Eleven {
         sb.append("456");
         sb.append("我是sb");
         sb.append("李苏恒");
+        sb.toString();
         System.out.println("sb是 ： " + sb);
 
         /**

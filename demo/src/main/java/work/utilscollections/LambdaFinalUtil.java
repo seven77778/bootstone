@@ -28,7 +28,7 @@ import java.util.stream.Stream;
  */
 public class LambdaFinalUtil {
     List<Money> list = Arrays.asList(
-            new Money("aaa", 11, "2020-01-01", "2020-01-05", "1"),
+            new Money("Singleton", 11, "2020-01-01", "2020-01-05", "1"),
             new Money("bbb", 14, "2020-01-02", "2020-01-09", "2"),
             new Money("ccc", 66, "2020-01-03", "2020-01-02", "3")
     );
@@ -38,7 +38,7 @@ public class LambdaFinalUtil {
     List<Student> students = Arrays.asList(
         new Student("路飞", 1, 175),
         new Student("红发", 3, 180),
-        new Student("aaa", 3, 180),
+        new Student("Singleton", 3, 180),
         new Student("白胡子", 1, 185));
 
     /**

@@ -1,5 +1,6 @@
 package com.lsh.demo.bootstone.web.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class SentinelController {
     private SentinelBootDemo demo;
 
     @RequestMapping("/hello")
+    @SentinelResource("aa")
     public String sayHello(){
         String result = demo.sayHello("lsh");
         return result;
