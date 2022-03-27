@@ -1,13 +1,10 @@
 package com.lsh.demo.bootstone.dao.mapstruct;
 
-import lombok.Data;
-
-@Data
 public class MapSOrderQueryParam {
     /**
      * 订单编号
      */
-    private String orderSn;
+    private String orderSn123;
     /**
      * 收货人姓名/号码
      */
@@ -24,4 +21,70 @@ public class MapSOrderQueryParam {
      * 订单来源：0->PC订单；1->app订单
      */
     private Integer sourceType;
+
+    /**
+     * 不同的字段，通过mapper自定义转换
+     */
+    private String test;
+
+    /**
+     * mapper固定值
+     */
+    private String constantName;
+
+    public String getOrderSn123() {
+        return orderSn123;
+    }
+
+    public void setOrderSn123(String orderSn123) {
+        this.orderSn123 = orderSn123;
+    }
+
+    public String getReceiverKeyword() {
+        return receiverKeyword;
+    }
+
+    public void setReceiverKeyword(String receiverKeyword) {
+        this.receiverKeyword = receiverKeyword;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(Integer orderType) {
+        this.orderType = orderType;
+    }
+
+    public Integer getSourceType() {
+        return sourceType;
+    }
+
+    public void setSourceType(Integer sourceType) {
+        this.sourceType = sourceType;
+    }
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
+
+    public String getConstantName() {
+        return constantName;
+    }
+
+    public void setConstantName(String constantName) {
+        this.constantName = constantName;
+    }
 }

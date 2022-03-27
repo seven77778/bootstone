@@ -25,6 +25,9 @@ import java.util.Scanner;
  * <p>
  * 实现 CloseableHttpClient
  * 1.EntityUtils.toString 中finally 中关闭了 InputStream
+ *
+ * 推荐使用 restTemplate
+ * @see org.springframework.web.client.RestTemplate
  */
 @Component
 public class CloseHttpUtil {
