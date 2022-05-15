@@ -4,6 +4,13 @@ import com.lsh.demo.bootstone.service.vo.RequsetVO;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.core.DefaultParameterNameDiscoverer;
+import org.springframework.expression.EvaluationContext;
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -117,5 +124,11 @@ public class PointcutTest {
         System.out.println("around：" + methodName + ",参数为：" + args);
         return point.proceed();
     }
+
+
+
+
+
+
 
 }

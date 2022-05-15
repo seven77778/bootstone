@@ -4,6 +4,7 @@ import com.bootstone.spring.ioc.iocdemo1.MoAttack;
 import com.lsh.demo.bootstone.service.vo.RequsetVO;
 import com.lsh.demo.bootstone.web.common.request.BootStoneRequest;
 import com.lsh.demo.bootstone.web.interceptor.LshAuth;
+import com.lsh.demo.bootstone.web.point.MySpElAble;
 import com.lsh.demo.bootstone.web.point.MyWithinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +33,13 @@ public class HelloController {
 
     @Autowired
     private MoAttack moAttack;
+
+
+    @RequestMapping("/spel")
+    @MySpElAble(name = "#student.name",age="#student.age",num = 10)
+    public void TestMySepl(@RequestBody Student student){
+        System.out.println(student.getName());
+    }
 
     /**
      * 测试spring的controller是单例还是多例，怎么保证并发的安全

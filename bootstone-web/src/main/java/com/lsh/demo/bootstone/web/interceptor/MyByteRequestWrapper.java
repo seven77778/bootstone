@@ -41,9 +41,9 @@ public class MyByteRequestWrapper extends HttpServletRequestWrapper {
         String iii = "{\n" +
                 "    \"lsh\":\"修改后的内容\"\n" +
                 "}";
-        if(StringUtils.isNotBlank(originBody)){
-            requestBody = iii.getBytes();
-        }
+//        if(StringUtils.isNotBlank(originBody)){
+//            requestBody = iii.getBytes();
+//        }
         //现在return到postman的全是  修改后的内容  了
     }
 
