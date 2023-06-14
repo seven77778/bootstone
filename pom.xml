@@ -35,7 +35,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <guava.version>30.0-jre</guava.version>
+        <guava.version>32.0.0-jre</guava.version>
         <dubbo.version>2.7.7</dubbo.version>
         <http.version>4.5.13</http.version>
         <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
