@@ -37,7 +37,7 @@ public class XunhuanPrint100 {
         CyclicBarrier cyclicBarrier = new CyclicBarrier(100);
 
         t1 = new Thread(() -> {
-            for (int i = 0; i < 34; i++) {
+            for (int i = 0; i < 66; i++) {
                 longAdder.increment();
                 System.out.println(String.format("%s:%d", Thread.currentThread().getName(), longAdder.intValue()));
                 ;
@@ -47,7 +47,7 @@ public class XunhuanPrint100 {
         }, "Thread1");
 
         t2 = new Thread(() -> {
-            for (int i = 0; i < 33; i++) {
+            for (int i = 0; i < 66; i++) {
                 LockSupport.park();
                 longAdder.increment();
                 System.out.println(String.format("%s:%d", Thread.currentThread().getName(), longAdder.intValue()));
@@ -58,7 +58,7 @@ public class XunhuanPrint100 {
         }, "Thread2");
 
         t3 = new Thread(() -> {
-            for (int i = 0; i < 33; i++) {
+            for (int i = 0; i < 66; i++) {
                 LockSupport.park();
                 longAdder.increment();
                 System.out.println(String.format("%s:%d", Thread.currentThread().getName(), longAdder.intValue()));

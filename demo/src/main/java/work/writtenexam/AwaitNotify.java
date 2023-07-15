@@ -131,8 +131,7 @@ public class AwaitNotify {
         pq.offer(new Resou(12,"102"));
         pq.offer(new Resou(666,"103"));
         pq.offer(new Resou(7896,"104"));
-        System.out
-                .println(pq);
+        System.out.println(pq);
     }
 
     @Data

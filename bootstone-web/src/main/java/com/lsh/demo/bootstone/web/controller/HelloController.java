@@ -28,7 +28,7 @@ import java.util.Optional;
 @CrossOrigin("*")
 public class HelloController {
 
-    @Value("${valuetest.test1}")
+    @Value("${value.test}")
     private String test1;
 
     @Autowired
@@ -67,7 +67,13 @@ public class HelloController {
     @RequestMapping("/hello")
 //    @LshAuth
     public String hello(String lsh){
-        return "第222台";
+        return "hello";
+    }
+
+    @RequestMapping("/test")
+//    @LshAuth
+    public String hello2(String lsh){
+        return "this test";
     }
 
     @RequestMapping("/hellopost")

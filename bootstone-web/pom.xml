@@ -15,6 +15,12 @@
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
+        <!-- WebSocket -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -127,6 +133,12 @@
             <groupId>com.lsh.demo</groupId>
             <artifactId>lsh-spring-boot-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.6.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

@@ -1,1 +1,3 @@
 dubboFilter=com.lsh.demo.bootstone.dubbo.filter.DubboFilter
+a=com.lsh.demo.annolearn.spi_test.MyActiveFilterImplA
+b=com.lsh.demo.annolearn.spi_test.MyActiveFilterImplB

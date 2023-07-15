@@ -113,7 +113,8 @@ public class TenAskTenAnswer {
          */
     static {
         ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("po-detail-pool-%d").build();
-        pool = new ThreadPoolExecutor(4, 8, 60L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(512),
+        pool = new ThreadPoolExecutor(4, 8, 60L,
+                TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(512),
                 threadFactory, new ThreadPoolExecutor.AbortPolicy());
         pool.allowCoreThreadTimeOut(true);
     }

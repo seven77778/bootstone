@@ -43,6 +43,7 @@ public class Print20211027 {
 
         try{
             cyc.await(1, TimeUnit.SECONDS);
+            System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&");
         }catch(Exception e){
             System.out.println(e);
         }

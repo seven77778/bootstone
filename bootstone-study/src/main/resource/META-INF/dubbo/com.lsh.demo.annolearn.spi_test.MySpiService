@@ -1,0 +1,3 @@
+impl1=com.lsh.demo.annolearn.spi_test.MySpiServiceImplA
+impl2=com.lsh.demo.annolearn.spi_test.MySpiServiceImplB
+impl3=com.lsh.demo.annolearn.spi_test.MySpiServiceImplC

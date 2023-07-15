@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 @EnableConfigurationProperties(LshSmsProperties.class)
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
         havingValue = "true",
         matchIfMissing = true
 )
+//@Conditional(Object.class)
 //prefix为配置文件中的前缀,
 //name为配置的名字
 //havingValue是与配置的值对比值,当两个值相同返回true,配置类生效.

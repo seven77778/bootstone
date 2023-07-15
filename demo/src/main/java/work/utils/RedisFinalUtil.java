@@ -5,6 +5,8 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * redis集合
  */
@@ -17,13 +19,25 @@ public class RedisFinalUtil {
     private RedisTemplate<String, String> redisTemplate;
 
 
-    public String getDB(String key,int dbIndex){
+    public String getDB(String key, int dbIndex) {
         setDbIndex(dbIndex);
-        return redisTemplate.opsForValue().get(key)+"";
+        String token = "";
+        long tokenTimeOut = 1;
+
+
+        redisTemplate.opsForValue().set(key, token, tokenTimeOut, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(key, token, tokenTimeOut);
+        //todo zset做滑动窗口的基本
+        Integer count = redisTemplate.opsForZSet().rangeByScore("limit", 1 , 2).size();
+
+
+        return "";
+
+
     }
 
-    public String getStringKey(String key){
-        return redisTemplate.opsForValue().get(key)+"";
+    public String getStringKey(String key) {
+        return redisTemplate.opsForValue().get(key) + "";
     }
 
     private void setDbIndex(Integer dbIndex) {

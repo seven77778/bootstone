@@ -2,6 +2,7 @@ package com.lsh.demo.ratelimiter;
 
 import com.google.common.util.concurrent.RateLimiter;
 import org.junit.Test;
+import org.redisson.RedissonRedLock;
 
 import java.util.concurrent.TimeUnit;
 

@@ -90,6 +90,7 @@ public class ThreeThreadByTurn {
         CompletableFuture<Void> ss = CompletableFuture.runAsync(() -> t1.start())
                 .thenRun(() -> t2.start())
                 .thenRun(() -> t3.start());
+        Thread.sleep(1000);
         System.out.println(ss.get());//可能比t3执行的早
     }
 

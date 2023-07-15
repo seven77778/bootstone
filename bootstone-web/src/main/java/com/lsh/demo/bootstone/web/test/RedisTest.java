@@ -97,9 +97,19 @@ public class RedisTest {
     @Resource
     private RedissonClientUtil redissonClientUtil;
     @Test
-    public void testTimeout(){
+    public void testTimeout() throws InterruptedException {
 
-        RLock lock = redissonClientUtil.redissonClient().getLock("111");
-        lock.lock(11,TimeUnit.DAYS);
+
+        RLock lock = redissonClientUtil.redissonClient().getLock("lock");
+
+        lock.tryLock(1,5,TimeUnit.DAYS);
+        lock.tryLock(1,TimeUnit.DAYS);
+        lock.lock();
+
+
+
+
+
+        lock.unlock();
     }
 }

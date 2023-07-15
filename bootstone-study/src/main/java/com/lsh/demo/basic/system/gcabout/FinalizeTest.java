@@ -1,6 +1,6 @@
 package com.lsh.demo.basic.system.gcabout;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl;
+//import com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.LongAdder;
@@ -86,7 +86,7 @@ public class FinalizeTest {
     public void test2() throws Exception {
         for(int i=0;;i++) {
             Thread.sleep(50);
-            UnmarshallerImpl unmarshaller = new UnmarshallerImpl(null, null);
+//            UnmarshallerImpl unmarshaller = new UnmarshallerImpl(null, null);
             if ((i % 100_000) == 0) {
                 System.out.format("After creating %d objects.%n", new Object[] {i });
             }

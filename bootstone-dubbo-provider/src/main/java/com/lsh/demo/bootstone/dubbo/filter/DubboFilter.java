@@ -4,7 +4,10 @@ package com.lsh.demo.bootstone.dubbo.filter;
 import com.alibaba.dubbo.common.Constants;
 import com.alibaba.dubbo.common.extension.Activate;
 import com.alibaba.dubbo.rpc.*;
+import org.apache.dubbo.common.extension.ExtensionLoader;
 import org.springframework.util.StringUtils;
+
+import java.util.ServiceLoader;
 
 /**
  * dubbo的filter
@@ -17,6 +20,7 @@ public class DubboFilter implements com.alibaba.dubbo.rpc.Filter {
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         String traceId = RpcContext.getContext().getAttachment("traceId");
+        ServiceLoader.load(DubboFilter.class);
         if (StringUtils.isEmpty(traceId)) {
             System.out.println("filter拿到为空");
         } else {

@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ImportResource;
 @EnableAspectJAutoProxy
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.lsh.demo","xml","com.bootstone.spring.ioc.iocdemo1",
-"sentinel","spring20200603","biz.limit","work.utils","baisc.redission","com.bootstone.spring"})
+"sentinel","spring20200603","biz.limit","work.utils","baisc.redission","com.bootstone.spring","arthas"})
 @MapperScan("com.lsh.demo.bootstone.dao")
 @EnableCaching
 @ImportResource(value = {"classpath:dubbo-provider.xml","classpath:dubbo-consumer.xml","classpath:bean.xml"})
