@@ -97,13 +97,18 @@ public class LianXiPrint {
                 try {
                     System.out.println("序号：" + finalI + "到了");
                     cyc.await();
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (BrokenBarrierException e) {
                     e.printStackTrace();
                 }
             }).start();
-            Thread.sleep(200);
+//            Thread.sleep(1000);
+
         }
+
+        Thread.sleep(2000);
+
     }
 }

@@ -1,6 +1,6 @@
 package algorithm.leetcode.visible;
 
-import akka.util.Unsafe;
+//import akka.util.Unsafe;
 
 import java.util.concurrent.locks.LockSupport;
 
@@ -23,7 +23,7 @@ public class VisibleTest {
 //        Thread.yield();
 //        LockSupport.parkNanos(1); // yield，locksupport 也可以
 
-        Unsafe.instance.loadFence();//内存屏障导致的回写主内存
+//        Unsafe.instance.loadFence();//内存屏障导致的回写主内存
       }
 
       System.out.println("change");

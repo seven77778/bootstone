@@ -25,7 +25,6 @@ public class PrintTest {
       int finalI = i + 1;
       Thread t = new Thread(() -> {
         while (true) {
-          System.out.println(222);
           LockSupport.park();
           if (start < num) {
             start++;

@@ -6,6 +6,16 @@ package algorithm.leetcode;
  */
 public class ListNode {
 
+  public static ListNode get(int[] arr){
+    ListNode head = new ListNode();
+    ListNode tail = head;
+    for(int i:arr){
+      tail.next=new ListNode(i);
+      tail=tail.next;
+    }
+    return head.next;
+  }
+
   public int val;
   public ListNode next;
 
